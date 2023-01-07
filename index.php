@@ -9,7 +9,7 @@
         <meta content="Mannatthemes" name="author" />
 
         <!-- favicon -->
-        <link rel="shortcut icon" href="NormDomLogoNOTEXT1.ico" />
+        <link rel="shortcut icon" href="img/NormDomLogoNOTEXT1.ico" />
 
         <!-- css -->
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -113,7 +113,7 @@ fgetcsv($fh, 0, ',');
 // массив, в который данные будут сохраняться
 $data = [];
 while (($row = fgetcsv($fh, 0, ',')) !== false) {
-    list($id, $region_id, $area_id, $city_id, $shortname_region, $formalname_region, $shortname_area, $formalname_area, $shortname_city, $formalname_city, $shortname_street, $formalname_street, $house_number, $building, $block, $letter, $address, $houseguid, $management_organization_id, $built_year, $exploitation_start_year, $project_type, $house_type, $is_alarm, $method_of_forming_overhaul_fund, $floor_count_max, $floor_count_min, $entrance_count, $elevators_count, $energy_efficiency, $quarters_count, $living_quarters_count, $unliving_quarters_count, $area_total, $area_residential, $area_non_residential, $area_common_property, $area_land, $parking_square, $playground, $sportsground, $other_beautification, $floor_type, $wall_material, $basement_area, $chute_type, $chute_count, $electrical_type, $electrical_entries_count, $heating_type, $hot_water_type, $cold_water_type, $sewerage_type, $sewerage_cesspools_volume, $gas_type, $ventilation_type, $firefighting_type, $drainage_type) = $row;
+    list($id, $region_id, $area_id, $city_id, $shortname_region, $formalname_region, $shortname_area, $formalname_area, $shortname_city, $formalname_city, $shortname_street, $formalname_street, $house_number, $building, $block, $letter, $address, $houseguid, $management_organization_id, $built_year, $exploitation_start_year, $project_type, $house_type, $is_alarm, $method_of_forming_overhaul_fund, $floor_count_max, $floor_count_min, $entrance_count, $elevators_count, $energy_efficiency, $quarters_count, $living_quarters_count, $unliving_quarters_count, $area_total, $area_residential, $area_non_residential, $area_common_property, $area_land, $parking_square, $playground, $sportsground, $other_beautification, $foundation_type, $floor_type, $wall_material, $basement_area, $chute_type, $chute_count, $electrical_type, $electrical_entries_count, $heating_type, $hot_water_type, $cold_water_type, $sewerage_type, $sewerage_cesspools_volume, $gas_type, $ventilation_type, $firefighting_type, $drainage_type) = $row;
 
     $data[] = [
         'id' => $id,
@@ -158,6 +158,7 @@ while (($row = fgetcsv($fh, 0, ',')) !== false) {
         'playground' => $playground,
         'sportsground' => $sportsground,
         'other_beautification' => $other_beautification,
+        'foundation_type' => $foundation_type
         'floor_type' => $floor_type,
         'wall_material' => $wall_material,
         'basement_area' => $basement_area,
@@ -221,6 +222,7 @@ foreach ($data as $row) {
     echo 'playground:' . $row['playground'];
     echo 'sportsground:' . $row['sportsground'];
     echo 'other_beautification:' . $row['other_beautification'];
+    echo 'foundation_type:' . $row['foundation_type'];
     echo 'floor_type:' . $row['floor_type'];
     echo 'wall_material:' . $row['wall_material'];
     echo 'basement_area:' . $row['basement_area'];
@@ -241,7 +243,7 @@ foreach ($data as $row) {
 }
 */
 
-
+/*
 echo "<html><body><center><table>\n\n";
   
         // Open a file
@@ -263,4 +265,52 @@ echo "<html><body><center><table>\n\n";
         fclose($file);
   
         echo "\n</table></center></body></html>";
+
+*/
+
+/*
+CREATE TABLE house.house (id_all INT NOT NULL AUTO_INCREMENT , id INT NOT NULL,  region_id VARCHAR(100) NOT NULL , area_id VARCHAR(100) NULL , city_id VARCHAR(100) NULL ,street_id VARCHAR(100) NULL , shortname_region VARCHAR(20) NOT NULL , formalname_region VARCHAR(20) NOT NULL , shortname_area VARCHAR(20) NULL , formalname_area VARCHAR(20) NULL , shortname_city VARCHAR(20) NULL , formalname_city VARCHAR(50) NULL , shortname_street VARCHAR(20) NULL , formalname_street VARCHAR(100) NULL , house_number VARCHAR(50) NULL , building VARCHAR(50) NULL , block VARCHAR(50) NULL , letter VARCHAR(30) NULL , address VARCHAR(100) NOT NULL , houseguid VARCHAR(100) NOT NULL , management_organization_id INT NULL , built_year INT NULL , exploitation_start_year INT NULL , project_type VARCHAR(100) NULL , house_type VARCHAR(50) NOT NULL , is_alarm VARCHAR(10) NOT NULL , method_of_forming_overhaul_fund VARCHAR(50) NOT NULL , floor_count_max INT NULL , floor_count_min INT NULL , entrance_count INT NULL , elevators_count INT NULL , energy_efficiency VARCHAR(30) NOT NULL , quarters_count INT NOT NULL , living_quarters_count INT NULL , unliving_quarters_count INT NULL , area_total INT NULL , area_residential INT NULL , area_non_residential INT NULL , area_common_property INT NULL , area_land INT NULL , parking_square INT NULL , playground INT NOT NULL , sportsground INT NOT NULL , other_beautification VARCHAR(300) NULL , foundation_type VARCHAR(30) NOT NULL, floor_type VARCHAR(30) NOT NULL , wall_material VARCHAR(30) NOT NULL , basement_area INT NULL , chute_type VARCHAR(30) NOT NULL , chute_count INT NULL , electrical_type VARCHAR(30) NOT NULL , electrical_entries_count INT NULL , heating_type VARCHAR(50) NOT NULL , hot_water_type VARCHAR(100) NOT NULL , cold_water_type VARCHAR(50) NOT NULL , sewerage_type VARCHAR(30) NOT NULL , sewerage_cesspools_volume INT NULL , gas_type VARCHAR(20) NOT NULL , ventilation_type VARCHAR(50) NOT NULL , firefighting_type VARCHAR(30) NOT NULL , drainage_type VARCHAR(30) NOT NULL ,   PRIMARY KEY (id_all)) ENGINE = InnoDB;
+*/
+
+/*
+include "db.php";
+
+$file = fopen("test.csv", "r");
+
+$request = "INSERT INTO house (id_all, id, region_id, area_id, city_id, street_id, shortname_region, formalname_region, 
+shortname_area, formalname_area, shortname_city, formalname_city, shortname_street, formalname_street, house_number, building, 
+blockck, letter, addresss, houseguid, management_organization_id, built_year, exploitation_start_year, project_type, house_type, is_alarm, 
+method_of_forming_overhaul_fund, floor_count_max, floor_count_min, entrance_count, elevators_count, energy_efficiency, quarters_count, 
+living_quarters_count, unliving_quarters_count, area_total, area_residential, area_non_residential, area_common_property, area_land, parking_square, 
+playground, sportsground, other_beautification, foundation_type, floor_type, wall_material, basement_area, chute_type, chute_count, electrical_type, 
+electrical_entries_count, heating_type, hot_water_type, cold_water_type, sewerage_type, sewerage_cesspools_volume, gas_type, ventilation_type, firefighting_type, drainage_type) VALUES (NULL ";
+
+while (($data = fgetcsv($file, 0, ";")) !== false) {
+  
+    // HTML tag for placing in row format
+    foreach ($data as $i) {
+        if ($i == null){
+            $request .= ", NULL";
+        }else{
+            $request .= ", '$i'";
+        }
+    }
+    $request .= ")";
+    $result = mysqli_query($mysql, $request);
+    $request = "INSERT INTO house (id_all, id, region_id, area_id, city_id, street_id, shortname_region, formalname_region, 
+    shortname_area, formalname_area, shortname_city, formalname_city, shortname_street, formalname_street, house_number, building, 
+    blockck, letter, addresss, houseguid, management_organization_id, built_year, exploitation_start_year, project_type, house_type, is_alarm, 
+    method_of_forming_overhaul_fund, floor_count_max, floor_count_min, entrance_count, elevators_count, energy_efficiency, quarters_count, 
+    living_quarters_count, unliving_quarters_count, area_total, area_residential, area_non_residential, area_common_property, area_land, parking_square, 
+    playground, sportsground, other_beautification, foundation_type, floor_type, wall_material, basement_area, chute_type, chute_count, electrical_type, 
+    electrical_entries_count, heating_type, hot_water_type, cold_water_type, sewerage_type, sewerage_cesspools_volume, gas_type, ventilation_type, firefighting_type, drainage_type) VALUES (NULL ";
+
+}
+
+// Closing the file
+fclose($file);
+*/
+
+
+
 ?>
