@@ -32,7 +32,7 @@ include "db.php";
                             <a class="nav-link-a active" href="index.php">Главная</a>
                         </li><!--end nav-item-->
                         <li class="nav-item">
-                            <a class="nav-link-a" href="main_black.php">Темная тема</a>
+                            <a class="nav-link-a" href="signIn_black.php">Темная тема</a>
                         </li><!--end nav-item-->
                         <li class="nav-item">
                             <a class="nav-link-a" href="services.html">Поиск</a>
