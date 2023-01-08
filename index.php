@@ -336,8 +336,8 @@ include "db.php";
                             <a class="nav-link-a" href="contact.php">Контакт</a>
                         </li><!--end nav-item-->
                     </ul><!--end navbar-nav-->
-                    <button type="button" class="btn btn-primary btn-hover" href="singUp.php">Регистрация</button>
-                    <button type="button" class="btn btn-green" href="singUp.php">Вход</button>
+                    <button type="button" class="btn btn-primary btn-hover"><a class="btn-a" href="signUp.php">Регистрация<a></button>
+                    <button type="button" class="btn btn-green"><a class="btn-a" href="signIn.php">Вход<a></button>
                     <!--<a href="singUp.php" class="btn btn-sm nav-btn text-primary mb-4 mb-lg-0">Регистрация<i class="icon-xxs ms-1" data-feather="chevrons-right"></i></a>-->
                 </div><!-- end #navbarNav -->
             </div><!-- end container -->

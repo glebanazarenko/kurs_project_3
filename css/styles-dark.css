@@ -45,6 +45,15 @@ html {
   }
 }
 
+.btn-a{
+  color: white;
+  text-decoration: none;
+}
+
+.btn-a:hover{
+  color: rgb(0, 0, 0);
+}
+
 
 .btn-green{
   color: aquamarine;

@@ -45,6 +45,14 @@ html {
     }
   }
 
+  .btn-a{
+    color: white;
+    text-decoration: none;
+  }
+
+  .btn-a:hover{
+    color: #102774;
+  }
 
   .btn-green{
     color: white;
@@ -94,4 +102,9 @@ html {
 
   .footer a:hover{
     color: #000000;
+  }
+
+
+  .black{
+    background-color: #000000;
   }
