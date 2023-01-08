@@ -16,40 +16,56 @@
 
 <?php
 include "db.php";
+
+if(!isset($session_user_login)){
+    $session_user_login = "Ошибка";
+}
+
+
+$result = mysqli_query($mysql, "SELECT * FROM user WHERE
+login='".$session_user_login."'
+");
+$Arr = mysqli_fetch_assoc($result);
+
+
+
+echo'<body>
+<!-- start navbar -->
+<nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
+    <div class="container">
+        <a href="index.html">
+            <img src="images/NormDomTextFooter.png" alt="" height="50" />
+        </a><!--end navbar-brand-->
+
+        <div class="navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto navbar-center mt-lg-0 mt-2">
+                <li class="nav-item">
+                    <a class="nav-link-a active" href="index.php">Главная</a>
+                </li><!--end nav-item-->
+                <li class="nav-item">
+                    <a class="nav-link-a" href="main_black.php">Темная тема</a>
+                </li><!--end nav-item-->
+                <li class="nav-item">
+                    <a class="nav-link-a" href="services.html">Поиск</a>
+                </li><!--end nav-item-->                        
+                <li class="nav-item">
+                    <a class="nav-link-a" href="resume.html">Резюме</a>
+                </li><!--end nav-item-->
+                <li class="nav-item">
+                    <a class="nav-link-a" href="contact.php">Контакт</a>
+                </li><!--end nav-item-->
+            </ul><!--end navbar-nav-->
+            <button type="button" class="btn btn-primary btn-hover">'.$Arr['name'].'</button>
+            <button type="button" class="btn btn-green"><a class="btn-a" href="index.php">Выйти из аккаунта</a></button>
+            <!--<a href="singUp.php" class="btn btn-sm nav-btn text-primary mb-4 mb-lg-0">Регистрация<i class="icon-xxs ms-1" data-feather="chevrons-right"></i></a>-->
+        </div><!-- end #navbarNav -->
+    </div><!-- end container -->
+</nav>
+<!-- end navbar -->
+';
+
 ?>
 
-<body>
-        <!-- start navbar -->
-        <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
-            <div class="container">
-                <a href="index.html">
-                    <img src="images/NormDomTextFooter.png" alt="" height="50" />
-                </a><!--end navbar-brand-->
-
-                <div class="navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav mx-auto navbar-center mt-lg-0 mt-2">
-                        <li class="nav-item">
-                            <a class="nav-link-a active" href="index.php">Главная</a>
-                        </li><!--end nav-item-->
-                        <li class="nav-item">
-                            <a class="nav-link-a" href="main_black.php">Темная тема</a>
-                        </li><!--end nav-item-->
-                        <li class="nav-item">
-                            <a class="nav-link-a" href="services.html">Поиск</a>
-                        </li><!--end nav-item-->                        
-                        <li class="nav-item">
-                            <a class="nav-link-a" href="resume.html">Резюме</a>
-                        </li><!--end nav-item-->
-                        <li class="nav-item">
-                            <a class="nav-link-a" href="contact.php">Контакт</a>
-                        </li><!--end nav-item-->
-                    </ul><!--end navbar-nav-->
-                    <button type="button" class="btn btn-primary btn-hover"><a class="btn-a" href="index.php">Выйти из аккаунта<a></button>
-                    <!--<a href="singUp.php" class="btn btn-sm nav-btn text-primary mb-4 mb-lg-0">Регистрация<i class="icon-xxs ms-1" data-feather="chevrons-right"></i></a>-->
-                </div><!-- end #navbarNav -->
-            </div><!-- end container -->
-        </nav>
-        <!-- end navbar -->
 
         <!-- start hero -->
         <section class="hero-one position-relative main-bg" id="home"  style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">

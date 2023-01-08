@@ -44,8 +44,8 @@ include "db.php";
                             <a class="nav-link-a" href="contact.php">Контакт</a>
                         </li><!--end nav-item-->
                     </ul><!--end navbar-nav-->
-                    <button type="button" class="btn btn-primary btn-hover"><a class="btn-a" href="singUp.php">Регистрация<a></button>
-                    <button type="button" class="btn btn-green"><a class="btn-a" href="singIn.php">Вход<a></button>
+                    <button type="button" class="btn btn-primary btn-hover"><a class="btn-a" href="signUp.php">Регистрация<a></button>
+                    <button type="button" class="btn btn-green"><a class="btn-a" href="signIn.php">Вход<a></button>
                     <!--<a href="singUp.php" class="btn btn-sm nav-btn text-primary mb-4 mb-lg-0">Регистрация<i class="icon-xxs ms-1" data-feather="chevrons-right"></i></a>-->
                 </div><!-- end #navbarNav -->
             </div><!-- end container -->
@@ -66,18 +66,17 @@ include "db.php";
 
         <!-- start hero -->
             <h6 class="bg-white text-dark fs-2 container text-center">Регистрация</h6>
-        <!-- end hero -->
-        
+        <!-- end hero -->        
 
         <section class="container text-center">
-            <form action="signed.php" method="POST">
+            <form action="check.php" method="POST">
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Ник пользователя</span>
-                    <input type="text" class="form-control" placeholder="Глеб" aria-label="Username" aria-describedby="basic-addon1">
+                    <input type="text" name="name" class="form-control" placeholder="Глеб" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Логин</span>
-                    <input type="text" class="form-control" placeholder="qwerty" aria-label="Username" aria-describedby="basic-addon1">
+                    <input type="text" name="login" class="form-control" placeholder="qwerty" aria-label="Username" aria-describedby="basic-addon1">
                 </div> 
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Пароль</span>
@@ -85,7 +84,7 @@ include "db.php";
                 </div> 
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="inputGroupSelect01">Тип газа в доме</label>
-                    <select class="form-select" id="inputGroupSelect01">
+                    <select name="gas" class="form-select" id="inputGroupSelect01">
                         <option selected>Выберите</option>
                         <option value="1">Без разницы</option>
                         <option value="2">Автономное</option>
@@ -95,7 +94,7 @@ include "db.php";
                 </div>
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="inputGroupSelect01">Тип вентиляции в доме</label>
-                    <select class="form-select" id="inputGroupSelect01">
+                    <select name="ventilation" class="form-select" id="inputGroupSelect01">
                         <option selected>Выберите</option>
                         <option value="1">Без разницы</option>
                         <option value="2">Вытяжная вентиляция</option>
@@ -106,7 +105,7 @@ include "db.php";
                 </div>
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="inputGroupSelect01">Тип отопления в доме</label>
-                    <select class="form-select" id="inputGroupSelect01">
+                    <select name="heating" class="form-select" id="inputGroupSelect01">
                         <option selected>Выберите</option>
                         <option value="1">Без разницы</option>
                         <option value="2">Автономная котельная</option>
@@ -119,7 +118,7 @@ include "db.php";
                 </div>
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="inputGroupSelect01">Тип мусоропровода в доме</label>
-                    <select class="form-select" id="inputGroupSelect01">
+                    <select name="chute" class="form-select" id="inputGroupSelect01">
                         <option selected>Выберите</option>
                         <option value="1">Без разницы</option>
                         <option value="2">Cухой</option>
@@ -139,7 +138,7 @@ include "db.php";
                 </div> 
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="inputGroupSelect01">Тип дома</label>
-                    <select class="form-select" id="inputGroupSelect01">
+                    <select name="house_type" class="form-select" id="inputGroupSelect01">
                         <option selected>Выберите</option>
                         <option value="1">Без разницы</option>
                         <option value="2">Жилой дом блокированной застройки</option>
@@ -166,6 +165,12 @@ include "db.php";
 
 
 <?php
+
+
+
+
+
+
 include "footer.php";
 ?>
 
