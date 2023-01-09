@@ -32,4 +32,21 @@ if(!empty($_POST)){
 
     include("signed_black.php");
 }
-?>
+
+if(!empty($_GET)){
+    $result1 = mysqli_query($mysql, "SELECT * FROM user WHERE
+    id='".$_GET["id"]."'
+    ");
+
+    if(!isset($_GET['session_user'])){
+        $Arr = mysqli_fetch_assoc($result1);
+        $_SESSION["user"] = $Arr['login'];
+        $session_user_login = $_SESSION["user"];
+    }
+    else{
+        $session_user_login = $_GET['session_user'];
+    }
+
+    include("signed_black.php");
+}
+?> 

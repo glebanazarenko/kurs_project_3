@@ -33,7 +33,7 @@ echo'<body>
 <!-- start navbar -->
 <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
     <div class="container">
-        <a href="index.html">
+        <a href="checkIn.php?id='.$Arr["id"].'">
             <img src="images/NormDomTextFooter.png" alt="" height="50" />
         </a><!--end navbar-brand-->
 
@@ -43,7 +43,7 @@ echo'<body>
                     <a class="nav-link-a active" href="index.php">Главная</a>
                 </li><!--end nav-item-->
                 <li class="nav-item">
-                    <a class="nav-link-a" href="main_black.php">Темная тема</a>
+                    <a class="nav-link-a" href="checkIn_black.php?id='.$Arr["id"].'">Темная тема</a>
                 </li><!--end nav-item-->
                 <li class="nav-item">
                     <a class="nav-link-a" href="services.html">Поиск</a>

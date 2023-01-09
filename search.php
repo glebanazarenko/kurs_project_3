@@ -75,8 +75,8 @@ include "db.php";
         <section class="container text-left">
             <form method="POST">
                 <div class="mb-4">
-                <label for="exampleInputLogin1" class="form-label">Год эксплуатации</label>
-                    <input type="text" name="exploitation_start_year" class="form-control" placeholder="qwerty" id="exampleInputLogin1" aria-label="Username" aria-describedby="basic-addon1">
+                <label for="exampleInputLogin1" class="form-label">Адрес</label>
+                    <input type="text" name="address" class="form-control" placeholder="qwerty" id="exampleInputLogin1" aria-label="Username" aria-describedby="basic-addon1">
                 </div> 
                 <button type="submit" class="btn btn-primary">Подтвердить</button>
 
@@ -88,30 +88,43 @@ include "db.php";
 
 
         if(!empty($_POST)){
-            echo $_POST['exploitation_start_year'];
-            $result = mysqli_query($mysql, "SELECT * FROM house as h where h.exploitation_start_year = ".$_POST['exploitation_start_year']." Limit 10");
+            $result = mysqli_query($mysql, "SELECT * FROM house as h where h.address LIKE \"%".$_POST['address']."%\" Limit 10");
             
-            $context = '
-            <table class="allproduct">
-                <tr>
-                    <td width=500px> Адресс дома
-                    </td>
-                    <td width=150px> Год эксплуатации
-                    </td>
-                </tr>
-            ';
-            while( $product = mysqli_fetch_assoc($result)){
-                $context .= '
-                <tr>
-                    <td width=500px>'.$product["address"].'
-                    </td>
-                    <td width=100px>'.$product["exploitation_start_year"].'
-                    </td>
-                </tr>
-                ';
             
+            if($result != NULL){
+                while( $product = mysqli_fetch_assoc($result)){
+                    if($context == NULL){
+                        $context = '
+                        <table class="allproduct">
+                            <tr>
+                                <td width=500px height=50px> Адресс дома
+                                </td>
+                                <td width=150px height=50px> Год эксплуатации
+                                </td>
+                                <td width=150px height=50px> Общая площадь
+                                </td>
+                                <td width=250px height=50px> Тип проекта
+                                </td>
+                            </tr>';
+                    }else{
+                        $context .= '
+                        <tr>
+                            <td width=500px height=50px><a href=house.php?id='.$product["id"].'>'.$product["address"].'</a>
+                            </td>
+                            <td width=150px height=50px>'.$product["exploitation_start_year"].'
+                            </td>
+                            <td width=150px height=50px>'.$product["area_land"].'
+                            </td>
+                            <td width=250px height=50px>'.$product["project_type"].'
+                            </td>
+                        </tr>
+                        ';
+                    }
+                
+                }
+                $context .= '</table>';
             }
-            $context .= '</table>';
+            
             echo $context;
         }
 

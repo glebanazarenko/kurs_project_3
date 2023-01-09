@@ -314,7 +314,7 @@ include "db.php";
         <!-- start navbar -->
         <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
             <div class="container">
-                <a href="index.html">
+                <a href="index.php">
                     <img src="images/NormDomTextFooter.png" alt="" height="50" />
                 </a><!--end navbar-brand-->
 
