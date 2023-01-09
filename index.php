@@ -327,7 +327,7 @@ include "db.php";
                             <a class="nav-link-a" href="main_black.php">Темная тема</a>
                         </li><!--end nav-item-->
                         <li class="nav-item">
-                            <a class="nav-link-a" href="services.html">Поиск</a>
+                            <a class="nav-link-a" href="search.php">Поиск</a>
                         </li><!--end nav-item-->                        
                         <li class="nav-item">
                             <a class="nav-link-a" href="resume.html">Резюме</a>
