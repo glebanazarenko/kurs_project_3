@@ -108,31 +108,30 @@ echo'<body>
                 while( $product = mysqli_fetch_assoc($result)){
                     if($context == NULL){
                         $context = '
-                        <table class="allproduct">
+                        <div style="container-lg text-align: center;">
+                        <table class="table" style="width: 1200px; margin: auto;">
+                            <thead>
                             <tr>
-                                <td width=500px height=50px> Адресс дома
+                                <td> Адресс дома
                                 </td>
-                                <td width=150px height=50px> Год эксплуатации
+                                <td> Год эксплуатации
                                 </td>
-                                <td width=150px height=50px> Общая площадь
+                                <td> Общая площадь
                                 </td>
-                                <td width=250px height=50px> Тип проекта
+                                <td> Тип проекта
                                 </td>
-                            </tr>';
+                            </tr>
+                            </thead>';
                     }else{
-
-                        
-
-
                         $context .= '
                         <tr>
-                            <td width=500px height=50px><a href=checkIn.php?house_id='.$product["id"].'&type=house&id='.$Arr["id"].'>'.$product["address"].'</a>
+                            <td><a class="nav-link-a active" href=checkIn.php?house_id='.$product["id"].'&type=house&id='.$Arr["id"].'>'.$product["address"].'</a>
                             </td>
-                            <td width=150px height=50px>'.$product["exploitation_start_year"].'
+                            <td>'.$product["exploitation_start_year"].'
                             </td>
-                            <td width=150px height=50px>'.$product["area_land"].'
+                            <td>'.$product["area_land"].'
                             </td>
-                            <td width=250px height=50px>'.$product["project_type"].'
+                            <td>'.$product["project_type"].'
                             </td>
                         </tr>
                         ';

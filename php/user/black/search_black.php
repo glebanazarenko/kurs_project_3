@@ -28,7 +28,7 @@ login='".$session_user_login."'
 ");
 $Arr = mysqli_fetch_assoc($result);
 
-echo'<body class="bg-black">
+echo'<body class="bg-dark">
 <!-- start navbar -->
 <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
     <div class="container">
@@ -66,7 +66,7 @@ echo'<body class="bg-black">
 ?>
 
         <!-- start hero -->
-        <section class="hero-one position-relative bg-black" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
+        <section class="hero-one position-relative bg-dark" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
             <div class="container">
                 <div class="row align-items-center justify-content-center py-100">
                     <div class="col-lg-7 text-center py-5 text-center">
@@ -78,15 +78,15 @@ echo'<body class="bg-black">
         <!-- end hero -->
 
         <!-- start hero -->
-            <h6 class="bg-black text-white fs-2 container text-center">Поиск</h6>
+            <h6 class="bg-dark text-white fs-2 container text-center">Поиск</h6>
         <!-- end hero --> 
 
 
         <section class="container text-left">
             <form method="POST">
                 <div class="mb-4">
-                <label for="exampleInputLogin1" class="form-label bg-black text-white">Адрес</label>
-                    <input type="text" name="address" class="form-control bg-black text-white" placeholder="qwerty" id="exampleInputLogin1" aria-label="Username" aria-describedby="basic-addon1">
+                <label for="exampleInputLogin1" class="form-label bg-dark text-white">Адрес</label>
+                    <input type="text" name="address" class="form-control bg-dark text-white" placeholder="qwerty" id="exampleInputLogin1" aria-label="Username" aria-describedby="basic-addon1">
                 </div> 
                 <button type="submit" class="btn btn-primary">Подтвердить</button>
 
@@ -108,7 +108,9 @@ echo'<body class="bg-black">
                 while( $product = mysqli_fetch_assoc($result)){
                     if($context == NULL){
                         $context = '
-                        <table class="table-dark">
+                        <div style="container-lg text-align: center;">
+                        <table class="table table-dark" style="width: 1200px; margin: auto;">
+                            <thead>
                             <tr>
                                 <td width=500px height=50px> Адресс дома
                                 </td>
@@ -118,11 +120,12 @@ echo'<body class="bg-black">
                                 </td>
                                 <td width=250px height=50px> Тип проекта
                                 </td>
-                            </tr>';
+                            </tr>
+                            </thead>';
                     }else{
                         $context .= '
                         <tr>
-                            <td width=500px height=50px><a href=checkIn_black.php?house_id='.$product["id"].'&type=house&id='.$Arr["id"].'>'.$product["address"].'</a>
+                            <td width=500px height=50px><a class="nav-link-a" href=checkIn_black.php?house_id='.$product["id"].'&type=house&id='.$Arr["id"].'>'.$product["address"].'</a>
                             </td>
                             <td width=150px height=50px>'.$product["exploitation_start_year"].'
                             </td>
@@ -135,7 +138,7 @@ echo'<body class="bg-black">
                     }
                 
                 }
-                $context .= '</table>';
+                $context .= '</table></div>';
             }
             
             echo $context;

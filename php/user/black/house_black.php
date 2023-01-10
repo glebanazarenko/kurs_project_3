@@ -11,7 +11,7 @@
 
         <!-- css -->
         <link href="/курсач/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="/курсач/css/styles-dark.css" rel="stylesheet" type="text/css" />
+        <link href="../../../css/styles-dark.css" rel="stylesheet" type="text/css" />
     </head>
 
 
@@ -27,7 +27,7 @@ login='".$session_user_login."'
 $Arr = mysqli_fetch_assoc($result);
 
 
-echo'<body class="bg-black">
+echo'<body class="bg-dark">
 <!-- start navbar -->
 <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
     <div class="container">
@@ -65,7 +65,7 @@ echo'<body class="bg-black">
 ?>
 
         <!-- start hero -->
-        <section class="hero-one position-relative bg-black" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
+        <section class="hero-one position-relative bg-dark" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
             <div class="container">
                 <div class="row align-items-center justify-content-center py-100">
                     <div class="col-lg-7 text-center py-5 text-center">
@@ -77,299 +77,313 @@ echo'<body class="bg-black">
         <!-- end hero -->
 
         <!-- start hero -->
-            <h6 class="bg-black text-white text-dark fs-2 container text-center">Информация о доме</h6>
+            <h6 class="bg-dark text-white text-dark fs-2 container text-center">Информация о доме</h6>
         <!-- end hero --> 
         
         <?php
         
-            $result = mysqli_query($mysql, "SELECT * FROM house as h where h.id = ".$house_id."");
+        $result = mysqli_query($mysql, "SELECT * FROM house as h where h.id = ".$house_id."");
             
             
-            if($result != NULL){
-                $product = mysqli_fetch_assoc($result);
-                if($context == NULL){
-                    $context = '
-                    <table class="table-dark">
-                        <tr>
-                            <td width=400px height=50px> Адресс дома
-                            </td>
-                            <td width=150px height=50px> Год постройки
-                            </td>
-                            <td width=150px height=50px> Год эксплуатации
-                            </td>
-                            <td width=150px height=50px> Тип проекта
-                            </td>
-                            <td width=250px height=50px> Тип дома
-                            </td>
-                            <td width=250px height=50px> Кол-во этажей макс
-                            </td>
-                            <td width=250px height=50px> Кол-во этажей мин
-                            </td>
-                            <td width=170px height=50px> Энергоэффективность
-                            </td>
-                            <td width=150px height=50px> Кол-во квартир
-                            </td>
-                            <td width=150px height=50px> Общая площадь
-                            </td>
-                            <td width=150px height=50px> Площадь парковки
-                            </td>
-                            <td width=150px height=50px> Другие удобства
-                            </td>
-                            <td width=150px height=50px> Тип фундамента
-                            </td>
-                            <td width=150px height=50px> Полы
-                            </td>
-                            <td width=150px height=50px> Стены
-                            </td>
-                            <td width=150px height=50px> Тип мусоропровода
-                            </td>
-                            <td width=150px height=50px> Кол-во мусоропроводов
-                            </td>
-                            <td width=150px height=50px> Тип горячей воды
-                            </td>
-                            <td width=150px height=50px> Тип холодной воды
-                            </td>
-                            <td width=150px height=50px> Водоотведение
-                            </td>
-                            <td width=150px height=50px> Газоснабжение
-                            </td>
-                            <td width=150px height=50px> Тип вентиляции
-                            </td>
-                            <td width=150px height=50px> Система пожарной безопасности
-                            </td>
-                            <td width=150px height=50px> Тип дренажа
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width=400px height=50px>'.$product["address"].'
-                            </td>
-                            <td width=150px height=50px>';
-                            
-                    if($product["built_year"] == NULL){
-                        $context .= 'Нет данных';
-                    }
-                    else{
-                        $context .= ''.$product["built_year"].'';
-                    }
+        if($result != NULL){
+            $product = mysqli_fetch_assoc($result);
+            if($context == NULL){
+                $context = '
+                <div class="row margin-top-40" style="margin:auto;"> 
+                    <div class="col-md-7" style="margin:auto;"> 
+                        <dl class="dl-horizontal house bg-dark text-white"> 
+                            <dt>Адрес дома</dt>
+                            <dd>'.$product["address"].'</dd>
+                            <dt>Год постройки</dt>
+                            <dd>';
+                if($product["built_year"] == NULL){
+                    $context .= 'Нет данных';
+                }
+                else{
+                    $context .= ''.$product["built_year"].'';
+                }
 
-                    $context .= '
-                            </td>
-                            <td width=100px height=50px>'.$product["exploitation_start_year"].'
-                            </td>
-                            <td width=100px height=50px>'.$product["project_type"].'
-                            </td>
-                            <td width=100px height=50px>'.$product["house_type"].'
-                            </td>
-                            <td width=100px height=50px>';
-
-                    if($product["floor_count_max"] == NULL){
-                        $context .= 'Нет данных';
-                    }
-                    else{
-                        $context .= ''.$product["floor_count_max"].'';
-                    }
-
-                    $context .= '
-                            </td>
-                            <td width=100px height=50px>';
-
-                    if($product["floor_count_min"] == NULL){
-                        $context .= 'Нет данных';
-                    }
-                    else{
-                        $context .= ''.$product["floor_count_min"].'';
-                    }
-
-
-                    $context .= '
-                            </td>
-                            <td width=100px height=50px>'.$product["energy_efficiency"].'
-                            </td>
-                            <td width=100px height=50px>'.$product["quarters_count"].'
-                            </td>
-                            <td width=100px height=50px>'.$product["area_total"].'
-                            </td>
-                            <td width=100px height=50px>';
-
-                    if($product["parking_square"] == NULL){
-                        $context .= 'Нет данных';
-                    }
-                    else{
-                        $context .= ''.$product["parking_square"].'';
-                    }
-                    $context .= '
-                            </td>
-                            <td width=100px height=50px>
-                            ';
-
-                    if($product["other_beautification"] == NULL || $product["other_beautification"] === "Не имеется"){
-                        $context .= 'Нет данных';
-                    }
-                    else{
-                        $context .= ''.$product["other_beautification"].'';
-                    }
-
-                    $context .= '
-                            </td>
-                            <td width=100px height=50px>
-                            ';
-
-                    if($product["foundation_type"] == NULL || $product["foundation_type"] === "Не заполнено" || $product["foundation_type"] === "Иной"){
-                        $context .= 'Нет данных';
-                    }
-                    else{
-                        $context .= ''.$product["foundation_type"].'';
-                    }
-
-                    $context .= '
-                            </td>
-                            <td width=100px height=50px>
-                            ';
-
-                    if($product["floor_type"] == NULL){
-                        $context .= 'Нет данных';
-                    }
-                    else{
-                        $context .= ''.$product["floor_type"].'';
-                    }
-
-                    $context .= '
-                            </td>
-                            <td width=100px height=50px>
-                            ';
-
-                    if($product["wall_material"] == NULL){
-                        $context .= 'Нет данных';
-                    }
-                    else{
-                        $context .= ''.$product["wall_material"].'';
-                    }
-
-                    $context .= '
-                            </td>
-                            <td width=100px height=50px>
-                            ';
-
-                    if($product["chute_type"] == NULL){
-                        $context .= 'Нет данных';
-                    }
-                    else{
-                        $context .= ''.$product["chute_type"].'';
-                    }
-
-                    $context .= '
-                            </td>
-                            <td width=100px height=50px>
-                            ';
-
-                    if($product["chute_count"] == NULL){
-                        $context .= 'Нет данных';
-                    }
-                    else{
-                        $context .= ''.$product["chute_count"].'';
-                    }
-
-                    $context .= '
-                            </td>
-                            <td width=100px height=50px>
-                            ';
-
-                    if($product["hot_water_type"] == NULL){
-                        $context .= 'Нет данных';
-                    }
-                    else{
-                        $context .= ''.$product["hot_water_type"].'';
-                    }
-
-                    $context .= '
-                            </td>
-                            <td width=100px height=50px>
-                            ';
-
-                    if($product["cold_water_type"] == NULL){
-                        $context .= 'Нет данных';
-                    }
-                    else{
-                        $context .= ''.$product["cold_water_type"].'';
-                    }
-
-                    $context .= '
-                            </td>
-                            <td width=100px height=50px>
-                            ';
-
-                    if($product["sewerage_type"] == NULL){
-                        $context .= 'Нет данных';
-                    }
-                    else{
-                        $context .= ''.$product["sewerage_type"].'';
-                    }
-                    
-                    $context .= '
-                            </td>
-                            <td width=100px height=50px>
-                            ';
-
-                    if($product["gas_type"] == NULL){
-                        $context .= 'Нет данных';
-                    }
-                    else{
-                        $context .= ''.$product["gas_type"].'';
-                    }
-
-                    $context .= '
-                            </td>
-                            <td width=100px height=50px>
-                            ';
-
-                    if($product["ventilation_type"] == NULL || $product["ventilation_type"] === "Не заполнено"){
-                        $context .= 'Нет данных';
-                    }
-                    else{
-                        $context .= ''.$product["ventilation_type"].'';
-                    }
-
-                    $context .= '
-                            </td>
-                            <td width=100px height=50px>
-                            ';
-
-                    if($product["fifefighting_type"] == NULL || $product["fifefighting_type"] === "Не заполнено"){
-                        $context .= 'Нет данных';
-                    }
-                    else{
-                        $context .= ''.$product["fifefighting_type"].'';
-                    }
-
-                    $context .= '
-                            </td>
-                            <td width=100px height=50px>
-                            ';
-
-                    if($product["drainage_type"] == NULL || $product["drainage_type"] === "Не заполнено"){
-                        $context .= 'Нет данных';
-                    }
-                    else{
-                        $context .= ''.$product["drainage_type"].'';
-                    }
-
-                    $context .= '
-                            </td>
-                        </tr>
-                        ';
-                    }
+                $context .= '
+                        </dd>
+                        <dt>Год эксплуатации</dt>
+                        <dd>';
                 
-                $context .= '</table>';
-            }
+                if($product["exploitation_start_year"] == NULL){
+                    $context .= 'Нет данных';
+                }
+                else{
+                    $context .= ''.$product["exploitation_start_year"].'';
+                } 
+
+                $context .= '
+                        </dd>
+                        <dt>Тип проекта</dt>
+                        <dd>';
+
+                if($product["project_type"] == NULL){
+                    $context .= 'Нет данных';
+                }
+                else{
+                    $context .= ''.$product["project_type"].'';
+                }
+                
+                $context .= '
+                        </dd>
+                        <dt>Тип дома</dd>
+                        <dd>';
+                        
+                if($product["house_type"] == NULL){
+                    $context .= 'Нет данных';
+                }
+                else{
+                    $context .= ''.$product["house_type"].'';
+                }      
+
+                $context .= '
+                        </dd>
+                        <dt>Количество этажей макс</dt>
+                        <dd>';
+
+                if($product["floor_count_max"] == NULL){
+                    $context .= 'Нет данных';
+                }
+                else{
+                    $context .= ''.$product["floor_count_max"].'';
+                }
+
+                $context .= '
+                        </dd>
+                        <dt>Количество этажей мин</dt>
+                        <dd>';
+
+                if($product["floor_count_min"] == NULL){
+                    $context .= 'Нет данных';
+                }
+                else{
+                    $context .= ''.$product["floor_count_min"].'';
+                }
+
+                $context .= '
+                        </dd>
+                        <dt>Энергоэффективность</dt>
+                        <dd>';
+
+                if($product["energy_efficiency"] == NULL){
+                    $context .= 'Нет данных';
+                }
+                else{
+                    $context .= ''.$product["energy_efficiency"].'';
+                }
+
+                $context .= '
+                        </dd>
+                        <dt>Количество квартир</dt>
+                        <dd>';
+
+                if($product["quarters_count"] == NULL){
+                    $context .= 'Нет данных';
+                }
+                else{
+                    $context .= ''.$product["quarters_count"].'';
+                }
+
+                $context .= '
+                        </dd>
+                        <dt>Общая площадь</dt>
+                        <dd>';
+
+                if($product["area_total"] == NULL){
+                    $context .= 'Нет данных';
+                }
+                else{
+                    $context .= ''.$product["area_total"].'';
+                }
+
+                $context .= '
+                        </dd>
+                        <dt>Площадь парковки</dt>
+                        <dd>';
+
+                if($product["parking_square"] == NULL){
+                    $context .= 'Нет данных';
+                }
+                else{
+                    $context .= ''.$product["parking_square"].'';
+                }
+
+                $context .= '
+                        </dd>
+                        <dt>Другие удобства</dt>
+                        <dd>';
+
+                if($product["other_beautification"] == NULL || $product["other_beautification"] === "Не имеется"){
+                    $context .= 'Нет данных';
+                }
+                else{
+                    $context .= ''.$product["other_beautification"].'';
+                }
+
+                $context .= '
+                        </dd>
+                        <dt>Тип фундамента</dt>
+                        <dd>';
+
+                if($product["foundation_type"] == NULL || $product["foundation_type"] === "Не заполнено" || $product["foundation_type"] === "Иной"){
+                    $context .= 'Нет данных';
+                }
+                else{
+                    $context .= ''.$product["foundation_type"].'';
+                }
+
+                $context .= '
+                        </dd>
+                        <dt>Полы</dt>
+                        <dd>';
+
+                if($product["floor_type"] == NULL){
+                    $context .= 'Нет данных';
+                }
+                else{
+                    $context .= ''.$product["floor_type"].'';
+                }
+
+                $context .= '
+                        </dd>
+                        <dt>Стены</dt>
+                        <dd>';
+
+                if($product["wall_material"] == NULL){
+                    $context .= 'Нет данных';
+                }
+                else{
+                    $context .= ''.$product["wall_material"].'';
+                }
+
+                $context .= '
+                        </dd>
+                        <dt>Тип мусоропровода</dt>
+                        <dd>';
+
+                if($product["chute_type"] == NULL){
+                    $context .= 'Нет данных';
+                }
+                else{
+                    $context .= ''.$product["chute_type"].'';
+                }
+
+                $context .= '
+                        </dd>
+                        <dt>Количество мусоропроводов</dt>
+                        <dd>';
+
+                if($product["chute_count"] == NULL){
+                    $context .= 'Нет данных';
+                }
+                else{
+                    $context .= ''.$product["chute_count"].'';
+                }
+
+                $context .= '
+                        </dd>
+                        <dt>Тип горячей воды</dt>
+                        <dd>';
+
+                if($product["hot_water_type"] == NULL){
+                    $context .= 'Нет данных';
+                }
+                else{
+                    $context .= ''.$product["hot_water_type"].'';
+                }
+
+                $context .= '
+                        </dd>
+                        <dt>Тип холодной воды</dt>
+                        <dd>';
+
+                if($product["cold_water_type"] == NULL){
+                    $context .= 'Нет данных';
+                }
+                else{
+                    $context .= ''.$product["cold_water_type"].'';
+                }
+
+                $context .= '
+                        </dd>
+                        <dt>Водоотведение</dt>
+                        <dd>';
+
+                if($product["sewerage_type"] == NULL){
+                    $context .= 'Нет данных';
+                }
+                else{
+                    $context .= ''.$product["sewerage_type"].'';
+                }
+
+                $context .= '
+                        </dd>
+                        <dt>Газоснабжение</dt>
+                        <dd>';
+
+                if($product["gas_type"] == NULL){
+                    $context .= 'Нет данных';
+                }
+                else{
+                    $context .= ''.$product["gas_type"].'';
+                }
+
+                $context .= '
+                        </dd>
+                        <dt>Тип вентиляции</dt>
+                        <dd>';
+
+                if($product["ventilation_type"] == NULL || $product["ventilation_type"] === "Не заполнено"){
+                    $context .= 'Нет данных';
+                }
+                else{
+                    $context .= ''.$product["ventilation_type"].'';
+                }
+
+                $context .= '
+                        </dd>
+                        <dt>Система пожарной безопасности</dt>
+                        <dd>';
+
+                if($product["fifefighting_type"] == NULL || $product["fifefighting_type"] === "Не заполнено"){
+                    $context .= 'Нет данных';
+                }
+                else{
+                    $context .= ''.$product["fifefighting_type"].'';
+                }
+
+                $context .= '
+                        </dd>
+                        <dt>Тип дренажа</dt>
+                        <dd>';
+
+                if($product["drainage_type"] == NULL || $product["drainage_type"] === "Не заполнено"){
+                    $context .= 'Нет данных';
+                }
+                else{
+                    $context .= ''.$product["drainage_type"].'';
+                }
+
+                $context .= '
+                        </dd>
+                    </dl>
+                    ';
+                }
             
-            echo $context;
+            $context .= '</div></div>';
+        }
+        
+        echo $context;
             
 
 
             ?>
 
             <!-- start hero -->
-            <section class="hero-one position-relative bg-black" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
+            <section class="hero-one position-relative bg-dark" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
                 <div class="container">
                     <div class="row align-items-center justify-content-center py-100">
                         <div class="col-lg-7 text-center py-5 text-center">
@@ -381,26 +395,47 @@ echo'<body class="bg-black">
             <!-- end hero -->
 
             <!-- start hero -->
-            <h6 class="bg-black text-white fs-2 container text-center">Оставте отзыв об этом доме</h6>
+            <h6 class="bg-dark text-white fs-2 container text-center">Оставьте отзыв об этом доме</h6>
             <!-- end hero -->  
 
             <section class="container text-left">
-                <form action="../../check/white/checkIn.php"   method="POST">
+                <form action="../../check/black/check_form.php"   method="POST">
+                    <!-- Hidden Required Fields -->
+                    <?php
+                        $result = mysqli_query($mysql, "SELECT * FROM user WHERE
+                        login='".$session_user_login."'
+                        ");
+                        $Arr = mysqli_fetch_assoc($result);
+                        echo'
+                        <input type="hidden" name="user_id" value="'.$Arr["id"].'">
+                        <input type="hidden" name="house_id" value="'.$house_id.'">
+                        ';
+                    ?>
+                    
+
                     <div class="mb-4">
-                    <label for="exampleFormControlTextarea1" class="form-label bg-black text-white">Тема сообщения</label>
-                    <textarea class="form-control bg-black text-white" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <label for="exampleFormControlTextarea1" class="form-label bg-dark text-white">Тема сообщения</label>
+                    <textarea class="form-control bg-dark text-white" id="exampleFormControlTextarea1" rows="3" name="text"></textarea>
                     </div> 
-                    <div class="mb-5">
-                        <label for="customRange3" class="form-label bg-black text-white">Рейтинг</label>
-                        <input type="range" class="form-range bg-black text-white" min="0" max="5" step="0.5" id="customRange3" oninput="this.nextElementSibling.value = this.value">
-                        <div id="passwordHelp" class="form-text bg-black text-white">От 0 до 5 с шагом 0.5</div>
-                    </div> 
+                    <div class="rating-area" name="rating">
+                        <input type="radio" id="star-5" name="rating" value="5">
+                        <label for="star-5" title="Оценка «5»"></label>	
+                        <input type="radio" id="star-4" name="rating" value="4">
+                        <label for="star-4" title="Оценка «4»"></label>    
+                        <input type="radio" id="star-3" name="rating" value="3">
+                        <label for="star-3" title="Оценка «3»"></label>  
+                        <input type="radio" id="star-2" name="rating" value="2">
+                        <label for="star-2" title="Оценка «2»"></label>    
+                        <input type="radio" id="star-1" name="rating" value="1">
+                        <label for="star-1" title="Оценка «1»"></label>
+                    </div>
                     <button type="submit" class="btn btn-primary">Подтвердить</button>
                 </form>
             </section>
 
+
             <!-- start hero -->
-            <section class="hero-one position-relative bg-black" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
+            <section class="hero-one position-relative bg-dark" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
                 <div class="container">
                     <div class="row align-items-center justify-content-center py-100">
                         <div class="col-lg-7 text-center py-5 text-center">

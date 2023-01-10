@@ -29,7 +29,7 @@ $Arr = mysqli_fetch_assoc($result);
 
 
 
-echo'<body class="bg-black">
+echo'<body class="bg-dark">
 <!-- start navbar -->
 <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
     <div class="container">
