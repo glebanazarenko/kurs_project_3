@@ -57,14 +57,14 @@ html {
 
 .btn-green{
   color: aquamarine;
-  background-color: rgb(60, 180, 70);
+  background-color: rgb(25, 135, 84);
   border-radius: 5px;
   margin-left: 20px;
 }
 
 .btn-green:hover{
   color: #37dbf8;
-  background-color: rgb(43, 129, 50);
+  background-color: rgb(25, 135, 84);
 }
 
 .btn-hover{
@@ -80,6 +80,67 @@ html {
 .section{
   background-color: #000000;
 }
+
+.rating-area {
+  overflow: hidden;
+  width: 265px;
+  margin: 0 auto;
+}
+.rating-area:not(:checked) > input {
+  display: none;
+}
+.rating-area:not(:checked) > label {
+  float: right;
+  width: 42px;
+  padding: 0;
+  cursor: pointer;
+  font-size: 32px;
+  line-height: 32px;
+  color: lightgrey;
+  text-shadow: 1px 1px #bbb;
+}
+.rating-area:not(:checked) > label:before {
+  content: '★';
+}
+.rating-area > input:checked ~ label {
+  color: gold;
+  text-shadow: 1px 1px #c60;
+}
+.rating-area:not(:checked) > label:hover,
+.rating-area:not(:checked) > label:hover ~ label {
+  color: gold;
+}
+.rating-area > input:checked + label:hover,
+.rating-area > input:checked + label:hover ~ label,
+.rating-area > input:checked ~ label:hover,
+.rating-area > input:checked ~ label:hover ~ label,
+.rating-area > label:hover ~ input:checked ~ label {
+  color: gold;
+  text-shadow: 1px 1px goldenrod;
+}
+.rate-area > label:active {
+  position: relative;
+}
+
+.dl-horizontal dt {
+  float: left;
+  width: 110px;
+  text-align: left;
+}
+
+.dl-horizontal dd {
+  margin-left: 120px;
+}
+
+.house dt {
+width: 300px;
+}
+
+.house dd {
+  margin-left: 210px;
+}
+
+
 
 .footer {
   color: rgba(255, 255, 255, 0.4);
