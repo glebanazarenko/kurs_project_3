@@ -365,9 +365,52 @@ echo'<body>
             
             echo $context;
             
-        
+            ?>
 
+            <!-- start hero -->
+            <section class="hero-one position-relative bg-white" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
+                <div class="container">
+                    <div class="row align-items-center justify-content-center py-100">
+                        <div class="col-lg-7 text-center py-5 text-center">
+                            <h5 class="head-title py-4" aria-label="Регистрация"></h5>                        
+                        </div><!--end col-->                  
+                    </div><!--end row-->             
+                </div><!-- end container -->
+            </section>
+            <!-- end hero -->
 
+            <!-- start hero -->
+            <h6 class="bg-white text-dark fs-2 container text-center">Оставте отзыв об этом доме</h6>
+            <!-- end hero -->  
+
+            <section class="container text-left">
+                <form action="../../check/white/checkIn.php"   method="POST">
+                    <div class="mb-4">
+                    <label for="exampleFormControlTextarea1" class="form-label">Тема сообщения</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div> 
+                    <div class="mb-5">
+                        <label for="customRange3" class="form-label">Рейтинг</label>
+                        <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3" oninput="this.nextElementSibling.value = this.value">
+                        <div id="passwordHelp" class="form-text text-black">От 0 до 5 с шагом 0.5</div>
+                    </div> 
+                    <button type="submit" class="btn btn-primary">Подтвердить</button>
+                </form>
+            </section>
+
+            <!-- start hero -->
+            <section class="hero-one position-relative bg-white" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
+                <div class="container">
+                    <div class="row align-items-center justify-content-center py-100">
+                        <div class="col-lg-7 text-center py-5 text-center">
+                            <h6 class="head-title py-4" aria-label="Регистрация"></h6>                        
+                        </div><!--end col-->                  
+                    </div><!--end row-->             
+                </div><!-- end container -->
+            </section>
+            <!-- end hero -->
+
+        <?php
         include "footer.php";
         ?>
         

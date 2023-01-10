@@ -1,7 +1,7 @@
 <?php
 include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
 
-if(!empty($_POST) && ($_POST['address'] != "" || !isset($_POST['address']))){
+if(isset($_POST['login'])){
     $result1 = mysqli_query($mysql, "SELECT * FROM user WHERE
     login='".$_POST["login"]."'
     ");

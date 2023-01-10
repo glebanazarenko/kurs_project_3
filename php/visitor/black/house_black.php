@@ -364,8 +364,25 @@ $id = $_GET["id"];
             echo $context;
             
         }
+        ?>
 
+        <!-- start hero -->
+            <section class="hero-one position-relative bg-black" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
+                <div class="container">
+                    <div class="row align-items-center justify-content-center py-100">
+                        <div class="col-lg-7 text-center py-5 text-center">
+                            <h5 class="head-title py-4" aria-label="Регистрация"></h5>                        
+                        </div><!--end col-->                  
+                    </div><!--end row-->             
+                </div><!-- end container -->
+            </section>
+            <!-- end hero -->
 
+            <!-- start hero -->
+            <h6 class="bg-black text-white fs-2 container text-center">Чтобы оставить отзыв нужно войти в аккаунт</h6>
+            <!-- end hero -->  
+
+        <?php
         include "footer_black.php";
         ?>
         
