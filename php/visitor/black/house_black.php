@@ -11,7 +11,7 @@
 
         <!-- css -->
         <link href="/курсач/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="/курсач/css/styles-dark.css" rel="stylesheet" type="text/css" />
+        <link href="../../../css/styles-dark.css" rel="stylesheet" type="text/css" />
     </head>
 
 
@@ -21,7 +21,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
 $id = $_GET["id"];
 ?>
 
-<body class="bg-black">
+<body class="bg-dark">
         <!-- start navbar -->
         <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
             <div class="container">
@@ -61,7 +61,7 @@ $id = $_GET["id"];
         <!-- end navbar -->
 
         <!-- start hero -->
-        <section class="hero-one position-relative bg-black" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
+        <section class="hero-one position-relative bg-dark" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
             <div class="container">
                 <div class="row align-items-center justify-content-center py-100">
                     <div class="col-lg-7 text-center py-5 text-center">
@@ -73,7 +73,7 @@ $id = $_GET["id"];
         <!-- end hero -->
 
         <!-- start hero -->
-            <h6 class="bg-black text-white text-dark fs-2 container text-center">Информация о доме</h6>
+            <h6 class="bg-dark text-white text-dark fs-2 container text-center">Информация о доме</h6>
         <!-- end hero --> 
         
         <?php
@@ -88,62 +88,13 @@ $id = $_GET["id"];
                 $product = mysqli_fetch_assoc($result);
                 if($context == NULL){
                     $context = '
-                    <table class="table-dark">
-                        <tr>
-                            <td width=400px height=50px> Адресс дома
-                            </td>
-                            <td width=150px height=50px> Год постройки
-                            </td>
-                            <td width=150px height=50px> Год эксплуатации
-                            </td>
-                            <td width=150px height=50px> Тип проекта
-                            </td>
-                            <td width=250px height=50px> Тип дома
-                            </td>
-                            <td width=250px height=50px> Кол-во этажей макс
-                            </td>
-                            <td width=250px height=50px> Кол-во этажей мин
-                            </td>
-                            <td width=170px height=50px> Энергоэффективность
-                            </td>
-                            <td width=150px height=50px> Кол-во квартир
-                            </td>
-                            <td width=150px height=50px> Общая площадь
-                            </td>
-                            <td width=150px height=50px> Площадь парковки
-                            </td>
-                            <td width=150px height=50px> Другие удобства
-                            </td>
-                            <td width=150px height=50px> Тип фундамента
-                            </td>
-                            <td width=150px height=50px> Полы
-                            </td>
-                            <td width=150px height=50px> Стены
-                            </td>
-                            <td width=150px height=50px> Тип мусоропровода
-                            </td>
-                            <td width=150px height=50px> Кол-во мусоропроводов
-                            </td>
-                            <td width=150px height=50px> Тип горячей воды
-                            </td>
-                            <td width=150px height=50px> Тип холодной воды
-                            </td>
-                            <td width=150px height=50px> Водоотведение
-                            </td>
-                            <td width=150px height=50px> Газоснабжение
-                            </td>
-                            <td width=150px height=50px> Тип вентиляции
-                            </td>
-                            <td width=150px height=50px> Система пожарной безопасности
-                            </td>
-                            <td width=150px height=50px> Тип дренажа
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width=400px height=50px>'.$product["address"].'
-                            </td>
-                            <td width=150px height=50px>';
-                            
+                    <div class="row margin-top-40" style="margin:auto;"> 
+                        <div class="col-md-7" style="margin:auto;"> 
+                            <dl class="dl-horizontal house bg-dark text-white"> 
+                                <dt>Адрес дома</dt>
+                                <dd>'.$product["address"].'</dd>
+                                <dt>Год постройки</dt>
+                                <dd>';
                     if($product["built_year"] == NULL){
                         $context .= 'Нет данных';
                     }
@@ -152,14 +103,45 @@ $id = $_GET["id"];
                     }
 
                     $context .= '
-                            </td>
-                            <td width=100px height=50px>'.$product["exploitation_start_year"].'
-                            </td>
-                            <td width=100px height=50px>'.$product["project_type"].'
-                            </td>
-                            <td width=100px height=50px>'.$product["house_type"].'
-                            </td>
-                            <td width=100px height=50px>';
+                            </dd>
+                            <dt>Год эксплуатации</dt>
+                            <dd>';
+                    
+                    if($product["exploitation_start_year"] == NULL){
+                        $context .= 'Нет данных';
+                    }
+                    else{
+                        $context .= ''.$product["exploitation_start_year"].'';
+                    } 
+
+                    $context .= '
+                            </dd>
+                            <dt>Тип проекта</dt>
+                            <dd>';
+
+                    if($product["project_type"] == NULL){
+                        $context .= 'Нет данных';
+                    }
+                    else{
+                        $context .= ''.$product["project_type"].'';
+                    }
+                    
+                    $context .= '
+                            </dd>
+                            <dt>Тип дома</dd>
+                            <dd>';
+                            
+                    if($product["house_type"] == NULL){
+                        $context .= 'Нет данных';
+                    }
+                    else{
+                        $context .= ''.$product["house_type"].'';
+                    }      
+
+                    $context .= '
+                            </dd>
+                            <dt>Количество этажей макс</dt>
+                            <dd>';
 
                     if($product["floor_count_max"] == NULL){
                         $context .= 'Нет данных';
@@ -169,8 +151,9 @@ $id = $_GET["id"];
                     }
 
                     $context .= '
-                            </td>
-                            <td width=100px height=50px>';
+                            </dd>
+                            <dt>Количество этажей мин</dt>
+                            <dd>';
 
                     if($product["floor_count_min"] == NULL){
                         $context .= 'Нет данных';
@@ -179,16 +162,46 @@ $id = $_GET["id"];
                         $context .= ''.$product["floor_count_min"].'';
                     }
 
+                    $context .= '
+                            </dd>
+                            <dt>Энергоэффективность</dt>
+                            <dd>';
+
+                    if($product["energy_efficiency"] == NULL){
+                        $context .= 'Нет данных';
+                    }
+                    else{
+                        $context .= ''.$product["energy_efficiency"].'';
+                    }
 
                     $context .= '
-                            </td>
-                            <td width=100px height=50px>'.$product["energy_efficiency"].'
-                            </td>
-                            <td width=100px height=50px>'.$product["quarters_count"].'
-                            </td>
-                            <td width=100px height=50px>'.$product["area_total"].'
-                            </td>
-                            <td width=100px height=50px>';
+                            </dd>
+                            <dt>Количество квартир</dt>
+                            <dd>';
+
+                    if($product["quarters_count"] == NULL){
+                        $context .= 'Нет данных';
+                    }
+                    else{
+                        $context .= ''.$product["quarters_count"].'';
+                    }
+
+                    $context .= '
+                            </dd>
+                            <dt>Общая площадь</dt>
+                            <dd>';
+
+                    if($product["area_total"] == NULL){
+                        $context .= 'Нет данных';
+                    }
+                    else{
+                        $context .= ''.$product["area_total"].'';
+                    }
+
+                    $context .= '
+                            </dd>
+                            <dt>Площадь парковки</dt>
+                            <dd>';
 
                     if($product["parking_square"] == NULL){
                         $context .= 'Нет данных';
@@ -196,10 +209,11 @@ $id = $_GET["id"];
                     else{
                         $context .= ''.$product["parking_square"].'';
                     }
+
                     $context .= '
-                            </td>
-                            <td width=100px height=50px>
-                            ';
+                            </dd>
+                            <dt>Другие удобства</dt>
+                            <dd>';
 
                     if($product["other_beautification"] == NULL || $product["other_beautification"] === "Не имеется"){
                         $context .= 'Нет данных';
@@ -209,9 +223,9 @@ $id = $_GET["id"];
                     }
 
                     $context .= '
-                            </td>
-                            <td width=100px height=50px>
-                            ';
+                            </dd>
+                            <dt>Тип фундамента</dt>
+                            <dd>';
 
                     if($product["foundation_type"] == NULL || $product["foundation_type"] === "Не заполнено" || $product["foundation_type"] === "Иной"){
                         $context .= 'Нет данных';
@@ -221,9 +235,9 @@ $id = $_GET["id"];
                     }
 
                     $context .= '
-                            </td>
-                            <td width=100px height=50px>
-                            ';
+                            </dd>
+                            <dt>Полы</dt>
+                            <dd>';
 
                     if($product["floor_type"] == NULL){
                         $context .= 'Нет данных';
@@ -233,9 +247,9 @@ $id = $_GET["id"];
                     }
 
                     $context .= '
-                            </td>
-                            <td width=100px height=50px>
-                            ';
+                            </dd>
+                            <dt>Стены</dt>
+                            <dd>';
 
                     if($product["wall_material"] == NULL){
                         $context .= 'Нет данных';
@@ -245,9 +259,9 @@ $id = $_GET["id"];
                     }
 
                     $context .= '
-                            </td>
-                            <td width=100px height=50px>
-                            ';
+                            </dd>
+                            <dt>Тип мусоропровода</dt>
+                            <dd>';
 
                     if($product["chute_type"] == NULL){
                         $context .= 'Нет данных';
@@ -257,9 +271,9 @@ $id = $_GET["id"];
                     }
 
                     $context .= '
-                            </td>
-                            <td width=100px height=50px>
-                            ';
+                            </dd>
+                            <dt>Количество мусоропроводов</dt>
+                            <dd>';
 
                     if($product["chute_count"] == NULL){
                         $context .= 'Нет данных';
@@ -269,9 +283,9 @@ $id = $_GET["id"];
                     }
 
                     $context .= '
-                            </td>
-                            <td width=100px height=50px>
-                            ';
+                            </dd>
+                            <dt>Тип горячей воды</dt>
+                            <dd>';
 
                     if($product["hot_water_type"] == NULL){
                         $context .= 'Нет данных';
@@ -281,9 +295,9 @@ $id = $_GET["id"];
                     }
 
                     $context .= '
-                            </td>
-                            <td width=100px height=50px>
-                            ';
+                            </dd>
+                            <dt>Тип холодной воды</dt>
+                            <dd>';
 
                     if($product["cold_water_type"] == NULL){
                         $context .= 'Нет данных';
@@ -293,9 +307,9 @@ $id = $_GET["id"];
                     }
 
                     $context .= '
-                            </td>
-                            <td width=100px height=50px>
-                            ';
+                            </dd>
+                            <dt>Водоотведение</dt>
+                            <dd>';
 
                     if($product["sewerage_type"] == NULL){
                         $context .= 'Нет данных';
@@ -303,11 +317,11 @@ $id = $_GET["id"];
                     else{
                         $context .= ''.$product["sewerage_type"].'';
                     }
-                    
+
                     $context .= '
-                            </td>
-                            <td width=100px height=50px>
-                            ';
+                            </dd>
+                            <dt>Газоснабжение</dt>
+                            <dd>';
 
                     if($product["gas_type"] == NULL){
                         $context .= 'Нет данных';
@@ -317,9 +331,9 @@ $id = $_GET["id"];
                     }
 
                     $context .= '
-                            </td>
-                            <td width=100px height=50px>
-                            ';
+                            </dd>
+                            <dt>Тип вентиляции</dt>
+                            <dd>';
 
                     if($product["ventilation_type"] == NULL || $product["ventilation_type"] === "Не заполнено"){
                         $context .= 'Нет данных';
@@ -329,9 +343,9 @@ $id = $_GET["id"];
                     }
 
                     $context .= '
-                            </td>
-                            <td width=100px height=50px>
-                            ';
+                            </dd>
+                            <dt>Система пожарной безопасности</dt>
+                            <dd>';
 
                     if($product["fifefighting_type"] == NULL || $product["fifefighting_type"] === "Не заполнено"){
                         $context .= 'Нет данных';
@@ -341,9 +355,9 @@ $id = $_GET["id"];
                     }
 
                     $context .= '
-                            </td>
-                            <td width=100px height=50px>
-                            ';
+                            </dd>
+                            <dt>Тип дренажа</dt>
+                            <dd>';
 
                     if($product["drainage_type"] == NULL || $product["drainage_type"] === "Не заполнено"){
                         $context .= 'Нет данных';
@@ -353,12 +367,12 @@ $id = $_GET["id"];
                     }
 
                     $context .= '
-                            </td>
-                        </tr>
+                            </dd>
+                        </dl>
                         ';
                     }
                 
-                $context .= '</table>';
+                $context .= '</div></div>';
             }
             
             echo $context;
@@ -367,7 +381,7 @@ $id = $_GET["id"];
         ?>
 
         <!-- start hero -->
-            <section class="hero-one position-relative bg-black" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
+            <section class="hero-one position-relative bg-dark" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
                 <div class="container">
                     <div class="row align-items-center justify-content-center py-100">
                         <div class="col-lg-7 text-center py-5 text-center">
@@ -379,7 +393,7 @@ $id = $_GET["id"];
             <!-- end hero -->
 
             <!-- start hero -->
-            <h6 class="bg-black text-white fs-2 container text-center">Чтобы оставить отзыв нужно войти в аккаунт</h6>
+            <h6 class="bg-dark text-white fs-2 container text-center">Чтобы оставить отзыв нужно войти в аккаунт</h6>
             <!-- end hero -->  
 
         <?php

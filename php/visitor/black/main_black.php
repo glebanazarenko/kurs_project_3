@@ -52,7 +52,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
         <!-- end navbar -->
 
         <!-- start hero -->
-        <section class="hero-one position-relative bg-black" id="about"  style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
+        <section class="hero-one position-relative bg-dark" id="about"  style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
             <div class="container">
                 <div class="row align-items-center justify-content-center py-100">
                     <div class="col-lg-7 text-center py-5 text-center">

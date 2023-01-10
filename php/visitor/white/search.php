@@ -93,7 +93,9 @@ include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
                 while( $product = mysqli_fetch_assoc($result)){
                     if($context == NULL){
                         $context = '
-                        <table class="allproduct">
+                        <div style="container-lg text-align: center;">
+                        <table class="table" style="width: 1200px; margin: auto;">
+                            <thead>
                             <tr>
                                 <td width=500px height=50px> Адресс дома
                                 </td>
@@ -103,11 +105,12 @@ include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
                                 </td>
                                 <td width=250px height=50px> Тип проекта
                                 </td>
-                            </tr>';
+                            </tr>
+                            </thead>';
                     }else{
                         $context .= '
                         <tr>
-                            <td width=500px height=50px><a href=house.php?id='.$product["id"].'>'.$product["address"].'</a>
+                            <td width=500px height=50px><a class="nav-link-a active" href=house.php?id='.$product["id"].'>'.$product["address"].'</a>
                             </td>
                             <td width=150px height=50px>'.$product["exploitation_start_year"].'
                             </td>
@@ -120,7 +123,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
                     }
                 
                 }
-                $context .= '</table>';
+                $context .= '</table></div>';
             }
             
             echo $context;

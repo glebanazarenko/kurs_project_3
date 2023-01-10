@@ -19,7 +19,7 @@
 include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
 ?>
 
-    <body class="bg-black">
+    <body class="bg-dark">
         <!-- start navbar -->
         <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
             <div class="container">
@@ -73,8 +73,8 @@ include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
         <section class="container text-left">
             <form method="POST">
                 <div class="mb-4">
-                <label for="exampleInputLogin1" class="form-label bg-black text-white">Адрес</label>
-                    <input type="text" name="address" class="form-control bg-black text-white" placeholder="qwerty" id="exampleInputLogin1" aria-label="Username" aria-describedby="basic-addon1">
+                <label for="exampleInputLogin1" class="form-label bg-dark text-white">Адрес</label>
+                    <input type="text" name="address" class="form-control bg-dark text-white" placeholder="qwerty" id="exampleInputLogin1" aria-label="Username" aria-describedby="basic-addon1">
                 </div> 
                 <button type="submit" class="btn btn-outline-success">Подтвердить</button>
 
@@ -87,13 +87,13 @@ include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
 
         if(!empty($_POST)){
             $result = mysqli_query($mysql, "SELECT * FROM house as h where h.address LIKE \"%".$_POST['address']."%\" Limit 10");
-            
-            
             if($result != NULL){
                 while( $product = mysqli_fetch_assoc($result)){
                     if($context == NULL){
                         $context = '
-                        <table class="table-dark">
+                        <div style="container-lg text-align: center;">
+                        <table class="table table-dark" style="width: 1200px; margin: auto;">
+                            <thead>
                             <tr>
                                 <td width=500px height=50px> Адресс дома
                                 </td>
@@ -103,11 +103,12 @@ include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
                                 </td>
                                 <td width=250px height=50px> Тип проекта
                                 </td>
-                            </tr>';
+                            </tr>
+                            </thead>';
                     }else{
                         $context .= '
                         <tr>
-                            <td width=500px height=50px><a href=house_black.php?id='.$product["id"].'>'.$product["address"].'</a>
+                            <td width=500px height=50px><a class="nav-link-a" href=house_black.php?id='.$product["id"].'>'.$product["address"].'</a>
                             </td>
                             <td width=150px height=50px>'.$product["exploitation_start_year"].'
                             </td>
@@ -120,7 +121,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
                     }
                 
                 }
-                $context .= '</table>';
+                $context .= '</table></div>';
             }
             
             echo $context;

@@ -18,7 +18,7 @@
 include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
 ?>
 
-<body class="bg-black">
+<body class="bg-dark">
         <!-- start navbar -->
         <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
             <div class="container">
@@ -53,7 +53,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
         <!-- end navbar -->
 
         <!-- start hero -->
-        <section class="hero-one position-relative bg-black" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
+        <section class="hero-one position-relative bg-dark" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
             <div class="container">
                 <div class="row align-items-center justify-content-center py-100">
                     <div class="col-lg-7 text-center py-5 text-center">
@@ -65,19 +65,19 @@ include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
         <!-- end hero -->
 
         <!-- start hero -->
-            <h6 class="bg-black text-white fs-2 container text-center">Вход</h6>
+            <h6 class="bg-dark text-white fs-2 container text-center">Вход</h6>
         <!-- end hero -->        
 
         <section class="container text-left">
             <form action="../../check/black/checkIn_black.php" method="POST">
                 <div class="mb-4">
-                <label for="exampleInputLogin1" class="form-label bg-black text-white">Логин</label>
-                    <input type="text" name="login" class="form-control bg-black text-white" placeholder="qwerty" id="exampleInputLogin1" aria-label="Username" aria-describedby="basic-addon1">
+                <label for="exampleInputLogin1" class="form-label bg-dark text-white">Логин</label>
+                    <input type="text" name="login" class="form-control bg-dark text-white" placeholder="qwerty" id="exampleInputLogin1" aria-label="Username" aria-describedby="basic-addon1">
                 </div> 
                 <div class="mb-5">
-                    <label for="exampleInputPassword1" class="form-label bg-black text-white">Пароль</label>
-                    <input type="password" name="password" placeholder="******" class="form-control bg-black text-white" id="exampleInputPassword1">
-                    <div id="passwordHelp" class="form-text bg-black text-white">Мы не будем передавать пароль никому другому</div>
+                    <label for="exampleInputPassword1" class="form-label bg-dark text-white">Пароль</label>
+                    <input type="password" name="password" placeholder="******" class="form-control bg-dark text-white" id="exampleInputPassword1">
+                    <div id="passwordHelp" class="form-text bg-dark text-white">Мы не будем передавать пароль никому другому</div>
                 </div> 
                 <button type="submit" class="btn btn-outline-success">Подтвердить</button>
 
@@ -85,7 +85,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
         </section>
 
         <!-- start hero -->
-        <section class="hero-one position-relative bg-black" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
+        <section class="hero-one position-relative bg-dark" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
             <div class="container">
                 <div class="row align-items-center justify-content-center py-100">
                     <div class="col-lg-7 text-center py-5 text-center">

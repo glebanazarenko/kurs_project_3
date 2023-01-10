@@ -18,7 +18,7 @@
 include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
 ?>
 
-<body class="bg-black">
+<body class="bg-dark">
         <!-- start navbar -->
         <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
             <div class="container">
@@ -65,26 +65,26 @@ include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
         <!-- end hero -->
 
         <!-- start hero -->
-            <h6 class="bg-black text-white fs-2 container text-center">Регистрация</h6>
+            <h6 class="bg-dark text-white fs-2 container text-center">Регистрация</h6>
         <!-- end hero -->        
 
-        <section class="container text-center bg-black">
+        <section class="container text-center bg-dark">
             <form action="../../check/black/check_black.php" method="POST">
                 <div class="input-group mb-3">
-                    <span class="input-group-text bg-black text-white" id="basic-addon1">Ник пользователя</span>
-                    <input type="text" name="name" class="form-control bg-black text-white" placeholder="Глеб" aria-label="Username" aria-describedby="basic-addon1">
+                    <span class="input-group-text bg-dark text-white" id="basic-addon1">Ник пользователя</span>
+                    <input type="text" name="name" class="form-control bg-dark text-white" placeholder="Глеб" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
                 <div class="input-group mb-3">
-                    <span class="input-group-text bg-black text-white" id="basic-addon1">Логин</span>
-                    <input type="text" name="login" class="form-control bg-black text-white" placeholder="qwerty" aria-label="Username" aria-describedby="basic-addon1">
+                    <span class="input-group-text bg-dark text-white" id="basic-addon1">Логин</span>
+                    <input type="text" name="login" class="form-control bg-dark text-white" placeholder="qwerty" aria-label="Username" aria-describedby="basic-addon1">
                 </div> 
                 <div class="input-group mb-3">
-                    <span class="input-group-text bg-black text-white" id="basic-addon1">Пароль</span>
-                    <input type="password" name="password" class="form-control bg-black text-white" placeholder="********" aria-label="Username" aria-describedby="basic-addon1">
+                    <span class="input-group-text bg-dark text-white" id="basic-addon1">Пароль</span>
+                    <input type="password" name="password" class="form-control bg-dark text-white" placeholder="********" aria-label="Username" aria-describedby="basic-addon1">
                 </div> 
                 <div class="input-group mb-3">
-                    <label class="input-group-text bg-black text-white" for="inputGroupSelect01">Тип газа в доме</label>
-                    <select name="gas" class="form-select bg-black text-white" id="inputGroupSelect01">
+                    <label class="input-group-text bg-dark text-white" for="inputGroupSelect01">Тип газа в доме</label>
+                    <select name="gas" class="form-select bg-dark text-white" id="inputGroupSelect01">
                         <option selected>Выберите</option>
                         <option value="1">Без разницы</option>
                         <option value="2">Автономное</option>
@@ -93,8 +93,8 @@ include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
                     </select>
                 </div>
                 <div class="input-group mb-3">
-                    <label class="input-group-text bg-black text-white" for="inputGroupSelect01">Тип вентиляции в доме</label>
-                    <select name="ventilation" class="form-select bg-black text-white" id="inputGroupSelect01">
+                    <label class="input-group-text bg-dark text-white" for="inputGroupSelect01">Тип вентиляции в доме</label>
+                    <select name="ventilation" class="form-select bg-dark text-white" id="inputGroupSelect01">
                         <option selected>Выберите</option>
                         <option value="1">Без разницы</option>
                         <option value="2">Вытяжная вентиляция</option>
@@ -104,8 +104,8 @@ include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
                     </select>
                 </div>
                 <div class="input-group mb-3">
-                    <label class="input-group-text bg-black text-white" for="inputGroupSelect01">Тип отопления в доме</label>
-                    <select name="heating" class="form-select bg-black text-white" id="inputGroupSelect01">
+                    <label class="input-group-text bg-dark text-white" for="inputGroupSelect01">Тип отопления в доме</label>
+                    <select name="heating" class="form-select bg-dark text-white" id="inputGroupSelect01">
                         <option selected>Выберите</option>
                         <option value="1">Без разницы</option>
                         <option value="2">Автономная котельная</option>
@@ -117,8 +117,8 @@ include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
                     </select>
                 </div>
                 <div class="input-group mb-3">
-                    <label class="input-group-text bg-black text-white" for="inputGroupSelect01">Тип мусоропровода в доме</label>
-                    <select name="chute" class="form-select bg-black text-white" id="inputGroupSelect01">
+                    <label class="input-group-text bg-dark text-white" for="inputGroupSelect01">Тип мусоропровода в доме</label>
+                    <select name="chute" class="form-select bg-dark text-white" id="inputGroupSelect01">
                         <option selected>Выберите</option>
                         <option value="1">Без разницы</option>
                         <option value="2">Cухой</option>
@@ -129,16 +129,16 @@ include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
                     </select>
                 </div>
                 <div class="input-group mb-3">
-                    <span class="input-group-text bg-black text-white" id="basic-addon1">Площадь парковки (от скольки хотите)</span>
-                    <input type="text" name="parking" class="form-control bg-black text-white" placeholder="123456789" aria-label="Username" aria-describedby="basic-addon1">
+                    <span class="input-group-text bg-dark text-white" id="basic-addon1">Площадь парковки (от скольки хотите)</span>
+                    <input type="text" name="parking" class="form-control bg-dark text-white" placeholder="123456789" aria-label="Username" aria-describedby="basic-addon1">
                 </div> 
                 <div class="input-group mb-3">
-                    <span class="input-group-text bg-black text-white" id="basic-addon1">Количество лифтов (от скольки хотите)</span>
-                    <input type="text" name="elevator" class="form-control bg-black text-white" placeholder="123456789" aria-label="Username" aria-describedby="basic-addon1">
+                    <span class="input-group-text bg-dark text-white" id="basic-addon1">Количество лифтов (от скольки хотите)</span>
+                    <input type="text" name="elevator" class="form-control bg-dark text-white" placeholder="123456789" aria-label="Username" aria-describedby="basic-addon1">
                 </div> 
                 <div class="input-group mb-3">
-                    <label class="input-group-text bg-black text-white" for="inputGroupSelect01">Тип дома</label>
-                    <select name="house_type" class="form-select bg-black text-white" id="inputGroupSelect01">
+                    <label class="input-group-text bg-dark text-white" for="inputGroupSelect01">Тип дома</label>
+                    <select name="house_type" class="form-select bg-dark text-white" id="inputGroupSelect01">
                         <option selected>Выберите</option>
                         <option value="1">Без разницы</option>
                         <option value="2">Жилой дом блокированной застройки</option>

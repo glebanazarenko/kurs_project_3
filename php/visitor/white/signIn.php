@@ -35,7 +35,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
                             <a class="nav-link-a" href="/курсач/php/visitor/black/signIn_black.php">Темная тема</a>
                         </li><!--end nav-item-->
                         <li class="nav-item">
-                            <a class="nav-link-a" href="services.html">Поиск</a>
+                            <a class="nav-link-a" href="search.php">Поиск</a>
                         </li><!--end nav-item-->                        
                         <li class="nav-item">
                             <a class="nav-link-a" href="resume.html">Резюме</a>
