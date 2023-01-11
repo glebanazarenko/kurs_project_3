@@ -22,16 +22,33 @@ if(isset($_POST['login'])){
         exit;
     }
 
-    if(!isset($_GET['session_user'])){
-        $Arr = mysqli_fetch_assoc($result2);
-        $_SESSION["user"] = $Arr['login'];
-        $session_user_login = $_SESSION["user"];
-    }
-    else{
-        $session_user_login = $_GET['session_user'];
-    }
+    $result3 = mysqli_query($mysql, "SELECT * FROM user WHERE
+    login='".$_POST["login"]."' AND
+    password='".md5($_POST["password"])."' AND
+    role_id = 3
+    ");
 
-    include("../../user/white/signed.php");
+    if(!$result3 || mysqli_num_rows($result3) == 0){
+        if(!isset($_GET['session_user'])){
+            $Arr = mysqli_fetch_assoc($result2);
+            $_SESSION["user"] = $Arr['login'];
+            $session_user_login = $_SESSION["user"];
+        }
+        else{
+            $session_user_login = $_GET['session_user'];
+        }
+        include("../../user/white/signed.php");
+    }else{
+        if(!isset($_GET['session_user'])){
+            $Arr = mysqli_fetch_assoc($result3);
+            $_SESSION["user"] = $Arr['login'];
+            $session_user_login = $_SESSION["user"];
+        }
+        else{
+            $session_user_login = $_GET['session_user'];
+        }
+        include("../../admin/white/signed.php");
+    }
 }
 
 if(!empty($_GET)){
@@ -51,14 +68,37 @@ if(!empty($_GET)){
     $type = $_GET['type'];
     if($type != ""){
         if ($type == "search"){
-            include("../../user/white/search.php");
+            if($Arr["role_id"] == 3){
+                include("../../admin/white/search.php");
+            }
+            else{
+                include("../../user/white/search.php");
+            }  
         }
         if ($type == "house"){
             $house_id = $_GET["house_id"];
-            include("../../user/white/house.php");
+
+            $role_id = $_GET['role_id'];
+            echo $role_id;
+            if($role_id == 3){
+                include("../../admin/white/house.php");
+            }else{
+                include("../../user/white/house.php");
+            }
+        }
+        if ($type == "new_feedback"){
+            include("../../admin/white/new_feedback_all.php");
+        }
+        if ($type == "old_feedback"){
+            include("../../admin/white/old_feedback_all.php");
         }
     }else{
-        include("../../user/white/signed.php");
+        if($Arr["role_id"] == 3){
+            include("../../admin/white/signed.php");
+        }
+        else{
+            include("../../user/white/signed.php");
+        }
     }
 }
 ?>
