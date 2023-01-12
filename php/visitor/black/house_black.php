@@ -380,6 +380,175 @@ $id = $_GET["id"];
             echo $context;
             
         }
+
+        $result2 = mysqli_query($mysql, "SELECT u.name, f.text, f.rating from feedback as f join user as u on f.user_id =u.id WHERE f.house_id = ".$id." and f.is_published = 1");
+            
+            
+        if($result2 != NULL){
+            while( $back = mysqli_fetch_assoc($result2)){
+                if($feed == NULL){
+                    $feed = '
+                    <br>
+                    <!-- start hero -->
+                    <h6 class="bg-dark text-white fs-2 container text-center">Отзывы других людей</h6>
+                    <!-- end hero --> 
+
+                    <div class="row margin-top-40" style="margin:auto;"> 
+                        <div class="col-md-7" style="margin:auto;"> 
+                            <dl class="bg-dark text-white"> 
+                                <dt>'.$back['name'].'</dt>
+                                <dd>'.$back['text'].'</dd>
+                                <dd><div class="rating-result">';
+
+                                if ($back['rating'] == 0){
+                                    $feed .= '
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    </div>
+                                </dd>
+                                <br>';
+                                }
+                                if ($back['rating'] == 1){
+                                    $feed .= '
+                                    <span class="active"></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    </div>
+                                </dd>
+                                <br>';
+                                }
+                                if ($back['rating'] == 2){
+                                    $feed .= '
+                                    <span class="active"></span>
+                                    <span class="active"></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    </div>
+                                </dd>
+                                <br>';
+                                }
+                                if ($back['rating'] == 3){
+                                    $feed .= '
+                                    <span class="active"></span>
+                                    <span class="active"></span>
+                                    <span class="active"></span>
+                                    <span></span>
+                                    <span></span>
+                                    </div>
+                                </dd>
+                                <br>';
+                                }
+                                if ($back['rating'] == 4){
+                                    $feed .= '
+                                    <span class="active"></span>
+                                    <span class="active"></span>
+                                    <span class="active"></span>
+                                    <span class="active"></span>
+                                    <span></span>
+                                    </div>
+                                </dd>
+                                <br>';
+                                }
+                                if ($back['rating'] == 5){
+                                    $feed .= '
+                                    <span class="active"></span>
+                                    <span class="active"></span>
+                                    <span class="active"></span>
+                                    <span class="active"></span>
+                                    <span class="active"></span>
+                                    </div>
+                                </dd>
+                                <br>';
+                                }
+
+                }else{
+                    $feed .= '
+                    <dt>'.$back['name'].'</dt>
+                    <dd>'.$back['text'].'</dd>
+                    <dd><div class="rating-result">';
+
+                    if ($back['rating'] == 0){
+                        $feed .= '
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        </div>
+                    </dd>
+                    <br>';
+                    }
+                    if ($back['rating'] == 1){
+                        $feed .= '
+                        <span class="active"></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        </div>
+                    </dd>
+                    <br>';
+                    }
+                    if ($back['rating'] == 2){
+                        $feed .= '
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        </div>
+                    </dd>
+                    <br>';
+                    }
+                    if ($back['rating'] == 3){
+                        $feed .= '
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span></span>
+                        <span></span>
+                        </div>
+                    </dd>
+                    <br>';
+                    }
+                    if ($back['rating'] == 4){
+                        $feed .= '
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span></span>
+                        </div>
+                    </dd>
+                    <br>';
+                    }
+                    if ($back['rating'] == 5){
+                        $feed .= '
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        <span class="active"></span>
+                        </div>
+                    </dd>
+                    <br>';
+                    }
+                }
+            }
+        }
+        $feed .= '
+        </dl>
+        </div>
+        </div>';
+
+        echo $feed;
+
         ?>
 
         <!-- start hero -->
