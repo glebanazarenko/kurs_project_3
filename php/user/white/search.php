@@ -28,7 +28,7 @@ login='".$session_user_login."'
 ");
 $Arr = mysqli_fetch_assoc($result);
 
-echo'<body>
+echo'<body class="Site">
 <!-- start navbar -->
 <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
     <div class="container">
@@ -61,6 +61,8 @@ echo'<body>
     </div><!-- end container -->
 </nav>
 <!-- end navbar -->
+
+<main class="Site-content">
 ';
 
 ?>
@@ -138,7 +140,7 @@ echo'<body>
                     }
                 
                 }
-                $context .= '</table>';
+                $context .= '</table></main>';
             }
             
             echo $context;

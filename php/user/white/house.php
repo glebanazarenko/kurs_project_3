@@ -29,7 +29,7 @@ login='".$session_user_login."'
 ");
 $Arr = mysqli_fetch_assoc($result);
 
-echo'<body>
+echo'<body class="Site">
 <!-- start navbar -->
 <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
     <div class="container">
@@ -62,6 +62,8 @@ echo'<body>
     </div><!-- end container -->
 </nav>
 <!-- end navbar -->
+
+<main class="Site-content">
 ';
 ?>
 
@@ -79,6 +81,7 @@ echo'<body>
 
         <!-- start hero -->
             <h6 class="bg-white text-dark fs-2 container text-center">Информация о доме</h6>
+            <br>
         <!-- end hero --> 
         
         <?php
@@ -462,6 +465,8 @@ echo'<body>
                 </div><!-- end container -->
             </section>
             <!-- end hero -->
+
+            </main>
 
         <?php
         include "footer.php";
