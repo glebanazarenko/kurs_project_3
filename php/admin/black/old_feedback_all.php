@@ -86,10 +86,15 @@ echo'<body class="bg-dark Site">
 ';
 
 
-$result = mysqli_query($mysql, "SELECT f.id, u.login, u.name, h.address, f.rating FROM feedback as f JOIN user as u ON f.user_id=u.id JOIN house as h on f.house_id = h.id WHERE f.is_checked = 1");
+$result = mysqli_query($mysql, "SELECT f.id, u.login, u.name, h.address, f.rating, f.is_published FROM feedback as f JOIN user as u ON f.user_id=u.id JOIN house as h on f.house_id = h.id WHERE f.is_checked = 1");
 
             if($result != NULL){
                 while( $product = mysqli_fetch_assoc($result)){
+                    if($product["is_published"] == 0){
+                        $status = "Отклонено";
+                    }else{
+                        $status = "Подтверждено";
+                    }
                     if($context == NULL){
                         $context = '
                         <div style="container-lg text-align: center;">
@@ -98,6 +103,7 @@ $result = mysqli_query($mysql, "SELECT f.id, u.login, u.name, h.address, f.ratin
                                     <div class="person_list_name">Ник человека</div>
                                     <div class="person_list_name">Адрес дома</div>
                                     <div class="person_list_name">Рейтинг</div>
+                                    <div class="person_list_name">Статус</div>
                             </div>
                             <div class="person_list_div">
                                 <a href="checkIn_black.php?type=old_feedback&feedback_id='.$product["id"].'&id='.$Arr["id"].'" class="person_list_row">
@@ -105,16 +111,18 @@ $result = mysqli_query($mysql, "SELECT f.id, u.login, u.name, h.address, f.ratin
                                     <div class="person_list_name"> '.$product["name"].'</div>
                                     <div class="person_list_name"> '.$product["address"].'</div>
                                     <div class="person_list_name"> '.$product["rating"].'</div>
+                                    <div class="person_list_name"> '.$status.'</div>
                                 </a>
                             </div>';
                     }else{
                         $context .= '
                         <div class="person_list_div">
-                            <a href="checkIn_black.php?type=new_feedback&feedback_id='.$product["id"].'&id='.$Arr["id"].'" class="person_list_row">
+                            <a href="checkIn_black.php?type=old_feedback&feedback_id='.$product["id"].'&id='.$Arr["id"].'" class="person_list_row">
                                 <div class="person_list_name"> '.$product["login"].'</div>
                                 <div class="person_list_name"> '.$product["name"].'</div>
                                 <div class="person_list_name"> '.$product["address"].'</div>
                                 <div class="person_list_name"> '.$product["rating"].'</div>
+                                <div class="person_list_name"> '.$status.'</div>
                             </a>
                         </div>
                         ';

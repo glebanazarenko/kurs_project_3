@@ -80,59 +80,49 @@ echo'<body class="Site">
 
             <!-- start hero -->
             <h6 class="bg-white text-dark fs-2 container text-center">Новые комментарии людей</h6>
+            <br>
+            <br>
         <!-- end hero --> 
 ';
 
 
 $result = mysqli_query($mysql, "SELECT f.id, u.login, u.name, h.address, f.rating FROM feedback as f JOIN user as u ON f.user_id=u.id JOIN house as h on f.house_id = h.id WHERE f.is_checked = 0");
 
-            if($result != NULL){
-                while( $product = mysqli_fetch_assoc($result)){
-                    if($context == NULL){
-                        $context = '
-                        <div style="container-lg text-align: center;">
-                        <table class="table" style="width: 1200px; margin: auto;">
-                            <thead>
-                            <tr>
-                                <td> Логин человека
-                                </td>
-                                <td> Ник человека
-                                </td>
-                                <td> Адрес дома
-                                </td>
-                                <td> Рейтинг
-                                </td>
-                            </tr>
-                            </thead>
-                            
-                            <tr>
-                            <td><a class="nav-link-a active" href=checkIn.php?type=new_feedback&feedback_id='.$product["id"].'&id='.$Arr["id"].'>'.$product["login"].'</a>
-                            </td>
-                            <td>'.$product["name"].'
-                            </td>
-                            <td>'.$product["address"].'
-                            </td>
-                            <td>'.$product["rating"].'
-                            </td>
-                        </tr>';
-                    }else{
-                        $context .= '
-                        <tr>
-                            <td><a class="nav-link-a active" href=checkIn.php?type=new_feedback&feedback_id='.$product["id"].'&id='.$Arr["id"].'>'.$product["login"].'</a>
-                            </td>
-                            <td>'.$product["name"].'
-                            </td>
-                            <td>'.$product["address"].'
-                            </td>
-                            <td>'.$product["rating"].'
-                            </td>
-                        </tr>
-                        ';
-                    }
-                
-                }
-                $context .= '</table>';
-            }
+if($result != NULL){
+    while( $product = mysqli_fetch_assoc($result)){
+        if($context == NULL){
+            $context = '
+            <div style="container-lg text-align: center;">
+                <div class="person_list_div">
+                        <div class="person_list_name">Логин человека</div>
+                        <div class="person_list_name">Ник человека</div>
+                        <div class="person_list_name">Адрес дома</div>
+                        <div class="person_list_name">Рейтинг</div>
+                </div>
+                <div class="person_list_div">
+                    <a href="checkIn.php?type=new_feedback&feedback_id='.$product["id"].'&id='.$Arr["id"].'" class="person_list_row">
+                        <div class="person_list_name"> '.$product["login"].'</div>
+                        <div class="person_list_name"> '.$product["name"].'</div>
+                        <div class="person_list_name"> '.$product["address"].'</div>
+                        <div class="person_list_name"> '.$product["rating"].'</div>
+                    </a>
+                </div>';
+        }else{
+            $context .= '
+            <div class="person_list_div">
+                <a href="checkIn.php?type=new_feedback&feedback_id='.$product["id"].'&id='.$Arr["id"].'" class="person_list_row">
+                    <div class="person_list_name"> '.$product["login"].'</div>
+                    <div class="person_list_name"> '.$product["name"].'</div>
+                    <div class="person_list_name"> '.$product["address"].'</div>
+                    <div class="person_list_name"> '.$product["rating"].'</div>
+                </a>
+            </div>
+            ';
+        }
+    
+    }
+    $context .= '</div>';
+}
             
             echo $context;
 

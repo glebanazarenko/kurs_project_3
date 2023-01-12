@@ -43,7 +43,7 @@ echo'<body class="Site">
                     <a class="nav-link-a" href="checkIn.php?id='.$Arr["id"].'">Главная</a>
                 </li><!--end nav-item-->
                 <li class="nav-item">
-                    <a class="nav-link-a" href="../black/checkIn_black.php?house_id='.$house_id.'&type=new_feedback&id='.$Arr["id"].'&role_id=3">Темная тема</a>
+                    <a class="nav-link-a" href="../black/checkIn_black.php?feedback_id='.$feedback_id.'&type=old_feedback&id='.$Arr["id"].'&role_id=3">Темная тема</a>
                 </li><!--end nav-item-->
                 <li class="nav-item">
                     <a class="nav-link-a" href="checkIn.php?type=search&id='.$Arr["id"].'">Поиск</a>
@@ -81,15 +81,22 @@ echo'<body class="Site">
 
 
             <!-- start hero -->
-            <h6 class="bg-white text-dark fs-2 container text-center">Новые комментарии людей</h6>
+            <h6 class="bg-white text-dark fs-2 container text-center">Старые комментарии людей</h6>
+            <br>
+            <br>
         <!-- end hero --> 
 ';
 
 
-$result = mysqli_query($mysql, "SELECT u.login, u.name, h.address, f.rating, f.text FROM feedback as f JOIN user as u ON f.user_id=u.id JOIN house as h on f.house_id = h.id WHERE f.id = ".$feedback_id."");
+$result = mysqli_query($mysql, "SELECT u.login, u.name, h.address, f.rating, f.text, f.is_published FROM feedback as f JOIN user as u ON f.user_id=u.id JOIN house as h on f.house_id = h.id WHERE f.id = ".$feedback_id."");
 
             if($result != NULL){
                 while( $product = mysqli_fetch_assoc($result)){
+                    if($product["is_published"] == 0){
+                        $status = "Отклонено";
+                    }else{
+                        $status = "Подтверждено";
+                    }
                         $context = '
                         <div class="row margin-top-40" style="margin:auto;"> 
                         <div class="col-md-7" style="margin:auto;"> 
@@ -104,6 +111,8 @@ $result = mysqli_query($mysql, "SELECT u.login, u.name, h.address, f.rating, f.t
                                 <dd>'.$product["rating"].'</dd>
                                 <dt>Текст комменатрия</dt>
                                 <dd>'.$product["text"].'</dd>
+                                <dt>Статус</dt>
+                                <dd>'.$status.'</dd>
                             <dl>
                         </div>
                         </div>';
@@ -113,6 +122,38 @@ $result = mysqli_query($mysql, "SELECT u.login, u.name, h.address, f.rating, f.t
             }
             
             echo $context;
+
+            if($status == "Отклонено"){
+                echo'
+                <br>
+                <br>
+
+                <section>
+                    <div class="container text-center">
+                        <div class="row">
+                            <div class="col">
+                                <a class="btn btn-success" href="checkIn.php?type=old_feedback_all&is_published=1&feedback_id='.$feedback_id.'&id='.$Arr["id"].'" role="button">Подтвердить</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                ';
+            }else{
+                echo'
+                <br>
+                <br>
+
+                <section>
+                    <div class="container text-center">
+                        <div class="row">
+                            <div class="col">
+                                <a class="btn btn-danger" href="checkIn.php?type=old_feedback_all&is_published=0&feedback_id='.$feedback_id.'&id='.$Arr["id"].'" role="button">Отклонить</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                ';
+            }
 
 
 

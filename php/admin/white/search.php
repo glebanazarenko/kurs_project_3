@@ -102,8 +102,9 @@ echo'<body class="Site">
             login='".$session_user_login."'
             ");
             $Arr = mysqli_fetch_assoc($result);
-        
-            $result = mysqli_query($mysql, "SELECT * FROM house as h where h.address LIKE \"%".$_POST['address']."%\" Limit 20");
+
+            $address = $_POST['address'];
+            $result = mysqli_query($mysql, "SELECT * FROM house as h where h.address LIKE '%$address%' Limit 20");
 
             if($result != NULL){
                 while( $product = mysqli_fetch_assoc($result)){

@@ -79,15 +79,23 @@ echo'<body class="bg-dark Site">
 
 
             <!-- start hero -->
-            <h6 class="bg-dar text-white fs-2 container text-center">Новые комментарии людей</h6>
+            <h6 class="bg-dar text-white fs-2 container text-center">Старые комментарии людей</h6>
+            <br>
+            <br>
         <!-- end hero --> 
 ';
 
 
-$result = mysqli_query($mysql, "SELECT u.login, u.name, h.address, f.rating, f.text FROM feedback as f JOIN user as u ON f.user_id=u.id JOIN house as h on f.house_id = h.id WHERE f.id = ".$feedback_id."");
+$result = mysqli_query($mysql, "SELECT u.login, u.name, h.address, f.rating, f.text, f.is_published FROM feedback as f JOIN user as u ON f.user_id=u.id JOIN house as h on f.house_id = h.id WHERE f.id = ".$feedback_id."");
 
             if($result != NULL){
                 while( $product = mysqli_fetch_assoc($result)){
+
+                    if($product["is_published"] == 0){
+                        $status = "Отклонено";
+                    }else{
+                        $status = "Подтверждено";
+                    }
                         $context = '
                         <div class="row margin-top-40" style="margin:auto;"> 
                         <div class="col-md-7" style="margin:auto;"> 
@@ -102,6 +110,8 @@ $result = mysqli_query($mysql, "SELECT u.login, u.name, h.address, f.rating, f.t
                                 <dd>'.$product["rating"].'</dd>
                                 <dt>Текст комменатрия</dt>
                                 <dd>'.$product["text"].'</dd>
+                                <dt>Статус</dt>
+                                <dd>'.$status.'</dd>
                             <dl>
                         </div>
                         </div>';
@@ -111,28 +121,40 @@ $result = mysqli_query($mysql, "SELECT u.login, u.name, h.address, f.rating, f.t
             }
             
             echo $context;
+            
+            if($status == "Отклонено"){
+                echo'
+                <br>
+                <br>
 
+                <section>
+                    <div class="container text-center">
+                        <div class="row">
+                            <div class="col">
+                                <a class="btn btn-success" href="checkIn_black.php?type=old_feedback_all&is_published=1&feedback_id='.$feedback_id.'&id='.$Arr["id"].'" role="button">Подтвердить</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                ';
+            }else{
+                echo'
+                <br>
+                <br>
 
+                <section>
+                    <div class="container text-center">
+                        <div class="row">
+                            <div class="col">
+                                <a class="btn btn-danger" href="checkIn_black.php?type=old_feedback_all&is_published=0&feedback_id='.$feedback_id.'&id='.$Arr["id"].'" role="button">Отклонить</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                ';
+            }
 
 ?>
-
-
-    
-
-
-
-
-            <!-- start hero -->
-            <section class="hero-one position-relative bg-dar" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
-                <div class="container">
-                    <div class="row align-items-center justify-content-center py-100">
-                        <div class="col-lg-7 text-center py-5 text-center">
-                            <h6 class="head-title py-4" aria-label="Регистрация"></h6>                        
-                        </div><!--end col-->                  
-                    </div><!--end row-->             
-                </div><!-- end container -->
-            </section>
-            <!-- end hero -->
             
         </main>
 

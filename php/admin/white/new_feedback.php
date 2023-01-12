@@ -82,6 +82,8 @@ echo'<body class="Site">
 
             <!-- start hero -->
             <h6 class="bg-white text-dark fs-2 container text-center">Новые комментарии людей</h6>
+            <br>
+            <br>
         <!-- end hero --> 
 ';
 
@@ -114,7 +116,23 @@ $result = mysqli_query($mysql, "SELECT u.login, u.name, h.address, f.rating, f.t
             
             echo $context;
 
+            echo'
+            <br>
+            <br>
 
+            <section>
+                <div class="container text-center">
+                    <div class="row">
+                        <div class="col">
+                            <a class="btn btn-success" href="checkIn.php?type=new_feedback_all&is_published=1&feedback_id='.$feedback_id.'&id='.$Arr["id"].'" role="button">Подтвердить</a>
+                        </div>
+                        <div class="col">
+                            <a class="btn btn-danger" href="checkIn.php?type=new_feedback_all&is_published=0&feedback_id='.$feedback_id.'&id='.$Arr["id"].'" role="button">Отклонить</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            ';
 
 ?>
 
@@ -122,19 +140,6 @@ $result = mysqli_query($mysql, "SELECT u.login, u.name, h.address, f.rating, f.t
     
 
 
-
-
-            <!-- start hero -->
-            <section class="hero-one position-relative bg-white" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
-                <div class="container">
-                    <div class="row align-items-center justify-content-center py-100">
-                        <div class="col-lg-7 text-center py-5 text-center">
-                            <h6 class="head-title py-4" aria-label="Регистрация"></h6>                        
-                        </div><!--end col-->                  
-                    </div><!--end row-->             
-                </div><!-- end container -->
-            </section>
-            <!-- end hero -->
             </main>
 
         <?php
