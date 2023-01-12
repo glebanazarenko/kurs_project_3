@@ -48,12 +48,6 @@ echo'<body class="Site">
                 <li class="nav-item">
                     <a class="nav-link-a" href="checkIn.php?type=search&id='.$Arr["id"].'">Поиск</a>
                 </li><!--end nav-item-->                        
-                <li class="nav-item">
-                    <a class="nav-link-a" href="resume.html">Резюме</a>
-                </li><!--end nav-item-->
-                <li class="nav-item">
-                    <a class="nav-link-a" href="contact.php">Контакт</a>
-                </li><!--end nav-item-->
             </ul><!--end navbar-nav-->
             <button type="button" class="btn btn-primary btn-hover">'.$Arr['name'].'</button>
             <button type="button" class="btn btn-green"><a class="btn-a" href="../../visitor/white/index.php">Выйти из аккаунта</a></button>

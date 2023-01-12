@@ -35,29 +35,13 @@ echo'
                                     <li><a href="checkIn_black.php?id='.$Arr["id"].'">Домашняя</a></li>';
 
                                     ?>
-                                    <li><a href="about.html">Обо мне</a></li>
+                                    
                                     <!--<li><a href="services.html">Серверы</a></li>-->         
                                     
                                 </ul>
                             </div><!-- end col -->
-                            <div class="col-md-4">
-                                <h6 class="text-footer mb-4 mt-sm-0 mt-4">Информация</h6>
-                                <ul class="list-unstyled footer-list">
-                                    <li><a href="resume.html">Резюме</a></li>
-                                    <!--<li><a href="#review">Отзывы</a></li>-->
-                                    <!--<li><a href="projects.html">Проекты</a></li>         -->     
-                                    <li><a href="services.html">Услуги</a></li>                      
-                                    
-                                </ul>
-                            </div><!-- end col -->
-                            <div class="col-md-4">
-                                <h6 class="text-footer mb-4 mt-sm-0 mt-4">Больше информации</h6>
-                                <ul class="list-unstyled footer-list">
-                                    <!--<li><a href="#blogs">Блоги</a></li>-->
-                                    <li><a href="contact.php">Контакт</a></li>
-                                    <!--<li><a href="#">Правила и условия</a></li>-->
-                                </ul>
-                            </div><!-- end col -->
+                            <h6>Создатель идеи и проекта - Назаренко Глеб Максимович</h6>
+                            <h6>Студент Московского Политеха, 2 курс, группа 211-362</h6>
                         </div><!-- end row -->
                     </div><!-- end col -->
                 </div><!-- end row -->
@@ -86,5 +70,7 @@ echo'
         </div>
         <!-- end footer alter -->
 
-</footer>
+</footer>        
 <!-- end footer -->
+
+                                   

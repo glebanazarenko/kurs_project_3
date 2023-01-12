@@ -7,38 +7,21 @@
                             <img src="/курсач/images/NormDomTextFooter.png" alt="" height="70" />
                             <img src="/курсач/images/logo-light.png" alt="" height="16" />
                         </a>
-                        <p class="my-4">Дом - это не место, а состояние луши. <br>Дом - это там, где твое сердце.
+                        <p class="my-4">Дом - это не место, а состояние души. <br>Дом - это там, где твое сердце.
                         </p>
                     </div><!-- end col -->
                     <div class="col-lg-6 offset-lg-1">
                         <div class="row">
                             <div class="col-md-4">
-                                <h6 class="text-footer mb-4 mt-sm-0 mt-5">Меньше информации</h6>
+                                <h6 class="text-footer mb-4 mt-sm-0 mt-5">Информация</h6>
                                 <ul class="list-unstyled footer-list">
                                     <li><a href="index.php">Домашняя</a></li>
-                                    <li><a href="about.html">Обо мне</a></li>
                                     <!--<li><a href="services.html">Серверы</a></li>-->         
                                     
                                 </ul>
                             </div><!-- end col -->
-                            <div class="col-md-4">
-                                <h6 class="text-footer mb-4 mt-sm-0 mt-4">Информация</h6>
-                                <ul class="list-unstyled footer-list">
-                                    <li><a href="resume.html">Резюме</a></li>
-                                    <!--<li><a href="#review">Отзывы</a></li>-->
-                                    <!--<li><a href="projects.html">Проекты</a></li>         -->     
-                                    <li><a href="services.html">Услуги</a></li>                      
-                                    
-                                </ul>
-                            </div><!-- end col -->
-                            <div class="col-md-4">
-                                <h6 class="text-footer mb-4 mt-sm-0 mt-4">Больше информации</h6>
-                                <ul class="list-unstyled footer-list">
-                                    <!--<li><a href="#blogs">Блоги</a></li>-->
-                                    <li><a href="contact.php">Контакт</a></li>
-                                    <!--<li><a href="#">Правила и условия</a></li>-->
-                                </ul>
-                            </div><!-- end col -->
+                            <h6>Создатель идеи и проекта - Назаренко Глеб Максимович</h6>
+                            <h6>Студент Московского Политеха, 2 курс, группа 211-362</h6>
                         </div><!-- end row -->
                     </div><!-- end col -->
                 </div><!-- end row -->

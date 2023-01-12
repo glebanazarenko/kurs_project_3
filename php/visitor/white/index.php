@@ -329,12 +329,6 @@ include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
                         <li class="nav-item">
                             <a class="nav-link-a" href="search.php">Поиск</a>
                         </li><!--end nav-item-->                        
-                        <li class="nav-item">
-                            <a class="nav-link-a" href="resume.html">Резюме</a>
-                        </li><!--end nav-item-->
-                        <li class="nav-item">
-                            <a class="nav-link-a" href="contact.php">Контакт</a>
-                        </li><!--end nav-item-->
                     </ul><!--end navbar-nav-->
                     <button type="button" class="btn btn-primary btn-hover"><a class="btn-a" href="signUp.php">Регистрация<a></button>
                     <button type="button" class="btn btn-green"><a class="btn-a" href="signIn.php">Вход<a></button>

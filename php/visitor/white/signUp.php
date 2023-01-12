@@ -35,14 +35,8 @@ include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
                             <a class="nav-link-a" href="/курсач/php/visitor/black/signUp_black.php">Темная тема</a>
                         </li><!--end nav-item-->
                         <li class="nav-item">
-                            <a class="nav-link-a" href="services.html">Поиск</a>
+                            <a class="nav-link-a" href="search.php">Поиск</a>
                         </li><!--end nav-item-->                        
-                        <li class="nav-item">
-                            <a class="nav-link-a" href="resume.html">Резюме</a>
-                        </li><!--end nav-item-->
-                        <li class="nav-item">
-                            <a class="nav-link-a" href="contact.php">Контакт</a>
-                        </li><!--end nav-item-->
                     </ul><!--end navbar-nav-->
                     <button type="button" class="btn btn-primary btn-hover"><a class="btn-a" href="signUp.php">Регистрация<a></button>
                     <button type="button" class="btn btn-green"><a class="btn-a" href="signIn.php">Вход<a></button>
@@ -131,11 +125,11 @@ include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
                     </select>
                 </div>
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Площадь парковки (от скольки хотите)</span>
+                    <span class="input-group-text" id="basic-addon1">Площадь парковки (минимум)</span>
                     <input type="text" name="parking" class="form-control" placeholder="123456789" aria-label="Username" aria-describedby="basic-addon1">
                 </div> 
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Количество лифтов (от скольки хотите)</span>
+                    <span class="input-group-text" id="basic-addon1">Количество лифтов (минимум)</span>
                     <input type="text" name="elevator" class="form-control" placeholder="123456789" aria-label="Username" aria-describedby="basic-addon1">
                 </div> 
                 <div class="input-group mb-3">

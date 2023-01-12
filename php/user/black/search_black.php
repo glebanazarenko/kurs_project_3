@@ -47,12 +47,6 @@ echo'<body class="bg-dark Site">
                 <li class="nav-item">
                     <a class="nav-link-a active" href="checkIn_black.php?type=search">Поиск</a>
                 </li><!--end nav-item-->                        
-                <li class="nav-item">
-                    <a class="nav-link-a" href="resume.html">Резюме</a>
-                </li><!--end nav-item-->
-                <li class="nav-item">
-                    <a class="nav-link-a" href="contact.php">Контакт</a>
-                </li><!--end nav-item-->
             </ul><!--end navbar-nav-->
             <button type="button" class="btn btn-primary btn-hover">'.$Arr['name'].'</button>
             <button type="button" class="btn btn-green"><a class="btn-a" href="../../visitor/black/main_black.php">Выйти из аккаунта</a></button>
