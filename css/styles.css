@@ -107,6 +107,25 @@ html {
     position: relative;
   }
 
+  .rating-result {
+    margin: 0 auto;
+  }
+  .rating-result span {
+    padding: 0;
+    font-size: 27px;
+    margin: 0 3px;
+    line-height: 1;
+    color: lightgrey;
+    text-shadow: 1px 1px #bbb;
+  }
+  .rating-result > span:before {
+    content: '★';
+  }
+  .rating-result > span.active {
+    color: gold;
+    text-shadow: 1px 1px #c60;
+  }
+
 
 
   .dl-horizontal dt {
@@ -126,6 +145,44 @@ html {
   .house dd {
       margin-left: 210px;
   }
+
+  .person_list_div {
+    display: table;
+    width: auto;
+    background-color: dark;
+    border: 1px solid #666666;
+    border-spacing: 5px; 
+    margin: auto;
+  }
+  
+  .person_list_row {
+    display: table-row;
+    width: auto;
+    text-decoration: none;
+    transition: all 0.1s ease;
+  }
+  
+  a.person_list_row:active,
+  a.person_list_row:visited {
+    text-decoration: none;
+    color: #000000;
+  }
+  
+  a.person_list_row:hover {
+    background-color: #4f6891;
+    color: dark;
+  }
+  
+  .person_list_number,
+  .person_list_name {
+    display: table-cell;
+    float: left; /* fix for  buggy browsers */
+    display: table-column;
+    width: 350px;
+    background-color: dark;
+    color: rgb(0, 0, 0);
+  }
+  
 
 
   .footer {
@@ -172,3 +229,12 @@ html {
     background-color: #000000;
   }
 
+  .Site {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+  
+  .Site-content {
+    flex: 1;
+  }
