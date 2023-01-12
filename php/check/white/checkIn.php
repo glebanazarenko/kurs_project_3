@@ -86,11 +86,19 @@ if(!empty($_GET)){
                 include("../../user/white/house.php");
             }
         }
-        if ($type == "new_feedback"){
+        if ($type == "new_feedback_all"){
             include("../../admin/white/new_feedback_all.php");
         }
-        if ($type == "old_feedback"){
+        if ($type == "old_feedback_all"){
             include("../../admin/white/old_feedback_all.php");
+        }
+        if ($type == "new_feedback"){
+            $feedback_id = $_GET["feedback_id"];
+            include("../../admin/white/new_feedback.php");
+        }
+        if ($type == "old_feedback"){
+            $feedback_id = $_GET["feedback_id"];
+            include("../../admin/white/old_feedback.php");
         }
     }else{
         if($Arr["role_id"] == 3){

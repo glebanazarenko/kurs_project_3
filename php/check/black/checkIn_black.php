@@ -85,11 +85,19 @@ if(!empty($_GET)){
                 include("../../user/black/house_black.php");
             }
         }
-        if ($type == "new_feedback"){
+        if ($type == "new_feedback_all"){
             include("../../admin/black/new_feedback_all.php");
         }
-        if ($type == "old_feedback"){
+        if ($type == "old_feedback_all"){
             include("../../admin/black/old_feedback_all.php");
+        }
+        if ($type == "new_feedback"){
+            $feedback_id = $_GET["feedback_id"];
+            include("../../admin/black/new_feedback.php");
+        }
+        if ($type == "old_feedback"){
+            $feedback_id = $_GET["feedback_id"];
+            include("../../admin/black/old_feedback.php");
         }
     }else{
         if($Arr["role_id"] == 3){
