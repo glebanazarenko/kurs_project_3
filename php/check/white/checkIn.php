@@ -87,10 +87,36 @@ if(!empty($_GET)){
             }
         }
         if ($type == "new_feedback_all"){
-            include("../../admin/white/new_feedback_all.php");
+            $is_published = $_GET['is_published'];
+            $feedback_id = $_GET["feedback_id"];
+            if ($is_published == NULL){
+                include("../../admin/white/new_feedback_all.php");
+            }else{
+                if ($is_published == 1){
+                    $mysql->query("UPDATE feedback SET is_checked = 1, is_published = 1 WHERE feedback.id = $feedback_id");
+                    include("../../admin/white/new_feedback_all.php");
+                }
+                if ($is_published == 0){
+                        $mysql->query("UPDATE feedback SET is_checked = 1 WHERE feedback.id = $feedback_id");
+                        include("../../admin/white/new_feedback_all.php");
+                    }
+            }
         }
         if ($type == "old_feedback_all"){
-            include("../../admin/white/old_feedback_all.php");
+            $is_published = $_GET['is_published'];
+            $feedback_id = $_GET["feedback_id"];
+            if ($is_published == NULL){
+                include("../../admin/white/old_feedback_all.php");
+            }else{
+                if ($is_published == 1){
+                    $mysql->query("UPDATE feedback SET is_published = 1 WHERE feedback.id = $feedback_id");
+                    include("../../admin/white/old_feedback_all.php");
+                }
+                if ($is_published == 0){
+                        $mysql->query("UPDATE feedback SET is_published = 0 WHERE feedback.id = $feedback_id");
+                        include("../../admin/white/old_feedback_all.php");
+                    }
+            }
         }
         if ($type == "new_feedback"){
             $feedback_id = $_GET["feedback_id"];
