@@ -44,8 +44,7 @@
                 </div><!-- end row -->
             </div>
             <!-- end container -->
-        </footer>
-        <!-- end footer -->
+
 
         <!-- start footer alter -->
         <div class="footer-alt">
@@ -67,3 +66,6 @@
             <!-- end container -->
         </div>
         <!-- end footer alter -->
+
+</footer>        
+<!-- end footer -->

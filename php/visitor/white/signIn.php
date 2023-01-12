@@ -18,7 +18,7 @@
 include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
 ?>
 
-<body>
+<body class="Site">
         <!-- start navbar -->
         <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
             <div class="container">
@@ -51,6 +51,8 @@ include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
             </div><!-- end container -->
         </nav>
         <!-- end navbar -->
+
+        <main class="Site-content">
 
         <!-- start hero -->
         <section class="hero-one position-relative bg-white" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
@@ -95,6 +97,8 @@ include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
             </div><!-- end container -->
         </section>
         <!-- end hero -->
+
+        </main>
 
 
         <?php

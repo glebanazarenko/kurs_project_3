@@ -21,7 +21,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
 $id = $_GET["id"];
 ?>
 
-<body class="bg-dark">
+<body class="bg-dark Site">
         <!-- start navbar -->
         <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
             <div class="container">
@@ -59,6 +59,8 @@ $id = $_GET["id"];
             </div><!-- end container -->
         </nav>
         <!-- end navbar -->
+
+        <main class="Site-content">
 
         <!-- start hero -->
         <section class="hero-one position-relative bg-dark" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
@@ -395,6 +397,8 @@ $id = $_GET["id"];
             <!-- start hero -->
             <h6 class="bg-dark text-white fs-2 container text-center">Чтобы оставить отзыв нужно войти в аккаунт</h6>
             <!-- end hero -->  
+
+            </main>
 
         <?php
         include "footer_black.php";
