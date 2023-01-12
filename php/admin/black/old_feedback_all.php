@@ -11,7 +11,7 @@
 
         <!-- css -->
         <link href="/курсач/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="../../../css/styles-dark.css" rel="stylesheet" type="text/css" />
+        <link href="/курсач/css/styles-dark.css" rel="stylesheet" type="text/css" />
     </head>
 
 
@@ -29,7 +29,7 @@ login='".$session_user_login."'
 ");
 $Arr = mysqli_fetch_assoc($result);
 
-echo'<body class="bg-dark">
+echo'<body class="bg-dark Site">
 <!-- start navbar -->
 <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
     <div class="container">
@@ -43,16 +43,16 @@ echo'<body class="bg-dark">
                     <a class="nav-link-a" href="checkIn_black.php?id='.$Arr["id"].'">Главная</a>
                 </li><!--end nav-item-->
                 <li class="nav-item">
-                    <a class="nav-link-a" href="../white/checkIn.php?id='.$Arr["id"].'&type=old_feedback">Светлая тема</a>
+                    <a class="nav-link-a" href="../white/checkIn.php?id='.$Arr["id"].'&type=old_feedback_all">Светлая тема</a>
                 </li><!--end nav-item-->
                 <li class="nav-item">
                     <a class="nav-link-a" href="checkIn_black.php?id='.$Arr["id"].'&type=search">Поиск</a>
                 </li><!--end nav-item-->                        
                 <li class="nav-item">
-                    <a class="nav-link-a" href="checkIn_black.php?type=new_feedback&id='.$Arr["id"].'">Новые сообщения</a>
+                    <a class="nav-link-a" href="checkIn_black.php?type=new_feedback_all&id='.$Arr["id"].'">Новые сообщения</a>
                 </li><!--end nav-item-->
                 <li class="nav-item">
-                    <a class="nav-link-a active" href="checkIn_black.php?type=old_feedback&id='.$Arr["id"].'">Старые сообщения</a>
+                    <a class="nav-link-a active" href="checkIn_black.php?type=old_feedback_all&id='.$Arr["id"].'">Старые сообщения</a>
                 </li><!--end nav-item-->
             </ul><!--end navbar-nav-->
             <button type="button" class="btn btn-primary btn-hover">Админ: '.$Arr['name'].'</button>
@@ -62,7 +62,69 @@ echo'<body class="bg-dark">
     </div><!-- end container -->
 </nav>
 <!-- end navbar -->
+
+<main class="Site-content">
+
+<!-- start hero -->
+            <section class="hero-one position-relative bg-dark" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
+                <div class="container">
+                    <div class="row align-items-center justify-content-center py-100">
+                        <div class="col-lg-7 text-center py-5 text-center">
+                            <h6 class="head-title py-4" aria-label="Регистрация"></h6>                        
+                        </div><!--end col-->                  
+                    </div><!--end row-->             
+                </div><!-- end container -->
+            </section>
+            <!-- end hero -->
+
+
+            <!-- start hero -->
+            <h6 class="bg-dark text-white fs-2 container text-center">Старые комментарии людей</h6>
+            <br>
+            <br>
+        <!-- end hero --> 
 ';
+
+
+$result = mysqli_query($mysql, "SELECT f.id, u.login, u.name, h.address, f.rating FROM feedback as f JOIN user as u ON f.user_id=u.id JOIN house as h on f.house_id = h.id WHERE f.is_checked = 1");
+
+            if($result != NULL){
+                while( $product = mysqli_fetch_assoc($result)){
+                    if($context == NULL){
+                        $context = '
+                        <div style="container-lg text-align: center;">
+                            <div class="person_list_div">
+                                    <div class="person_list_name">Логин человека</div>
+                                    <div class="person_list_name">Ник человека</div>
+                                    <div class="person_list_name">Адрес дома</div>
+                                    <div class="person_list_name">Рейтинг</div>
+                            </div>
+                            <div class="person_list_div">
+                                <a href="checkIn_black.php?type=old_feedback&feedback_id='.$product["id"].'&id='.$Arr["id"].'" class="person_list_row">
+                                    <div class="person_list_name"> '.$product["login"].'</div>
+                                    <div class="person_list_name"> '.$product["name"].'</div>
+                                    <div class="person_list_name"> '.$product["address"].'</div>
+                                    <div class="person_list_name"> '.$product["rating"].'</div>
+                                </a>
+                            </div>';
+                    }else{
+                        $context .= '
+                        <div class="person_list_div">
+                            <a href="checkIn_black.php?type=new_feedback&feedback_id='.$product["id"].'&id='.$Arr["id"].'" class="person_list_row">
+                                <div class="person_list_name"> '.$product["login"].'</div>
+                                <div class="person_list_name"> '.$product["name"].'</div>
+                                <div class="person_list_name"> '.$product["address"].'</div>
+                                <div class="person_list_name"> '.$product["rating"].'</div>
+                            </a>
+                        </div>
+                        ';
+                    }
+                
+                }
+                $context .= '</div>';
+            }
+            
+            echo $context;
 ?>
 
 
@@ -79,6 +141,8 @@ echo'<body class="bg-dark">
                 </div><!-- end container -->
             </section>
             <!-- end hero -->
+
+            </main>
 
         <?php
         include "footer.php";

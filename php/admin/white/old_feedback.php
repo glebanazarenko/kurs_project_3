@@ -43,7 +43,7 @@ echo'<body class="Site">
                     <a class="nav-link-a" href="checkIn.php?id='.$Arr["id"].'">Главная</a>
                 </li><!--end nav-item-->
                 <li class="nav-item">
-                    <a class="nav-link-a" href="../black/checkIn_black.php?house_id='.$house_id.'&type=old_feedback_all&id='.$Arr["id"].'&role_id=3">Темная тема</a>
+                    <a class="nav-link-a" href="../black/checkIn_black.php?house_id='.$house_id.'&type=new_feedback&id='.$Arr["id"].'&role_id=3">Темная тема</a>
                 </li><!--end nav-item-->
                 <li class="nav-item">
                     <a class="nav-link-a" href="checkIn.php?type=search&id='.$Arr["id"].'">Поиск</a>
@@ -65,6 +65,8 @@ echo'<body class="Site">
 
 <main class="Site-content">
 
+
+
 <!-- start hero -->
             <section class="hero-one position-relative bg-white" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
                 <div class="container">
@@ -79,63 +81,45 @@ echo'<body class="Site">
 
 
             <!-- start hero -->
-            <h6 class="bg-white text-dark fs-2 container text-center">Старые комментарии людей</h6>
+            <h6 class="bg-white text-dark fs-2 container text-center">Новые комментарии людей</h6>
         <!-- end hero --> 
 ';
 
 
-$result = mysqli_query($mysql, "SELECT f.id, u.login, u.name, h.address, f.rating FROM feedback as f JOIN user as u ON f.user_id=u.id JOIN house as h on f.house_id = h.id WHERE f.is_checked = 1");
+$result = mysqli_query($mysql, "SELECT u.login, u.name, h.address, f.rating, f.text FROM feedback as f JOIN user as u ON f.user_id=u.id JOIN house as h on f.house_id = h.id WHERE f.id = ".$feedback_id."");
 
             if($result != NULL){
                 while( $product = mysqli_fetch_assoc($result)){
-                    if($context == NULL){
                         $context = '
-                        <div style="container-lg text-align: center;">
-                        <table class="table" style="width: 1200px; margin: auto;">
-                            <thead>
-                            <tr>
-                                <td> Логин человека
-                                </td>
-                                <td> Ник человека
-                                </td>
-                                <td> Адрес дома
-                                </td>
-                                <td> Рейтинг
-                                </td>
-                            </tr>
-                            </thead>
-                            
-                            <tr>
-                            <td><a class="nav-link-a active" href=checkIn.php?type=old_feedback&feedback_id='.$product["id"].'&id='.$Arr["id"].'>'.$product["login"].'</a>
-                            </td>
-                            <td>'.$product["name"].'
-                            </td>
-                            <td>'.$product["address"].'
-                            </td>
-                            <td>'.$product["rating"].'
-                            </td>
-                        </tr>';
-                    }else{
-                        $context .= '
-                        <tr>
-                            <td><a class="nav-link-a active" href=checkIn.php?type=old_feedback&feedback_id='.$product["id"].'&id='.$Arr["id"].'>'.$product["login"].'</a>
-                            </td>
-                            <td>'.$product["name"].'
-                            </td>
-                            <td>'.$product["address"].'
-                            </td>
-                            <td>'.$product["rating"].'
-                            </td>
-                        </tr>
-                        ';
-                    }
+                        <div class="row margin-top-40" style="margin:auto;"> 
+                        <div class="col-md-7" style="margin:auto;"> 
+                            <dl class="dl-horizontal house"> 
+                                <dt>Логин человека</dt>
+                                <dd>'.$product["login"].'</dd>
+                                <dt>Ник человека</dt>
+                                <dd>'.$product["name"].'</dd>
+                                <dt>Адрес дома</dt>
+                                <dd>'.$product["address"].'</dd>
+                                <dt>Рейтинг</dt>
+                                <dd>'.$product["rating"].'</dd>
+                                <dt>Текст комменатрия</dt>
+                                <dd>'.$product["text"].'</dd>
+                            <dl>
+                        </div>
+                        </div>';
                 
                 }
                 $context .= '</table>';
             }
             
             echo $context;
+
+
+
 ?>
+
+
+    
 
 
 

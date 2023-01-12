@@ -28,7 +28,7 @@ login='".$session_user_login."'
 ");
 $Arr = mysqli_fetch_assoc($result);
 
-echo'<body class="bg-dark">
+echo'<body class="bg-dark Site">
 <!-- start navbar -->
 <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
     <div class="container">
@@ -48,10 +48,10 @@ echo'<body class="bg-dark">
                     <a class="nav-link-a active" href="checkIn_black.php?id='.$Arr["id"].'&type=search">Поиск</a>
                 </li><!--end nav-item-->                        
                 <li class="nav-item">
-                    <a class="nav-link-a" href="checkIn_black.php?type=new_feedback&id='.$Arr["id"].'">Новые сообщения</a>
+                    <a class="nav-link-a" href="checkIn_black.php?type=new_feedback_all&id='.$Arr["id"].'">Новые сообщения</a>
                 </li><!--end nav-item-->
                 <li class="nav-item">
-                    <a class="nav-link-a" href="checkIn_black.php?type=old_feedback&id='.$Arr["id"].'">Старые сообщения</a>
+                    <a class="nav-link-a" href="checkIn_black.php?type=old_feedback_all&id='.$Arr["id"].'">Старые сообщения</a>
                 </li><!--end nav-item-->
             </ul><!--end navbar-nav-->
             <button type="button" class="btn btn-primary btn-hover">Админ: '.$Arr['name'].'</button>
@@ -61,6 +61,8 @@ echo'<body class="bg-dark">
     </div><!-- end container -->
 </nav>
 <!-- end navbar -->
+
+<main class="Site-content">
 ';
 
 ?>
@@ -137,7 +139,7 @@ echo'<body class="bg-dark">
                     }
                 
                 }
-                $context .= '</table></div>';
+                $context .= '</table></div></main>';
             }
             
             echo $context;

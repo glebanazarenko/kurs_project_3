@@ -1,17 +1,3 @@
-<?php
-
-if(!isset($session_user_login)){
-    $session_user_login = "Ошибка";
-}
-
-
-$result = mysqli_query($mysql, "SELECT * FROM user WHERE
-login='".$session_user_login."'
-");
-$Arr = mysqli_fetch_assoc($result);
-echo'
-
-
 <!-- start footer -->
 <footer class="footer">
             <div class="container">
@@ -32,10 +18,7 @@ echo'
                                     <?php
 
                                     ?>
-                                    <li><a href="checkIn.php?id='.$Arr["id"].'">Домашняя</a></li>';
-
-                                    ?>
-                                    <li><a href="about.html">Обо мне</a></li>
+                                    <li><a href="checkIn.php?id=5">Домашняя</a></li>                                    <li><a href="about.html">Обо мне</a></li>
                                     <!--<li><a href="services.html">Серверы</a></li>-->         
                                     
                                 </ul>
@@ -63,11 +46,7 @@ echo'
                 </div><!-- end row -->
             </div>
             <!-- end container -->
-        </footer>
-        <!-- end footer -->
 
-        <!-- start footer alter -->
-        <div class="footer-alt">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6 white">
@@ -86,3 +65,4 @@ echo'
             <!-- end container -->
         </div>
         <!-- end footer alter -->
+</footer>  

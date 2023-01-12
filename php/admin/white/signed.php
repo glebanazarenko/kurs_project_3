@@ -29,7 +29,7 @@ $Arr = mysqli_fetch_assoc($result);
 
 
 
-echo'<body>
+echo'<body class="Site">
 <!-- start navbar -->
 <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
     <div class="container">
@@ -49,10 +49,10 @@ echo'<body>
                     <a class="nav-link-a" href="checkIn.php?type=search&id='.$Arr["id"].'">Поиск</a>
                 </li><!--end nav-item-->                        
                 <li class="nav-item">
-                    <a class="nav-link-a" href="checkIn.php?type=new_feedback&id='.$Arr["id"].'">Новые сообщения</a>
+                    <a class="nav-link-a" href="checkIn.php?type=new_feedback_all&id='.$Arr["id"].'">Новые сообщения</a>
                 </li><!--end nav-item-->
                 <li class="nav-item">
-                    <a class="nav-link-a" href="checkIn.php?type=old_feedback&id='.$Arr["id"].'">Старые сообщения</a>
+                    <a class="nav-link-a" href="checkIn.php?type=old_feedback_all&id='.$Arr["id"].'">Старые сообщения</a>
                 </li><!--end nav-item-->
             </ul><!--end navbar-nav-->
             <button type="button" class="btn btn-primary btn-hover">Админ: '.$Arr['name'].'</button>
@@ -62,6 +62,8 @@ echo'<body>
     </div><!-- end container -->
 </nav>
 <!-- end navbar -->
+
+<main class="Site-content">
 ';
 
 ?>
@@ -277,6 +279,7 @@ echo'<body>
                     </div><!--end row--> 
             </div><!-- end container -->
         </section>
+        </main>
 
 
 <?php

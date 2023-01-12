@@ -63,10 +63,6 @@ echo'
                 </div><!-- end row -->
             </div>
             <!-- end container -->
-        </footer>
-        <!-- end footer -->
-
-        <!-- start footer alter -->
         <div class="footer-alt">
             <div class="container">
                 <div class="row">
@@ -86,3 +82,4 @@ echo'
             <!-- end container -->
         </div>
         <!-- end footer alter -->
+</footer>
