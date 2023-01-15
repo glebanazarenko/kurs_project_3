@@ -124,7 +124,7 @@ echo'<body class="Site">
                                 </td>
                             </tr>
                             </thead>';
-                    }else{
+                    }
                         $context .= '
                         <tr>
                             <td><a class="nav-link-a active" href=checkIn.php?house_id='.$product["id"].'&type=house&id='.$Arr["id"].'&role_id=3>'.$product["address"].'</a>
@@ -137,7 +137,7 @@ echo'<body class="Site">
                             </td>
                         </tr>
                         ';
-                    }
+                    
                 
                 }
                 $context .= '</table></main>';

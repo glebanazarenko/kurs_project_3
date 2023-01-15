@@ -123,7 +123,7 @@ echo'<body class="bg-dark Site">
                                 </td>
                             </tr>
                             </thead>';
-                    }else{
+                    }
                         $context .= '
                         <tr>
                             <td width=500px height=50px><a class="nav-link-a" href=checkIn_black.php?house_id='.$product["id"].'&type=house&id='.$Arr["id"].'&role_id=3>'.$product["address"].'</a>
@@ -136,7 +136,7 @@ echo'<body class="bg-dark Site">
                             </td>
                         </tr>
                         ';
-                    }
+                    
                 
                 }
                 $context .= '</table></div></main>';

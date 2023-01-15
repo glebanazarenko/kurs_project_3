@@ -28,17 +28,40 @@ if(isset($_POST['login'])){
     role_id = 3
     ");
 
+    $result4 = mysqli_query($mysql, "SELECT * FROM user WHERE
+    login='".$_POST["login"]."' AND
+    password='".md5($_POST["password"])."' AND
+    role_id = 2
+    ");
+
+
     if(!$result3 || mysqli_num_rows($result3) == 0){
-        if(!isset($_GET['session_user'])){
-            $Arr = mysqli_fetch_assoc($result2);
-            $_SESSION["user"] = $Arr['login'];
-            $session_user_login = $_SESSION["user"];
-        }
-        else{
-            $session_user_login = $_GET['session_user'];
-        }
-        include("../../user/white/signed.php");
-    }else{
+        if(mysqli_num_rows($result4) != 0){
+            if(!isset($_GET['session_user'])){
+                $Arr = mysqli_fetch_assoc($result2);
+                $_SESSION["user"] = $Arr['login'];
+                $session_user_login = $_SESSION["user"];
+            }
+            else{
+                $session_user_login = $_GET['session_user'];
+            }
+            include("../../vip/white/signed.php");
+        }else{
+            if(!isset($_GET['session_user'])){
+                $Arr = mysqli_fetch_assoc($result2);
+                $_SESSION["user"] = $Arr['login'];
+                $session_user_login = $_SESSION["user"];
+            }
+            else{
+                $session_user_login = $_GET['session_user'];
+            }
+            include("../../user/white/signed.php");
+        }   
+    }
+
+    
+
+    if(mysqli_num_rows($result3) != 0){
         if(!isset($_GET['session_user'])){
             $Arr = mysqli_fetch_assoc($result3);
             $_SESSION["user"] = $Arr['login'];
@@ -71,9 +94,12 @@ if(!empty($_GET)){
             if($Arr["role_id"] == 3){
                 include("../../admin/white/search.php");
             }
-            else{
+            if($Arr["role_id"] == 1){
                 include("../../user/white/search.php");
             }  
+            if($Arr["role_id"] == 2){
+                include("../../vip/white/search.php");
+            }
         }
         if ($type == "house"){
             $house_id = $_GET["house_id"];
@@ -126,12 +152,46 @@ if(!empty($_GET)){
             $feedback_id = $_GET["feedback_id"];
             include("../../admin/white/old_feedback.php");
         }
+
+
+        if($type == "feedback_before_all"){
+            $feedback_id = $_GET["feedback_id"];
+            $delete = $_GET["delete"];
+            if ($delete == NULL){
+                include("../../vip/white/feedback_before_all.php");
+            }else{
+                if ($delete == 1){
+                    $mysql->query("DELETE FROM `feedback` WHERE `feedback`.`id` = $feedback_id");
+                    include("../../vip/white/feedback_before_all.php");
+                }
+                if ($delete == 0){
+                    if(!empty($_POST)){
+                        $text = $_POST["text"];
+                        $rating = $_POST["rating"];
+
+                        
+                        $mysql->query("UPDATE `feedback` SET `text` = '$text', `rating` = '$rating' WHERE `feedback`.`id` = $feedback_id");
+                        include("../../vip/white/feedback_before_all.php");
+                    }
+                }
+            }
+            
+        }
+        if($type == "feedback_before"){
+            $feedback_id = $_GET["feedback_id"];
+            include("../../vip/white/feedback_before.php");
+        }
+
+
     }else{
         if($Arr["role_id"] == 3){
             include("../../admin/white/signed.php");
         }
-        else{
+        if($Arr["role_id"] == 1){
             include("../../user/white/signed.php");
+        }
+        if($Arr["role_id"] == 2){
+            include("../../vip/white/signed.php");
         }
     }
 }
