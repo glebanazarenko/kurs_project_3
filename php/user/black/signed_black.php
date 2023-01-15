@@ -63,216 +63,44 @@ echo'<body class="bg-dark Site">
 ?>
 
 
-        <!-- start hero -->
-        <section class="hero-one position-relative main-bg" id="home"  style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
-            <div class="container">
-                <div class="row align-items-center justify-content-center">
-                    
-                    <div class="col-lg-5  mx-auto mt-5"> 
-                        <img src="images/personal/1.png" alt="" class="img-fluid ml-lg-5">
-                    </div><!--end col--> 
-                    <div class="col-lg-7 text-center px-0 px-xl-4 mt-5 mt-lg-0 pt-5 pt-lg-0">
-                        <h5 class="d-inline-block py-1 px-3 rounded text-muted font-secondary">Привет, Я Глеб Назаренко</h5>
-                        <h1 class="hero-title mb-4 font-secondary fo">Я фриланс <mark><span class="fw-medium typewrite" data-period="2000" data-type='["Java-", "PHP-", "Python-"]'></span></mark>разработчик</h1>   
-                        <span class="wrap"></span>                     
-                        <div class="mb-5 mb-lg-0">                           
-                            <div class="d-inline-block">
-                                <a href="resume.html" class="btn btn-primary">Резюме</a>
-                            </div>
-                        </div>
-                    </div><!--end col-->                  
-                </div><!--end row-->             
-            </div><!-- end container -->
-        </section>
-        <!-- end hero -->
-        <div class="position-relative">
-            <div class="shape overflow-hidden text-white">
-                <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
-                </svg>
-            </div>
+<br>
+        <br>
+        <br>
+        <br>
+
+        <h6 class="bg-dark text-white fs-2 container text-center">Карта домов</h6>
+        
+
+        <div class="container text-center">
+            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1690YlQy3iGWrVt5VGtX0tPnmCWK1z-I&ehbc=2E312F" width="1080" height="720"></iframe>
+            <br>
         </div>
-        <!-- start about -->
-        <section class="section" id="about">
-            <div class="container">
-                <div class="row align-items-center">                
-                    <div class="col-lg-6 ms-auto align-self-center">
-                        <h5 class="fs-24 text-dark fw-medium mb-3"><mark>Персональные данные</mark></h5>       
-                        <h4 class="fw-normal lh-base text-gray-700 mb-5 fs-20">Давно установленный факт, что читатель будет отвлекаться на читаемое содержимое страницы и возьмет меня на работу.
-                        </h4>
-                        <div class="social mt-5">
-                            <a href="https://github.com/glebanazarenko">
-                                <i class="lab la-github github me-1"></i>
-                            </a>
-                            <a href="https://vk.com/hlebik_official">
-                                <i class="lab la-vk vk me-1"></i>
-                            </a>
-                            <a href="https://t.me/hlebik">
-                                <i class="lab la-telegram telegram me-1"></i>
-                            </a>
-                        </div>
-                    </div><!--end col-->
 
-                    
-                    <div class="col-lg-5 ms-auto align-self-center">
-                        <div class="mb-5 mb-lg-0">
-                            <p class="mb-2">
-                                <span class="personal-detail-title">Дата рождения</span> 
-                                <span class="personal-detail-info">26 июля 2003</span>
-                            </p>
-                            <p class="mb-2">
-                                <span class="personal-detail-title">Владение языками</span> 
-                                <span class="personal-detail-info">Русский - Английский - Программный</span>
-                            </p>
-                            <p class="mb-2">
-                                <span class="personal-detail-title">Национальность</span> 
-                                <span class="personal-detail-info">Русский</span>
-                            </p>
-                            <p class="mb-2">
-                                <span class="personal-detail-title">Интересы</span> 
-                                <span class="personal-detail-info">Чтение, Спорт, Сон</span>
-                            </p>
-                        </div>
-                    </div><!--end col-->
-                    </div><!--end row--> 
-            </div><!-- end container -->
-        </section>
-        <!-- end about -->
 
-        <section class="section" id="about">
-            <div class="container">
-                <div class="row align-items-center">                
-                    <div class="col-lg-6 ms-auto align-self-center">
-                        <h5 class="fs-24 text-dark fw-medium mb-3"><mark>Персональные данные</mark></h5>       
-                        <h4 class="fw-normal lh-base text-gray-700 mb-5 fs-20">Давно установленный факт, что читатель будет отвлекаться на читаемое содержимое страницы и возьмет меня на работу.
-                        </h4>
-                        <div class="social mt-5">
-                            <a href="https://github.com/glebanazarenko">
-                                <i class="lab la-github github me-1"></i>
-                            </a>
-                            <a href="https://vk.com/hlebik_official">
-                                <i class="lab la-vk vk me-1"></i>
-                            </a>
-                            <a href="https://t.me/hlebik">
-                                <i class="lab la-telegram telegram me-1"></i>
-                            </a>
-                        </div>
-                    </div><!--end col-->
-
-                    
-                    <div class="col-lg-5 ms-auto align-self-center">
-                        <div class="mb-5 mb-lg-0">
-                            <p class="mb-2">
-                                <span class="personal-detail-title">Дата рождения</span> 
-                                <span class="personal-detail-info">26 июля 2003</span>
-                            </p>
-                            <p class="mb-2">
-                                <span class="personal-detail-title">Владение языками</span> 
-                                <span class="personal-detail-info">Русский - Английский - Программный</span>
-                            </p>
-                            <p class="mb-2">
-                                <span class="personal-detail-title">Национальность</span> 
-                                <span class="personal-detail-info">Русский</span>
-                            </p>
-                            <p class="mb-2">
-                                <span class="personal-detail-title">Интересы</span> 
-                                <span class="personal-detail-info">Чтение, Спорт, Сон</span>
-                            </p>
-                        </div>
-                    </div><!--end col-->
-                    </div><!--end row--> 
-            </div><!-- end container -->
-        </section>
-
-        <section class="section" id="about">
-            <div class="container">
-                <div class="row align-items-center">                
-                    <div class="col-lg-6 ms-auto align-self-center">
-                        <h5 class="fs-24 text-dark fw-medium mb-3"><mark>Персональные данные</mark></h5>       
-                        <h4 class="fw-normal lh-base text-gray-700 mb-5 fs-20">Давно установленный факт, что читатель будет отвлекаться на читаемое содержимое страницы и возьмет меня на работу.
-                        </h4>
-                        <div class="social mt-5">
-                            <a href="https://github.com/glebanazarenko">
-                                <i class="lab la-github github me-1"></i>
-                            </a>
-                            <a href="https://vk.com/hlebik_official">
-                                <i class="lab la-vk vk me-1"></i>
-                            </a>
-                            <a href="https://t.me/hlebik">
-                                <i class="lab la-telegram telegram me-1"></i>
-                            </a>
-                        </div>
-                    </div><!--end col-->
-
-                    
-                    <div class="col-lg-5 ms-auto align-self-center">
-                        <div class="mb-5 mb-lg-0">
-                            <p class="mb-2">
-                                <span class="personal-detail-title">Дата рождения</span> 
-                                <span class="personal-detail-info">26 июля 2003</span>
-                            </p>
-                            <p class="mb-2">
-                                <span class="personal-detail-title">Владение языками</span> 
-                                <span class="personal-detail-info">Русский - Английский - Программный</span>
-                            </p>
-                            <p class="mb-2">
-                                <span class="personal-detail-title">Национальность</span> 
-                                <span class="personal-detail-info">Русский</span>
-                            </p>
-                            <p class="mb-2">
-                                <span class="personal-detail-title">Интересы</span> 
-                                <span class="personal-detail-info">Чтение, Спорт, Сон</span>
-                            </p>
-                        </div>
-                    </div><!--end col-->
-                    </div><!--end row--> 
-            </div><!-- end container -->
-        </section>
-
-        <section class="section" id="about">
-            <div class="container">
-                <div class="row align-items-center">                
-                    <div class="col-lg-6 ms-auto align-self-center">
-                        <h5 class="fs-24 text-dark fw-medium mb-3"><mark>Персональные данные</mark></h5>       
-                        <h4 class="fw-normal lh-base text-gray-700 mb-5 fs-20">Давно установленный факт, что читатель будет отвлекаться на читаемое содержимое страницы и возьмет меня на работу.
-                        </h4>
-                        <div class="social mt-5">
-                            <a href="https://github.com/glebanazarenko">
-                                <i class="lab la-github github me-1"></i>
-                            </a>
-                            <a href="https://vk.com/hlebik_official">
-                                <i class="lab la-vk vk me-1"></i>
-                            </a>
-                            <a href="https://t.me/hlebik">
-                                <i class="lab la-telegram telegram me-1"></i>
-                            </a>
-                        </div>
-                    </div><!--end col-->
-
-                    
-                    <div class="col-lg-5 ms-auto align-self-center">
-                        <div class="mb-5 mb-lg-0">
-                            <p class="mb-2">
-                                <span class="personal-detail-title">Дата рождения</span> 
-                                <span class="personal-detail-info">26 июля 2003</span>
-                            </p>
-                            <p class="mb-2">
-                                <span class="personal-detail-title">Владение языками</span> 
-                                <span class="personal-detail-info">Русский - Английский - Программный</span>
-                            </p>
-                            <p class="mb-2">
-                                <span class="personal-detail-title">Национальность</span> 
-                                <span class="personal-detail-info">Русский</span>
-                            </p>
-                            <p class="mb-2">
-                                <span class="personal-detail-title">Интересы</span> 
-                                <span class="personal-detail-info">Чтение, Спорт, Сон</span>
-                            </p>
-                        </div>
-                    </div><!--end col-->
-                    </div><!--end row--> 
-            </div><!-- end container -->
-        </section>
+        <div class="container bg-dark text-white">
+            <h2 class="text-center">Информация о сайте</h2>
+            <br>
+            <h3>Доброго времени суток, вы попали на сайт, который вам поможет с точностью и филигранной тонкостью найти для себя или оставить отзыв о любом доме, который вы посчитаете нужным.</h3>
+            <br>
+            <h3>Воспользовавшись нашими услугами, вы сможете найти такую информацию как:</h3>
+            <br>
+            <ul>
+                <li><h3>Год постройки дома</h3></li>
+                <li><h3>Общая площадь</h3></li>
+                <li><h3>Тип проекта</h3></li>
+            </ul>
+            <br>
+            <h3>Вы можете оставить отзыв, и наша специальная группа проверщиков проверит и подтвердит ваши слова. </h3>
+            <br>
+            <h3>Также у вас есть возможность стать вип-пользователем, который сможет помочь много более чем просто рядовой пользователь. У него в случае ошибки есть возможность скорректировать свой комментарий до проверки администрации и так же после с последующей дополнительной проверкой.</h3>
+            <br>
+            <h3>У нас есть удобная система поиска при помощи многогранно-функционального фильтра, который подстроиться под самые экстравагантные запросы.</h3>
+            <br>
+            <h3>Так же у вас есть возможность попасть в закрытый набор модераторов(админов), которые помогают и поддерживают проект проверкой информации и корректности комментариев.</h3>
+            <br>
+            <h3>Присоединяйся к нам и оставь свой первый и очень важный отзыв, ведь каждый будет, читая его понимать и принимать серьезное решение, помоги принять решение Всем!</h3>
+            <br>
+        </div>
 
         </main>
 
