@@ -101,7 +101,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
                                 </td>
                             </tr>
                             </thead>';
-                    }else{
+                    }
                         $context .= '
                         <tr>
                             <td width=500px height=50px><a class="nav-link-a" href=house_black.php?id='.$product["id"].'>'.$product["address"].'</a>
@@ -114,7 +114,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
                             </td>
                         </tr>
                         ';
-                    }
+                    
                 
                 }
                 $context .= '</table></div><br>';
