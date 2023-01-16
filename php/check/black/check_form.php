@@ -38,10 +38,66 @@ if(!empty($_POST)){
         
     }else{
         if($text != ""){
-            Echo 'Вы уже добавили отзыв об этом доме.';
+            Echo '
+            <!DOCTYPE html>
+            <html lang="ru">
+                <head>
+                    <meta charset="utf-8" />
+                    <title>НормДом</title>
+                    <meta name="keywords" content="НормДом" />
+                    <meta content="Mannatthemes" name="author" />
+
+                    <!-- favicon -->
+                    <link rel="shortcut icon" href="/курсач/images/NormDomLogoNOTEXT1.ico" />
+
+                    <!-- css -->
+                    <link href="/курсач/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+                    <link href="../../../css/styles.css" rel="stylesheet" type="text/css" />
+                </head>
+
+                <body class="Site bg-dark text-white">
+                    <main class="Site-content text-center">
+                    <br>
+                    <br>
+                    <br>
+                        <h3>Вы уже добавили отзыв об этом доме.</h3>
+                        <br>
+                        <a class="btn btn-light" href="checkIn_black.php?house_id='.$house_id.'&type=house&id='.$user_id.'&role_id='.$role_id.'" role="button">Назад</a>
+                    </main>
+                </body>
+            </html>
+            ';
         }
         else{
-            Echo 'Заполните тект отзыва. Если хотите поставить 0 звезд, то просто не нажимайте на звезды.';
+            Echo '
+            <!DOCTYPE html>
+            <html lang="ru">
+                <head>
+                    <meta charset="utf-8" />
+                    <title>НормДом</title>
+                    <meta name="keywords" content="НормДом" />
+                    <meta content="Mannatthemes" name="author" />
+
+                    <!-- favicon -->
+                    <link rel="shortcut icon" href="/курсач/images/NormDomLogoNOTEXT1.ico" />
+
+                    <!-- css -->
+                    <link href="/курсач/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+                    <link href="../../../css/styles.css" rel="stylesheet" type="text/css" />
+                </head>
+
+                <body class="Site bg-dark text-white">
+                    <main class="Site-content text-center">
+                    <br>
+                    <br>
+                    <br>
+                        <h3>Заполните тект отзыва. Если хотите поставить 0 звезд, то просто не нажимайте на звезды.</h3>
+                        <br>
+                        <a class="btn btn-light" href="checkIn_black.php?house_id='.$house_id.'&type=house&id='.$user_id.'&role_id='.$role_id.'" role="button">Назад</a>
+                    </main>
+                </body>
+            </html>
+            ';
         }
     }
 
