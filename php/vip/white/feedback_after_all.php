@@ -43,16 +43,16 @@ echo'<body class="Site">
                     <a class="nav-link-a" href="checkIn.php?id='.$Arr["id"].'">Главная</a>
                 </li><!--end nav-item-->
                 <li class="nav-item">
-                    <a class="nav-link-a" href="../black/checkIn_black.php?type=feedback_before_all&id='.$Arr["id"].'">Темная тема</a>
+                    <a class="nav-link-a" href="../black/checkIn_black.php?type=feedback_after_all&id='.$Arr["id"].'">Темная тема</a>
                 </li><!--end nav-item-->
                 <li class="nav-item">
                     <a class="nav-link-a" href="checkIn.php?type=search&id='.$Arr["id"].'">Поиск</a>
                 </li><!--end nav-item-->      
                 <li class="nav-item">
-                    <a class="nav-link-a active" href="checkIn.php?type=feedback_before_all&id='.$Arr["id"].'">Отзыв до проверки</a>
+                    <a class="nav-link-a" href="checkIn.php?type=feedback_before_all&id='.$Arr["id"].'">Отзыв до проверки</a>
                 </li><!--end nav-item-->      
                 <li class="nav-item">
-                    <a class="nav-link-a" href="checkIn.php?type=feedback_after_all&id='.$Arr["id"].'">Отзыв после проверки</a>
+                    <a class="nav-link-a active" href="checkIn.php?type=feedback_after_all&id='.$Arr["id"].'">Отзыв после проверки</a>
                 </li><!--end nav-item-->                
             </ul><!--end navbar-nav-->
             <button type="button" class="btn btn-primary btn-hover">VIP: '.$Arr['name'].'</button>
@@ -80,14 +80,14 @@ echo'<body class="Site">
 
 
             <!-- start hero -->
-            <h6 class="bg-white text-dark fs-2 container text-center">Ваши отзывы до проверки админинстрации</h6>
+            <h6 class="bg-white text-dark fs-2 container text-center">Ваши отзывы после проверки админинстрации</h6>
             <br>
             <br>
         <!-- end hero --> 
 ';
 
 
-$result = mysqli_query($mysql, "SELECT f.id, u.login, u.name, h.address, f.rating from feedback as f JOIN user as u on f.user_id = u.id join house as h on f.house_id = h.id WHERE f.user_id = ".$Arr['id']." AND f.is_checked = 0");
+$result = mysqli_query($mysql, "SELECT f.id, u.login, u.name, h.address, f.rating from feedback as f JOIN user as u on f.user_id = u.id join house as h on f.house_id = h.id WHERE f.user_id = ".$Arr['id']." AND f.is_checked = 1");
 
 if($result != NULL){
     while( $product = mysqli_fetch_assoc($result)){
@@ -101,7 +101,7 @@ if($result != NULL){
                         <div class="person_list_name">Рейтинг</div>
                 </div>
                 <div class="person_list_div">
-                    <a href="checkIn.php?type=feedback_before&feedback_id='.$product["id"].'&id='.$Arr["id"].'" class="person_list_row">
+                    <a href="checkIn.php?type=feedback_after&feedback_id='.$product["id"].'&id='.$Arr["id"].'" class="person_list_row">
                         <div class="person_list_name"> '.$product["login"].'</div>
                         <div class="person_list_name"> '.$product["name"].'</div>
                         <div class="person_list_name"> '.$product["address"].'</div>
@@ -111,7 +111,7 @@ if($result != NULL){
         }else{
             $context .= '
             <div class="person_list_div">
-                <a href="checkIn.php?type=feedback_before&feedback_id='.$product["id"].'&id='.$Arr["id"].'" class="person_list_row">
+                <a href="checkIn.php?type=feedback_after&feedback_id='.$product["id"].'&id='.$Arr["id"].'" class="person_list_row">
                     <div class="person_list_name"> '.$product["login"].'</div>
                     <div class="person_list_name"> '.$product["name"].'</div>
                     <div class="person_list_name"> '.$product["address"].'</div>

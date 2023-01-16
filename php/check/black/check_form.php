@@ -9,12 +9,17 @@ if(!empty($_POST)){
         $rating = 0;
     }else{
         $rating = $_POST["rating"];
-    }   
+    } 
+    
+    $result1 = mysqli_query($mysql, "SELECT * FROM user as u WHERE u.id=".$user_id."");
+    $Arr = mysqli_fetch_assoc($result1);
+    $role_id = $Arr["role_id"];
+
 
     $result = mysqli_query($mysql, "SELECT * FROM feedback WHERE user_id=\"".$user_id."\" AND house_id=\"".$house_id."\"");
 
     if(mysqli_num_rows($result) == 0 && $text != ""){
-        mysqli_query($mysql, "INSERT INTO feedback (id, user_id, house_id, text, rating, is_checked, is_published) VALUES (
+        /*mysqli_query($mysql, "INSERT INTO feedback (id, user_id, house_id, text, rating, is_checked, is_published) VALUES (
             NULL, 
             \"".$user_id."\",
             \"".$house_id."\",
@@ -24,8 +29,13 @@ if(!empty($_POST)){
             \"0\"
             )"
         );
-        $new_url = 'checkIn_black.php?house_id='.$house_id.'&type=house&id='.$user_id.'';
+        */
+
+        
+
+        $new_url = 'checkIn_black.php?house_id='.$house_id.'&type=house&id='.$user_id.'&role_id='.$role_id.'';
         header('Location: '.$new_url);
+        
     }else{
         if($text != ""){
             Echo 'Вы уже добавили отзыв об этом доме.';

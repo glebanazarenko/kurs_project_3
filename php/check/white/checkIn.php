@@ -103,13 +103,16 @@ if(!empty($_GET)){
         }
         if ($type == "house"){
             $house_id = $_GET["house_id"];
-
             $role_id = $_GET['role_id'];
             echo $role_id;
             if($role_id == 3){
                 include("../../admin/white/house.php");
-            }else{
+            }
+            if($role_id == 1){
                 include("../../user/white/house.php");
+            }
+            if($role_id == 2){
+                include("../../vip/white/house.php");
             }
         }
         if ($type == "new_feedback_all"){
@@ -168,8 +171,6 @@ if(!empty($_GET)){
                     if(!empty($_POST)){
                         $text = $_POST["text"];
                         $rating = $_POST["rating"];
-
-                        
                         $mysql->query("UPDATE `feedback` SET `text` = '$text', `rating` = '$rating' WHERE `feedback`.`id` = $feedback_id");
                         include("../../vip/white/feedback_before_all.php");
                     }
@@ -180,6 +181,32 @@ if(!empty($_GET)){
         if($type == "feedback_before"){
             $feedback_id = $_GET["feedback_id"];
             include("../../vip/white/feedback_before.php");
+        }
+
+
+        if($type == "feedback_after_all"){
+            $feedback_id = $_GET["feedback_id"];
+            $delete = $_GET["delete"];
+            if ($delete == NULL){
+                include("../../vip/white/feedback_after_all.php");
+            }else{
+                if ($delete == 1){
+                    $mysql->query("DELETE FROM `feedback` WHERE `feedback`.`id` = $feedback_id");
+                    include("../../vip/white/feedback_after_all.php");
+                }
+                if ($delete == 0){
+                    if(!empty($_POST)){
+                        $text = $_POST["text"];
+                        $rating = $_POST["rating"];
+                        $mysql->query("UPDATE `feedback` SET `text` = '$text', `rating` = '$rating', `is_checked` = '0', `is_published` = '0' WHERE `feedback`.`id` = $feedback_id");
+                        include("../../vip/white/feedback_after_all.php");
+                    }
+                }
+            } 
+        }
+        if($type == "feedback_after"){
+            $feedback_id = $_GET["feedback_id"];
+            include("../../vip/white/feedback_after.php");
         }
 
 

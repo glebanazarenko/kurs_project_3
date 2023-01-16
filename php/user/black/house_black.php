@@ -41,7 +41,7 @@ echo'<body class="bg-dark Site">
                     <a class="nav-link-a" href="checkIn_black.php?id='.$Arr["id"].'">Главная</a>
                 </li><!--end nav-item-->
                 <li class="nav-item">
-                    <a class="nav-link-a" href="../white/checkIn.php?house_id='.$house_id.'&type=house&id='.$Arr["id"].'">Светлая тема</a>
+                    <a class="nav-link-a" href="../white/checkIn.php?house_id='.$house_id.'&type=house&id='.$Arr["id"].'&role_id=1">Светлая тема</a>
                 </li><!--end nav-item-->
                 <li class="nav-item">
                     <a class="nav-link-a active" href="checkIn_black.php?type=search&id='.$Arr["id"].'">Поиск</a>

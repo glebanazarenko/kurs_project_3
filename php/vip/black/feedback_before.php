@@ -11,7 +11,7 @@
 
         <!-- css -->
         <link href="/курсач/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="/курсач/css/styles.css" rel="stylesheet" type="text/css" />
+        <link href="../../../css/styles-dark.css" rel="stylesheet" type="text/css" />
     </head>
 
 <?php
@@ -29,7 +29,7 @@ $Arr = mysqli_fetch_assoc($result);
 
 
 
-echo'<body class="Site">
+echo'<body class="Site bg-dark">
 <!-- start navbar -->
 <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
     <div class="container">
@@ -40,19 +40,19 @@ echo'<body class="Site">
         <div class="navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto navbar-center mt-lg-0 mt-2">
                 <li class="nav-item">
-                    <a class="nav-link-a" href="checkIn.php?id='.$Arr["id"].'">Главная</a>
+                    <a class="nav-link-a" href="checkIn_black.php?id='.$Arr["id"].'">Главная</a>
                 </li><!--end nav-item-->
                 <li class="nav-item">
-                    <a class="nav-link-a" href="../black/checkIn_black.php?type=feedback_before&feedback_id='.$feedback_id.'&id='.$Arr["id"].'">Темная тема</a>
+                    <a class="nav-link-a" href="../white/checkIn.php?type=feedback_before&feedback_id='.$feedback_id.'&id='.$Arr["id"].'">Светлая тема</a>
                 </li><!--end nav-item-->
                 <li class="nav-item">
-                    <a class="nav-link-a" href="checkIn.php?type=search&id='.$Arr["id"].'">Поиск</a>
+                    <a class="nav-link-a" href="checkIn_black.php?type=search&id='.$Arr["id"].'">Поиск</a>
                 </li><!--end nav-item-->      
                 <li class="nav-item">
-                    <a class="nav-link-a active" href="checkIn.php?type=feedback_before_all&id='.$Arr["id"].'">Отзыв до проверки</a>
+                    <a class="nav-link-a active" href="checkIn_black.php?type=feedback_before_all&id='.$Arr["id"].'">Отзыв до проверки</a>
                 </li><!--end nav-item-->      
                 <li class="nav-item">
-                    <a class="nav-link-a" href="checkIn.php?type=feedback_after_all&id='.$Arr["id"].'">Отзыв после проверки</a>
+                    <a class="nav-link-a" href="checkIn_black.php?type=feedback_after_all&id='.$Arr["id"].'">Отзыв после проверки</a>
                 </li><!--end nav-item-->                
             </ul><!--end navbar-nav-->
             <button type="button" class="btn btn-primary btn-hover">VIP: '.$Arr['name'].'</button>
@@ -66,7 +66,7 @@ echo'<body class="Site">
 <main class="Site-content">
 
 <!-- start hero -->
-            <section class="hero-one position-relative bg-white" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
+            <section class="hero-one position-relative bg-dark" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
                 <div class="container">
                     <div class="row align-items-center justify-content-center py-100">
                         <div class="col-lg-7 text-center py-5 text-center">
@@ -79,7 +79,7 @@ echo'<body class="Site">
 
 
             <!-- start hero -->
-            <h6 class="bg-white text-dark fs-2 container text-center">Ваши отзывы до проверки админинстрации</h6>
+            <h6 class="bg-dark text-white fs-2 container text-center">Ваши отзывы до проверки админинстрации</h6>
             <br>
             <br>
         <!-- end hero --> 
@@ -93,7 +93,7 @@ $result = mysqli_query($mysql, "SELECT u.login, u.name, h.address, f.rating, f.t
                         $context = '
                         <div class="row margin-top-40" style="margin:auto;"> 
                         <div class="col-md-7" style="margin:auto;"> 
-                            <dl class="dl-horizontal house"> 
+                            <dl class="dl-horizontal house bg-dark text-white"> 
                                 <dt>Логин человека</dt>
                                 <dd>'.$product["login"].'</dd>
                                 <dt>Ник человека</dt>
@@ -117,7 +117,7 @@ $result = mysqli_query($mysql, "SELECT u.login, u.name, h.address, f.rating, f.t
 echo'
 
             <section class="container text-left">
-                <form action="../../check/white/checkIn.php?type=feedback_before_all&delete=0&feedback_id='.$feedback_id.'&id='.$Arr["id"].'"   method="POST">
+                <form action="../../check/black/checkIn_black.php?type=feedback_before_all&delete=0&feedback_id='.$feedback_id.'&id='.$Arr["id"].'"   method="POST">
                     <!-- Hidden Required Fields -->';
 
 
@@ -128,14 +128,15 @@ echo'
                         echo'
                         <input type="hidden" name="user_id" value="'.$Arr["id"].'">
                         <input type="hidden" name="house_id" value="'.$house_id.'">
+
+                        <div class="mb-4">
+                        <label for="exampleFormControlTextarea1" class="form-label bg-dark text-white">Тема сообщения</label>
+                        <textarea class="form-control bg-dark text-white" id="exampleFormControlTextarea1" rows="3" name="text">'.$text.'</textarea>
+                        </div> 
                         ';        
                         
 if($rating == 0){
     echo'
-                    <div class="mb-4">
-                    <label for="exampleFormControlTextarea1" class="form-label">Тема сообщения</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="text">'.$text.'</textarea>
-                    </div> 
                     <div class="rating-area" name="rating">
                         <input type="radio" id="star-5" name="rating" value="5" >
                         <label for="star-5" title="Оценка «5»"></label>	
@@ -152,10 +153,6 @@ if($rating == 0){
 }
 if($rating == 1){
     echo'
-                    <div class="mb-4">
-                    <label for="exampleFormControlTextarea1" class="form-label">Тема сообщения</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="text">'.$text.'</textarea>
-                    </div> 
                     <div class="rating-area" name="rating">
                         <input type="radio" id="star-5" name="rating" value="5">
                         <label for="star-5" title="Оценка «5»"></label>	
@@ -172,10 +169,6 @@ if($rating == 1){
 }
 if($rating == 2){
     echo'
-                    <div class="mb-4">
-                    <label for="exampleFormControlTextarea1" class="form-label">Тема сообщения</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="text">'.$text.'</textarea>
-                    </div> 
                     <div class="rating-area" name="rating">
                         <input type="radio" id="star-5" name="rating" value="5">
                         <label for="star-5" title="Оценка «5»"></label>	
@@ -192,10 +185,6 @@ if($rating == 2){
 }
 if($rating == 3){
     echo'
-                    <div class="mb-4">
-                    <label for="exampleFormControlTextarea1" class="form-label">Тема сообщения</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="text">'.$text.'</textarea>
-                    </div> 
                     <div class="rating-area" name="rating">
                         <input type="radio" id="star-5" name="rating" value="5">
                         <label for="star-5" title="Оценка «5»"></label>	
@@ -212,10 +201,6 @@ if($rating == 3){
 }
 if($rating == 4){
     echo'
-                    <div class="mb-4">
-                    <label for="exampleFormControlTextarea1" class="form-label">Тема сообщения</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="text">'.$text.'</textarea>
-                    </div> 
                     <div class="rating-area" name="rating">
                         <input type="radio" id="star-5" name="rating" value="5">
                         <label for="star-5" title="Оценка «5»"></label>	
@@ -232,10 +217,6 @@ if($rating == 4){
 }
 if($rating == 5){
     echo'
-                    <div class="mb-4">
-                    <label for="exampleFormControlTextarea1" class="form-label">Тема сообщения</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="text">'.$text.'</textarea>
-                    </div> 
                     <div class="rating-area" name="rating">
                         <input type="radio" id="star-5" name="rating" value="5" checked>
                         <label for="star-5" title="Оценка «5»"></label>	

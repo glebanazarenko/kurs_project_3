@@ -11,7 +11,7 @@
 
         <!-- css -->
         <link href="/курсач/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="/курсач/css/styles.css" rel="stylesheet" type="text/css" />
+        <link href="/курсач/css/styles-dark.css" rel="stylesheet" type="text/css" />
     </head>
 
 
@@ -28,7 +28,7 @@ login='".$session_user_login."'
 ");
 $Arr = mysqli_fetch_assoc($result);
 
-echo'<body class="Site">
+echo'<body class="bg-dark Site">
 <!-- start navbar -->
 <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
     <div class="container">
@@ -39,20 +39,20 @@ echo'<body class="Site">
         <div class="navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto navbar-center mt-lg-0 mt-2">
                 <li class="nav-item">
-                    <a class="nav-link-a" href="checkIn.php?id='.$Arr["id"].'">Главная</a>
+                    <a class="nav-link-a" href="checkIn_black.php?id='.$Arr["id"].'">Главная</a>
                 </li><!--end nav-item-->
                 <li class="nav-item">
-                    <a class="nav-link-a" href="../black/checkIn_black.php?id='.$Arr["id"].'&type=search">Темная тема</a>
+                    <a class="nav-link-a" href="../white/checkIn.php?id='.$Arr["id"].'&type=search">Светлая тема</a>
                 </li><!--end nav-item-->
                 <li class="nav-item">
-                    <a class="nav-link-a active" href="checkIn.php?type=search">Поиск</a>
-                </li><!--end nav-item--> 
-                <li class="nav-item">
-                    <a class="nav-link-a" href="checkIn.php?type=feedback_before_all&id='.$Arr["id"].'">Отзыв до проверки</a>
+                    <a class="nav-link-a active" href="checkIn_black.php?type=search&id='.$Arr["id"].'">Поиск</a>
                 </li><!--end nav-item-->      
                 <li class="nav-item">
-                    <a class="nav-link-a" href="checkIn.php?type=feedback_after_all&id='.$Arr["id"].'">Отзыв после проверки</a>
-                </li><!--end nav-item-->                        
+                    <a class="nav-link-a" href="checkIn_black.php?type=feedback_before_all&id='.$Arr["id"].'">Отзыв до проверки</a>
+                </li><!--end nav-item-->      
+                <li class="nav-item">
+                    <a class="nav-link-a" href="checkIn_black.php?type=feedback_after_all&id='.$Arr["id"].'">Отзыв после проверки</a>
+                </li><!--end nav-item-->                
             </ul><!--end navbar-nav-->
             <button type="button" class="btn btn-primary btn-hover">VIP: '.$Arr['name'].'</button>
             <button type="button" class="btn btn-green"><a class="btn-a" href="../../visitor/white/index.php">Выйти из аккаунта</a></button>
@@ -65,9 +65,8 @@ echo'<body class="Site">
 <main class="Site-content">
 
 
-
 <!-- start hero -->
-        <section class="hero-one position-relative bg-white" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
+        <section class="hero-one position-relative bg-dark" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
             <div class="container">
                 <div class="row align-items-center justify-content-center py-100">
                     <div class="col-lg-7 text-center py-5 text-center">
@@ -89,7 +88,6 @@ echo'<body class="Site">
 
 
 ?>
-
 <?php
                         $gas_type = $_POST["gas"];
                         $ventilation_type = $_POST["ventilation"];
@@ -117,12 +115,12 @@ echo'<body class="Site">
                 <div class="col col-lg-3">
                     <section class="container ">
                     <form method="POST">
-                        <h1>Фильтр</h1>
+                        <h1 class="bg-dark text-white">Фильтр</h1>
 
                         <div class="input-group mb-2">
                         
-                    <label class="input-group-text" for="inputGroupSelect01">Тип газа в доме</label>
-                    <select name="gas" class="select-css" id="inputGroupSelect01">
+                    <label class="input-group-text bg-dark text-white" for="inputGroupSelect01">Тип газа в доме</label>
+                    <select name="gas" class="select-css bg-dark text-white" id="inputGroupSelect01">
                         <option selected>Выберите</option>
                         <option value="1" <?php if (isset($gas_type) && $gas_type=="1") echo "selected='selected'";?> >Без разницы</option>
                         <option value="2" <?php if (isset($gas_type) && $gas_type=="2") echo "selected='selected'";?> >Автономное</option>
@@ -131,8 +129,8 @@ echo'<body class="Site">
                     </select>
                 </div>
                 <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupSelect01">Тип вентиляции в доме</label>
-                    <select name="ventilation" class="select-css" id="inputGroupSelect01">
+                    <label class="input-group-text bg-dark text-white" for="inputGroupSelect01">Тип вентиляции в доме</label>
+                    <select name="ventilation" class="select-css bg-dark text-white" id="inputGroupSelect01">
                         <option selected>Выберите</option>
                         <option value="1" <?php if (isset($ventilation_type) && $ventilation_type=="1") echo "selected='selected'";?> >Без разницы</option>
                         <option value="2" <?php if (isset($ventilation_type) && $ventilation_type=="2") echo "selected='selected'";?> >Вытяжная вентиляция</option>
@@ -142,8 +140,8 @@ echo'<body class="Site">
                     </select>
                 </div>
                 <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupSelect01">Тип отопления в доме</label>
-                    <select name="heating" class="select-css" id="inputGroupSelect01">
+                    <label class="input-group-text bg-dark text-white" for="inputGroupSelect01">Тип отопления в доме</label>
+                    <select name="heating" class="select-css bg-dark text-white" id="inputGroupSelect01">
                         <option selected>Выберите</option>
                         <option value="1" <?php if (isset($heating_type) && $heating_type=="1") echo "selected='selected'";?> >Без разницы</option>
                         <option value="2" <?php if (isset($heating_type) && $heating_type=="2") echo "selected='selected'";?> >Автономная котельная</option>
@@ -155,8 +153,8 @@ echo'<body class="Site">
                     </select>
                 </div>
                 <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupSelect01">Тип мусоропровода в доме</label>
-                    <select name="chute" class="select-css" id="inputGroupSelect01">
+                    <label class="input-group-text bg-dark text-white" for="inputGroupSelect01">Тип мусоропровода в доме</label>
+                    <select name="chute" class="select-css bg-dark text-white" id="inputGroupSelect01">
                         <option selected>Выберите</option>
                         <option value="1" <?php if (isset($chute_type) && $chute_type=="1") echo "selected='selected'";?> >Без разницы</option>
                         <option value="2" <?php if (isset($chute_type) && $chute_type=="2") echo "selected='selected'";?> >Cухой</option>
@@ -167,18 +165,18 @@ echo'<body class="Site">
                     </select>
                 </div>
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Площадь парковки (минимум)</span>
-                    <input type="text" name="parking" class="form-control" placeholder="123456789" aria-label="Username" aria-describedby="basic-addon1"
+                    <span class="input-group-text bg-dark text-white" id="basic-addon1">Площадь парковки (минимум)</span>
+                    <input type="text" name="parking" class="form-control bg-dark text-white" placeholder="123456789" aria-label="Username" aria-describedby="basic-addon1"
                     value="<?=$parking_square?>">
                 </div> 
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Количество лифтов (минимум)</span>
-                    <input type="text" name="elevator" class="form-control" placeholder="123456789" aria-label="Username" aria-describedby="basic-addon1"
+                    <span class="input-group-text bg-dark text-white" id="basic-addon1">Количество лифтов (минимум)</span>
+                    <input type="text" name="elevator" class="form-control bg-dark text-white" placeholder="123456789" aria-label="Username" aria-describedby="basic-addon1"
                     value="<?=$elevators_count?>">
                 </div> 
                 <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupSelect01">Тип дома</label>
-                    <select name="house_type" class="select-css" id="inputGroupSelect01">
+                    <label class="input-group-text bg-dark text-white" for="inputGroupSelect01">Тип дома</label>
+                    <select name="house_type" class="select-css bg-dark text-white" id="inputGroupSelect01">
                         <option selected>Выберите</option>
                         <option value="1" <?php if (isset($house_type) && $house_type=="1") echo "selected='selected'";?> >Без разницы</option>
                         <option value="2" <?php if (isset($house_type) && $house_type=="2") echo "selected='selected'";?> >Жилой дом блокированной застройки</option>
@@ -187,7 +185,7 @@ echo'<body class="Site">
                     </select>
                 </div>
 
-                        <button type="submit" class="btn">Применить</button>
+                        <button type="submit" class="btn bg-dark text-white">Применить</button>
                     </form>
                     </section>
 
@@ -198,7 +196,7 @@ echo'<body class="Site">
                 
 
                 <!-- start hero -->
-                    <h6 class="bg-white text-dark fs-2 container text-center">Поиск</h6>
+                    <h6 class="bg-dark text-white fs-2 container text-center">Поиск</h6>
                 <!-- end hero --> 
 
 
@@ -206,9 +204,9 @@ echo'<body class="Site">
             <form method="POST">
                 <div class="mb-4">
                 <label for="exampleInputLogin1" class="form-label">Адрес</label>
-                    <input type="text" name="address" class="form-control" placeholder="qwerty" id="exampleInputLogin1" aria-label="Username" aria-describedby="basic-addon1">
+                    <input type="text" name="address" class="form-control bg-dark" placeholder="qwerty" id="exampleInputLogin1" aria-label="Username" aria-describedby="basic-addon1">
                 </div> 
-                <button type="submit" class="btn btn-primary">Подтвердить</button>
+                <button type="submit" class="btn btn-success">Подтвердить</button>
 
             </form>
         </section>
@@ -428,9 +426,6 @@ echo'<body class="Site">
             h.chute_type = \"$chute_type\" AND h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
             h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 10");*/
 
-            $result = mysqli_query($mysql, "SELECT * FROM house as h where
-                            h.gas_type = \"$gas_type\" AND h.ventilation_type = \"$ventilation_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 10");
-
 
             
             if($result != NULL){
@@ -438,7 +433,7 @@ echo'<body class="Site">
                     if($context == NULL){
                         $context = '
                         <div style="container-lg text-align: center;">
-                        <table class="table" style="width: 1200px; margin: auto;">
+                        <table class="table table-dark" style="width: 1200px; margin: auto;">
                             <thead>
                             <tr>
                                 <td> Адресс дома
@@ -452,9 +447,9 @@ echo'<body class="Site">
                             </tr>
                             </thead>';
                     }
-                    $context .= '
+                        $context .= '
                         <tr>
-                            <td><a class="nav-link-a active" href=checkIn.php?house_id='.$product["id"].'&type=house&id='.$Arr["id"].'&role_id=2>'.$product["address"].'</a>
+                            <td><a class="nav-link-a" href=checkIn_black.php?house_id='.$product["id"].'&type=house&id='.$Arr["id"].'&role_id=2>'.$product["address"].'</a>
                             </td>
                             <td>'.$product["exploitation_start_year"].'
                             </td>
@@ -486,7 +481,7 @@ echo'<body class="Site">
         echo "</main>";
 
 
-        include "footer.php";
+        include "footer_black.php";
         ?>
         
     </body>

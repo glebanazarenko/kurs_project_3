@@ -43,16 +43,16 @@ echo'<body class="Site">
                     <a class="nav-link-a" href="checkIn.php?id='.$Arr["id"].'">Главная</a>
                 </li><!--end nav-item-->
                 <li class="nav-item">
-                    <a class="nav-link-a" href="../black/checkIn_black.php?type=feedback_before&feedback_id='.$feedback_id.'&id='.$Arr["id"].'">Темная тема</a>
+                    <a class="nav-link-a" href="../black/checkIn_black.php?type=feedback_after&feedback_id='.$feedback_id.'&id='.$Arr["id"].'">Темная тема</a>
                 </li><!--end nav-item-->
                 <li class="nav-item">
                     <a class="nav-link-a" href="checkIn.php?type=search&id='.$Arr["id"].'">Поиск</a>
                 </li><!--end nav-item-->      
                 <li class="nav-item">
-                    <a class="nav-link-a active" href="checkIn.php?type=feedback_before_all&id='.$Arr["id"].'">Отзыв до проверки</a>
+                    <a class="nav-link-a" href="checkIn.php?type=feedback_before_all&id='.$Arr["id"].'">Отзыв до проверки</a>
                 </li><!--end nav-item-->      
                 <li class="nav-item">
-                    <a class="nav-link-a" href="checkIn.php?type=feedback_after_all&id='.$Arr["id"].'">Отзыв после проверки</a>
+                    <a class="nav-link-a active" href="checkIn.php?type=feedback_after_all&id='.$Arr["id"].'">Отзыв после проверки</a>
                 </li><!--end nav-item-->                
             </ul><!--end navbar-nav-->
             <button type="button" class="btn btn-primary btn-hover">VIP: '.$Arr['name'].'</button>
@@ -117,7 +117,7 @@ $result = mysqli_query($mysql, "SELECT u.login, u.name, h.address, f.rating, f.t
 echo'
 
             <section class="container text-left">
-                <form action="../../check/white/checkIn.php?type=feedback_before_all&delete=0&feedback_id='.$feedback_id.'&id='.$Arr["id"].'"   method="POST">
+                <form action="../../check/white/checkIn.php?type=feedback_after_all&delete=0&feedback_id='.$feedback_id.'&id='.$Arr["id"].'"   method="POST">
                     <!-- Hidden Required Fields -->';
 
 

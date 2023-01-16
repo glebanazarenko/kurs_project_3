@@ -444,7 +444,7 @@ echo'<body class="bg-dark Site">
                     }
                         $context .= '
                         <tr>
-                            <td><a class="nav-link-a" href=checkIn.php?house_id='.$product["id"].'&type=house&id='.$Arr["id"].'>'.$product["address"].'</a>
+                            <td><a class="nav-link-a" href=checkIn_black.php?house_id='.$product["id"].'&type=house&id='.$Arr["id"].'&role_id=1>'.$product["address"].'</a>
                             </td>
                             <td>'.$product["exploitation_start_year"].'
                             </td>

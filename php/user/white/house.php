@@ -43,7 +43,7 @@ echo'<body class="Site">
                     <a class="nav-link-a" href="checkIn.php?id='.$Arr["id"].'">Главная</a>
                 </li><!--end nav-item-->
                 <li class="nav-item">
-                    <a class="nav-link-a" href="../black/checkIn_black.php?house_id='.$house_id.'&type=house&id='.$Arr["id"].'">Темная тема</a>
+                    <a class="nav-link-a" href="../black/checkIn_black.php?house_id='.$house_id.'&type=house&id='.$Arr["id"].'&role_id=1">Темная тема</a>
                 </li><!--end nav-item-->
                 <li class="nav-item">
                     <a class="nav-link-a active" href="checkIn.php?type=search&id='.$Arr["id"].'">Поиск</a>

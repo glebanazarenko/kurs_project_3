@@ -70,21 +70,29 @@ if(!empty($_GET)){
             if($Arr["role_id"] == 3){
                 include("../../admin/black/search.php");
             }
-            else{
+            if($Arr["role_id"] == 1){
                 include("../../user/black/search_black.php");
             }  
+            if($Arr["role_id"] == 2){
+                include("../../vip/black/search.php");
+            }
         }
         if ($type == "house"){
             $house_id = $_GET["house_id"];
-
             $role_id = $_GET['role_id'];
             echo $role_id;
             if($role_id == 3){
                 include("../../admin/black/house.php");
-            }else{
+            }
+            if($role_id == 1){
                 include("../../user/black/house_black.php");
             }
+            if($role_id == 2){
+                include("../../vip/black/house.php");
+            }
+            echo 52;
         }
+
         if ($type == "new_feedback_all"){
             $is_published = $_GET['is_published'];
             $feedback_id = $_GET["feedback_id"];
@@ -125,12 +133,70 @@ if(!empty($_GET)){
             $feedback_id = $_GET["feedback_id"];
             include("../../admin/black/old_feedback.php");
         }
+
+        if($type == "feedback_before_all"){
+            $feedback_id = $_GET["feedback_id"];
+            $delete = $_GET["delete"];
+            if ($delete == NULL){
+                include("../../vip/black/feedback_before_all.php");
+            }else{
+                if ($delete == 1){
+                    $mysql->query("DELETE FROM `feedback` WHERE `feedback`.`id` = $feedback_id");
+                    include("../../vip/black/feedback_before_all.php");
+                }
+                if ($delete == 0){
+                    if(!empty($_POST)){
+                        $text = $_POST["text"];
+                        $rating = $_POST["rating"];
+                        $mysql->query("UPDATE `feedback` SET `text` = '$text', `rating` = '$rating' WHERE `feedback`.`id` = $feedback_id");
+                        include("../../vip/black/feedback_before_all.php");
+                    }
+                }
+            }
+            
+        }
+        if($type == "feedback_before"){
+            $feedback_id = $_GET["feedback_id"];
+            include("../../vip/black/feedback_before.php");
+        }
+
+
+
+        if($type == "feedback_after_all"){
+            $feedback_id = $_GET["feedback_id"];
+            $delete = $_GET["delete"];
+            if ($delete == NULL){
+                include("../../vip/black/feedback_after_all.php");
+            }else{
+                if ($delete == 1){
+                    $mysql->query("DELETE FROM `feedback` WHERE `feedback`.`id` = $feedback_id");
+                    include("../../vip/black/feedback_after_all.php");
+                }
+                if ($delete == 0){
+                    if(!empty($_POST)){
+                        $text = $_POST["text"];
+                        $rating = $_POST["rating"];
+                        $mysql->query("UPDATE `feedback` SET `text` = '$text', `rating` = '$rating', `is_checked` = '0', `is_published` = '0' WHERE `feedback`.`id` = $feedback_id");
+                        include("../../vip/black/feedback_after_all.php");
+                    }
+                }
+            } 
+        }
+        if($type == "feedback_after"){
+            $feedback_id = $_GET["feedback_id"];
+            include("../../vip/black/feedback_after.php");
+        }
+
+
     }else{
         if($Arr["role_id"] == 3){
             include("../../admin/black/signed.php");
         }
-        else{
+        if($Arr["role_id"] == 1){
             include("../../user/black/signed_black.php");
+        }
+        if($Arr["role_id"] == 2){
+            include("../../vip/black/signed.php");
         }
     }
 }
