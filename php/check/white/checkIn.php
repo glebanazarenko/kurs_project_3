@@ -13,12 +13,67 @@ if(isset($_POST['login'])){
     ");
 
     if(!$result1 || mysqli_num_rows($result1) == 0){
-        echo "Пользователя с таким логином не существует.";
+        echo '
+        <!DOCTYPE html>
+            <html lang="ru">
+                <head>
+                    <meta charset="utf-8" />
+                    <title>НормДом</title>
+                    <meta name="keywords" content="НормДом" />
+                    <meta content="Mannatthemes" name="author" />
+
+                    <!-- favicon -->
+                    <link rel="shortcut icon" href="/курсач/images/NormDomLogoNOTEXT1.ico" />
+
+                    <!-- css -->
+                    <link href="/курсач/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+                    <link href="../../../css/styles.css" rel="stylesheet" type="text/css" />
+                </head>
+
+                <body class="Site">
+                    <main class="Site-content text-center">
+                    <br>
+                    <br>
+                    <br>
+                        <h3>Пользователя с таким логином не существует.</h3>
+                        <br>
+                        <a class="btn btn-dark" href="../../visitor/white/signIn.php" role="button">Назад</a>
+                    </main>
+                </body>
+            </html>';
         exit;
     }
 
     if(!$result2 || mysqli_num_rows($result2) == 0){
-        echo "Неправильный пароль.";
+        echo '
+        <!DOCTYPE html>
+            <html lang="ru">
+                <head>
+                    <meta charset="utf-8" />
+                    <title>НормДом</title>
+                    <meta name="keywords" content="НормДом" />
+                    <meta content="Mannatthemes" name="author" />
+
+                    <!-- favicon -->
+                    <link rel="shortcut icon" href="/курсач/images/NormDomLogoNOTEXT1.ico" />
+
+                    <!-- css -->
+                    <link href="/курсач/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+                    <link href="../../../css/styles.css" rel="stylesheet" type="text/css" />
+                </head>
+
+                <body class="Site">
+                    <main class="Site-content text-center">
+                    <br>
+                    <br>
+                    <br>
+                        <h3>Неправильный пароль.</h3>
+                        <br>
+                        <a class="btn btn-dark" href="../../visitor/white/signIn.php" role="button">Назад</a>
+                    </main>
+                </body>
+            </html>
+        ';
         exit;
     }
 

@@ -19,7 +19,7 @@ if(!empty($_POST)){
     $result = mysqli_query($mysql, "SELECT * FROM feedback WHERE user_id=\"".$user_id."\" AND house_id=\"".$house_id."\"");
 
     if(mysqli_num_rows($result) == 0 && $text != ""){
-        /*mysqli_query($mysql, "INSERT INTO feedback (id, user_id, house_id, text, rating, is_checked, is_published) VALUES (
+        mysqli_query($mysql, "INSERT INTO feedback (id, user_id, house_id, text, rating, is_checked, is_published) VALUES (
             NULL, 
             \"".$user_id."\",
             \"".$house_id."\",
@@ -29,7 +29,6 @@ if(!empty($_POST)){
             \"0\"
             )"
         );
-        */
 
         
 

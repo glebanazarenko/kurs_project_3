@@ -3,7 +3,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-5 border-e-dashed">
-                        <a href="">
+                        <a href="main_black.php">
                             <img src="/курсач/images/NormDomTextFooter.png" alt="" height="70" />
                             <img src="/курсач/images/logo-light.png" alt="" height="16" />
                         </a>

@@ -56,7 +56,7 @@ echo'<body class="Site bg-dark">
                 </li><!--end nav-item-->                
             </ul><!--end navbar-nav-->
             <button type="button" class="btn btn-primary btn-hover">VIP: '.$Arr['name'].'</button>
-            <button type="button" class="btn btn-green"><a class="btn-a" href="../../visitor/white/index.php">Выйти из аккаунта</a></button>
+            <button type="button" class="btn btn-green"><a class="btn-a" href="../../visitor/black/main_black.php">Выйти из аккаунта</a></button>
             <!--<a href="singUp.php" class="btn btn-sm nav-btn text-primary mb-4 mb-lg-0">Регистрация<i class="icon-xxs ms-1" data-feather="chevrons-right"></i></a>-->
         </div><!-- end #navbarNav -->
     </div><!-- end container -->
@@ -241,7 +241,7 @@ echo '
                             <button type="submit" class="btn btn-success">Подтвердить изменения</button>
                         </div>
                         <div class="col">
-                            <a class="btn btn-danger" href="checkIn.php?type=feedback_before_all&delete=1&feedback_id='.$feedback_id.'&id='.$Arr["id"].'" role="button">Удалить отзыв</a>
+                            <a class="btn btn-danger" href="checkIn_black.php?type=feedback_before_all&delete=1&feedback_id='.$feedback_id.'&id='.$Arr["id"].'" role="button">Удалить отзыв</a>
                         </div>
                     </div>
                 </div>

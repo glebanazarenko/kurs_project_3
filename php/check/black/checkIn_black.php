@@ -12,12 +12,67 @@ if(isset($_POST['login'])){
     ");
 
     if(!$result1 || mysqli_num_rows($result1) == 0){
-        echo "Пользователя с таким логином не существует.";
+        echo '
+        <!DOCTYPE html>
+            <html lang="ru">
+                <head>
+                    <meta charset="utf-8" />
+                    <title>НормДом</title>
+                    <meta name="keywords" content="НормДом" />
+                    <meta content="Mannatthemes" name="author" />
+
+                    <!-- favicon -->
+                    <link rel="shortcut icon" href="/курсач/images/NormDomLogoNOTEXT1.ico" />
+
+                    <!-- css -->
+                    <link href="/курсач/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+                    <link href="../../../css/styles.css" rel="stylesheet" type="text/css" />
+                </head>
+
+                <body class="Site bg-dark text-white">
+                    <main class="Site-content text-center">
+                    <br>
+                    <br>
+                    <br>
+                        <h3>Пользователя с таким логином не существует.</h3>
+                        <br>
+                        <a class="btn btn-light" href="../../visitor/black/signIn_black.php" role="button">Назад</a>
+                    </main>
+                </body>
+            </html>';
         exit;
     }
 
     if(!$result2 || mysqli_num_rows($result2) == 0){
-        echo "Неправильный пароль.";
+        echo '
+        <!DOCTYPE html>
+            <html lang="ru">
+                <head>
+                    <meta charset="utf-8" />
+                    <title>НормДом</title>
+                    <meta name="keywords" content="НормДом" />
+                    <meta content="Mannatthemes" name="author" />
+
+                    <!-- favicon -->
+                    <link rel="shortcut icon" href="/курсач/images/NormDomLogoNOTEXT1.ico" />
+
+                    <!-- css -->
+                    <link href="/курсач/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+                    <link href="../../../css/styles.css" rel="stylesheet" type="text/css" />
+                </head>
+
+                <body class="Site bg-dark text-white">
+                    <main class="Site-content text-center">
+                    <br>
+                    <br>
+                    <br>
+                        <h3>Неправильный пароль.</h3>
+                        <br>
+                        <a class="btn btn-light" href="../../visitor/black/signIn_black.php" role="button">Назад</a>
+                    </main>
+                </body>
+            </html>
+        ';
         exit;
     }
 
@@ -27,17 +82,38 @@ if(isset($_POST['login'])){
     role_id = 3
     ");
 
+    $result4 = mysqli_query($mysql, "SELECT * FROM user WHERE
+    login='".$_POST["login"]."' AND
+    password='".md5($_POST["password"])."' AND
+    role_id = 2
+    ");
+
     if(!$result3 || mysqli_num_rows($result3) == 0){
-        if(!isset($_GET['session_user'])){
-            $Arr = mysqli_fetch_assoc($result2);
-            $_SESSION["user"] = $Arr['login'];
-            $session_user_login = $_SESSION["user"];
-        }
-        else{
-            $session_user_login = $_GET['session_user'];
-        }
-        include("../../user/black/signed_black.php");
-    }else{
+        if(mysqli_num_rows($result4) != 0){
+            if(!isset($_GET['session_user'])){
+                $Arr = mysqli_fetch_assoc($result2);
+                $_SESSION["user"] = $Arr['login'];
+                $session_user_login = $_SESSION["user"];
+            }
+            else{
+                $session_user_login = $_GET['session_user'];
+            }
+            include("../../vip/black/signed.php");
+        }else{
+            if(!isset($_GET['session_user'])){
+                $Arr = mysqli_fetch_assoc($result2);
+                $_SESSION["user"] = $Arr['login'];
+                $session_user_login = $_SESSION["user"];
+            }
+            else{
+                $session_user_login = $_GET['session_user'];
+            }
+            include("../../user/black/signed_black.php");
+        }   
+    }
+
+
+    if(mysqli_num_rows($result3) != 0){
         if(!isset($_GET['session_user'])){
             $Arr = mysqli_fetch_assoc($result3);
             $_SESSION["user"] = $Arr['login'];

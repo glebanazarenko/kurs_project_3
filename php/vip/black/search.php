@@ -55,7 +55,7 @@ echo'<body class="bg-dark Site">
                 </li><!--end nav-item-->                
             </ul><!--end navbar-nav-->
             <button type="button" class="btn btn-primary btn-hover">VIP: '.$Arr['name'].'</button>
-            <button type="button" class="btn btn-green"><a class="btn-a" href="../../visitor/white/index.php">Выйти из аккаунта</a></button>
+            <button type="button" class="btn btn-green"><a class="btn-a" href="../../visitor/black/main_black.php">Выйти из аккаунта</a></button>
             <!--<a href="singUp.php" class="btn btn-sm nav-btn text-primary mb-4 mb-lg-0">Регистрация<i class="icon-xxs ms-1" data-feather="chevrons-right"></i></a>-->
         </div><!-- end #navbarNav -->
     </div><!-- end container -->
@@ -203,8 +203,8 @@ echo'<body class="bg-dark Site">
         <section class="container text-left">
             <form method="POST">
                 <div class="mb-4">
-                <label for="exampleInputLogin1" class="form-label">Адрес</label>
-                    <input type="text" name="address" class="form-control bg-dark" placeholder="qwerty" id="exampleInputLogin1" aria-label="Username" aria-describedby="basic-addon1">
+                <label for="exampleInputLogin1" class="form-label bg-dark text-white">Адрес</label>
+                    <input type="text" name="address" class="form-control bg-dark text-white" placeholder="qwerty" id="exampleInputLogin1" aria-label="Username" aria-describedby="basic-addon1">
                 </div> 
                 <button type="submit" class="btn btn-success">Подтвердить</button>
 
@@ -220,7 +220,7 @@ echo'<body class="bg-dark Site">
             $Arr = mysqli_fetch_assoc($result);
 
             if ($gas_type == 1){
-                $gas_type = "Отсутствует";
+                $gas_type = "Безразницы";
             }
             if ($gas_type == 2){
                 $gas_type = "Автономное";
@@ -233,7 +233,7 @@ echo'<body class="bg-dark Site">
             }
 
             if ($ventilation_type == 1){
-                $ventilation_type = "Отсутствует";
+                $ventilation_type = "Безразницы";
             }
             if ($ventilation_type == 2){
                 $ventilation_type = "Вытяжная вентиляция";
@@ -250,7 +250,7 @@ echo'<body class="bg-dark Site">
 
             
             if ($heating_type == 1){
-                $heating_type = "Отсутствует";
+                $heating_type = "Безразницы";
             }
             if ($heating_type == 2){
                 $heating_type = "Автономная котельная (крышная, встроенно-пристроенная)";
@@ -273,7 +273,7 @@ echo'<body class="bg-dark Site">
 
 
             if ($chute_type == 1){
-                $chute_type = "Отсутствует";
+                $chute_type = "Безразницы";
             }
             if ($chute_type == 2){
                 $chute_type = "Cухой";
@@ -294,7 +294,7 @@ echo'<body class="bg-dark Site">
 
 
             if ($house_type == 1){
-                $house_type = "Не заполнено";
+                $house_type = "Безразницы";
             }
             if ($house_type == 2){
                 $house_type = "Жилой дом блокированной застройки";
@@ -311,111 +311,223 @@ echo'<body class="bg-dark Site">
             $elevators_count;
 
 
-            if($gas_type == "Отсутствует"){
-                if($ventilation_type == "Отсутствует"){
-                    if($heating_type == "Отсутствует"){
-                        if($chute_type == "Отсутствует"){
-                            $result = mysqli_query($mysql, "SELECT * FROM house as h where
-                            h.gas_type != \"\" AND h.ventilation_type != \"\" AND h.heating_type != \"\" AND
-                            h.chute_type != \"\" AND h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
-                            h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 10");
+            if($gas_type == "Безразницы"){
+                if($ventilation_type == "Безразницы"){
+                    if($heating_type == "Безразницы"){
+                        if($chute_type == "Безразницы"){
+                            if($house_type == "Безразницы"){
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" 
+                                AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
+                            else{  
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
+                                h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
                         }else{
-                            $result = mysqli_query($mysql, "SELECT * FROM house as h where
-                            h.gas_type != \"\" AND h.ventilation_type != \"\" AND h.heating_type != \"\" AND
-                            h.chute_type = \"$chute_type\" AND h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
-                            h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 10");
+                            if($house_type == "Безразницы"){
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where 
+                                h.chute_type = \"$chute_type\" AND
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" 
+                                AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
+                            else{  
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where
+                                h.chute_type = \"$chute_type\" AND 
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
+                                h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
                         }
                     }else{
-                        if($chute_type == "Отсутствует"){
-                            $result = mysqli_query($mysql, "SELECT * FROM house as h where
-                            h.gas_type != \"\" AND h.ventilation_type != \"\" AND h.heating_type = \"$heating_type\" AND
-                            h.chute_type != \"\" AND h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
-                            h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 10");
+                        if($chute_type == "Безразницы"){
+                            if($house_type == "Безразницы"){
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where h.heating_type = \"$heating_type\" AND
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" 
+                                AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
+                            else{  
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where h.heating_type = \"$heating_type\" AND
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
+                                h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
                         }else{
-                            $result = mysqli_query($mysql, "SELECT * FROM house as h where
-                            h.gas_type != \"\" AND h.ventilation_type != \"\" AND h.heating_type = \"$heating_type\" AND
-                            h.chute_type = \"$chute_type\" AND h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
-                            h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 10");
+                            if($house_type == "Безразницы"){
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where  h.heating_type = \"$heating_type\" AND
+                                h.chute_type = \"$chute_type\" AND
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" 
+                                AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
+                            else{  
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where h.heating_type = \"$heating_type\" AND
+                                 h.chute_type = \"$chute_type\" AND
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
+                                h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
                         }
                     }
                 }else{
-                    if($heating_type == "Отсутствует"){
-                        if($chute_type == "Отсутствует"){
-                            $result = mysqli_query($mysql, "SELECT * FROM house as h where
-                            h.gas_type != \"\" AND h.ventilation_type = \"$ventilation_type\" AND h.heating_type != \"\" AND
-                            h.chute_type != \"\" AND h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
-                            h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 10");
+                    if($heating_type == "Безразницы"){
+                        if($chute_type == "Безразницы"){
+                            if($house_type == "Безразницы"){
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where h.ventilation_type = \"$ventilation_type\" And
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" 
+                                AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
+                            else{  
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where h.ventilation_type = \"$ventilation_type\" And
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
+                                h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
                         }else{
-                            $result = mysqli_query($mysql, "SELECT * FROM house as h where
-                            h.gas_type != \"\" AND h.ventilation_type = \"$ventilation_type\" AND h.heating_type != \"\" AND
-                            h.chute_type = \"$chute_type\" AND h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
-                            h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 10");
+                            if($house_type == "Безразницы"){
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where  h.ventilation_type = \"$ventilation_type\" And
+                                h.chute_type = \"$chute_type\" AND
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" 
+                                AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
+                            else{  
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where h.ventilation_type = \"$ventilation_type\" And
+                                h.chute_type = \"$chute_type\" AND 
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
+                                h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
                         }
                     }else{
-                        if($chute_type == "Отсутствует"){
-                            $result = mysqli_query($mysql, "SELECT * FROM house as h where
-                            h.gas_type != \"\" AND h.ventilation_type = \"$ventilation_type\" AND h.heating_type = \"$heating_type\" AND
-                            h.chute_type != \"\" AND h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
-                            h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 10");
+                        if($chute_type == "Безразницы"){
+                            if($house_type == "Безразницы"){
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where h.ventilation_type = \"$ventilation_type\" And h.heating_type = \"$heating_type\" AND
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" 
+                                AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
+                            else{  
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where h.ventilation_type = \"$ventilation_type\" And h.heating_type = \"$heating_type\" AND
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
+                                h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
                         }else{
-                            $result = mysqli_query($mysql, "SELECT * FROM house as h where
-                            h.gas_type != \"\" AND h.ventilation_type = \"$ventilation_type\" AND h.heating_type = \"$heating_type\" AND
-                            h.chute_type = \"$chute_type\" AND h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
-                            h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 10");
+                            if($house_type == "Безразницы"){
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where h.ventilation_type = \"$ventilation_type\" And  h.heating_type = \"$heating_type\" AND
+                                h.chute_type = \"$chute_type\" AND
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" 
+                                AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
+                            else{  
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where h.ventilation_type = \"$ventilation_type\" And h.heating_type = \"$heating_type\" AND
+                                 h.chute_type = \"$chute_type\" AND
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
+                                h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
                         }
                     }
                 }
             }else{
-                if($ventilation_type == "Отсутствует"){
-                    if($heating_type == "Отсутствует"){
-                        if($chute_type == "Отсутствует"){
-                            $result = mysqli_query($mysql, "SELECT * FROM house as h where
-                            h.gas_type = \"$gas_type\" AND h.ventilation_type != \"\" AND h.heating_type != \"\" AND
-                            h.chute_type != \"\" AND h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
-                            h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 10");
+                if($ventilation_type == "Безразницы"){
+                    if($heating_type == "Безразницы"){
+                        if($chute_type == "Безразницы"){
+                            if($house_type == "Безразницы"){
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where h.gas_type = \"$gas_type\" AND
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" 
+                                AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
+                            else{  
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where h.gas_type = \"$gas_type\" AND
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
+                                h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
                         }else{
-                            $result = mysqli_query($mysql, "SELECT * FROM house as h where
-                            h.gas_type = \"$gas_type\" AND h.ventilation_type != \"\" AND h.heating_type != \"\" AND
-                            h.chute_type = \"$chute_type\" AND h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
-                            h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 10");
+                            if($house_type == "Безразницы"){
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where  h.gas_type = \"$gas_type\" AND
+                                h.chute_type = \"$chute_type\" AND
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" 
+                                AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
+                            else{  
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where h.gas_type = \"$gas_type\" AND
+                                h.chute_type = \"$chute_type\" AND 
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
+                                h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
                         }
                     }else{
-                        if($chute_type == "Отсутствует"){
-                            $result = mysqli_query($mysql, "SELECT * FROM house as h where
-                            h.gas_type = \"$gas_type\" AND h.ventilation_type != \"\" AND h.heating_type = \"$heating_type\" AND
-                            h.chute_type != \"\" AND h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
-                            h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 10");
+                        if($chute_type == "Безразницы"){
+                            if($house_type == "Безразницы"){
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where h.gas_type = \"$gas_type\" AND h.heating_type = \"$heating_type\" AND
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" 
+                                AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
+                            else{  
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where h.gas_type = \"$gas_type\" AND h.heating_type = \"$heating_type\" AND
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
+                                h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
                         }else{
-                            $result = mysqli_query($mysql, "SELECT * FROM house as h where
-                            h.gas_type = \"$gas_type\" AND h.ventilation_type != \"\" AND h.heating_type = \"$heating_type\" AND
-                            h.chute_type = \"$chute_type\" AND h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
-                            h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 10");
+                            if($house_type == "Безразницы"){
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where h.gas_type = \"$gas_type\" AND  h.heating_type = \"$heating_type\" AND
+                                h.chute_type = \"$chute_type\" AND
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" 
+                                AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
+                            else{  
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where h.gas_type = \"$gas_type\" AND h.heating_type = \"$heating_type\" AND
+                                 h.chute_type = \"$chute_type\" AND
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
+                                h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
                         }
                     }
                 }else{
-                    if($heating_type == "Отсутствует"){
-                        if($chute_type == "Отсутствует"){
-                            $result = mysqli_query($mysql, "SELECT * FROM house as h where
-                            h.gas_type = \"$gas_type\" AND h.ventilation_type = \"$ventilation_type\" AND h.heating_type != \"\" AND
-                            h.chute_type != \"\" AND h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
-                            h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 10");
+                    if($heating_type == "Безразницы"){
+                        if($chute_type == "Безразницы"){
+                            if($house_type == "Безразницы"){
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where h.gas_type = \"$gas_type\" AND h.ventilation_type = \"$ventilation_type\" And
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" 
+                                AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
+                            else{  
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where h.gas_type = \"$gas_type\" AND h.ventilation_type = \"$ventilation_type\" And
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
+                                h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
                         }else{
-                            $result = mysqli_query($mysql, "SELECT * FROM house as h where
-                            h.gas_type = \"$gas_type\" AND h.ventilation_type = \"$ventilation_type\" AND h.heating_type != \"\" AND
-                            h.chute_type = \"$chute_type\" AND h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
-                            h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 10");
+                            if($house_type == "Безразницы"){
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where h.gas_type = \"$gas_type\" AND  h.ventilation_type = \"$ventilation_type\" And
+                                h.chute_type = \"$chute_type\" AND
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" 
+                                AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
+                            else{  
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where h.gas_type = \"$gas_type\" AND h.ventilation_type = \"$ventilation_type\" And
+                                h.chute_type = \"$chute_type\" AND 
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
+                                h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
                         }
                     }else{
-                        if($chute_type == "Отсутствует"){
-                            $result = mysqli_query($mysql, "SELECT * FROM house as h where
-                            h.gas_type = \"$gas_type\" AND h.ventilation_type = \"$ventilation_type\" AND h.heating_type = \"$heating_type\" AND
-                            h.chute_type != \"\" AND h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
-                            h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 10");
+                        if($chute_type == "Безразницы"){
+                            if($house_type == "Безразницы"){
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where h.gas_type = \"$gas_type\" AND h.ventilation_type = \"$ventilation_type\" And h.heating_type = \"$heating_type\" AND
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" 
+                                AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
+                            else{  
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where h.gas_type = \"$gas_type\" AND h.ventilation_type = \"$ventilation_type\" And h.heating_type = \"$heating_type\" AND
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
+                                h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
                         }else{
-                            $result = mysqli_query($mysql, "SELECT * FROM house as h where
-                            h.gas_type = \"$gas_type\" AND h.ventilation_type = \"$ventilation_type\" AND h.heating_type = \"$heating_type\" AND
-                            h.chute_type = \"$chute_type\" AND h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
-                            h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 10");
+                            if($house_type == "Безразницы"){
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where h.gas_type = \"$gas_type\" AND h.ventilation_type = \"$ventilation_type\" And  h.heating_type = \"$heating_type\" AND
+                                h.chute_type = \"$chute_type\" AND
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" 
+                                AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
+                            else{  
+                                $result = mysqli_query($mysql, "SELECT * FROM house as h where h.gas_type = \"$gas_type\" AND h.ventilation_type = \"$ventilation_type\" And h.heating_type = \"$heating_type\" AND
+                                 h.chute_type = \"$chute_type\" AND
+                                h.parking_square >= \"$parking_square\" AND h.elevators_count >= \"$elevators_count\" AND
+                                h.house_type = \"$house_type\" AND h.address LIKE \"%".$_POST['address']."%\" Limit 15");
+                            }
                         }
                     }
                 }
@@ -481,7 +593,7 @@ echo'<body class="bg-dark Site">
         echo "</main>";
 
 
-        include "footer_black.php";
+        include "footer.php";
         ?>
         
     </body>

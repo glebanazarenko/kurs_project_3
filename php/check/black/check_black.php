@@ -47,7 +47,35 @@ if(!empty($_POST)){
         include("../../user/black/signed_black.php");
 
     }else{
-        Echo'Такой логин уже занят';
+        Echo'
+        <!DOCTYPE html>
+            <html lang="ru">
+                <head>
+                    <meta charset="utf-8" />
+                    <title>НормДом</title>
+                    <meta name="keywords" content="НормДом" />
+                    <meta content="Mannatthemes" name="author" />
+
+                    <!-- favicon -->
+                    <link rel="shortcut icon" href="/курсач/images/NormDomLogoNOTEXT1.ico" />
+
+                    <!-- css -->
+                    <link href="/курсач/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+                    <link href="../../../css/styles.css" rel="stylesheet" type="text/css" />
+                </head>
+
+                <body class="Site bg-dark text-white">
+                    <main class="Site-content text-center">
+                    <br>
+                    <br>
+                    <br>
+                        <h3>Такой логин уже занят. Введите другой.</h3>
+                        <br>
+                        <a class="btn btn-light" href="../../visitor/black/signUp_black.php" role="button">Назад</a>
+                    </main>
+                </body>
+            </html>
+        ';
     }
 
 
