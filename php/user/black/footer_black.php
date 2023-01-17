@@ -40,6 +40,14 @@ echo'
                                     
                                 </ul>
                             </div><!-- end col -->
+                            <div class="col-md-4">
+                                <h6 class="text-footer mb-4 mt-sm-0 mt-5">Ссылки</h6>
+                                <ul class="list-unstyled footer-list">
+                                    <li><a href="https://www.reformagkh.ru/opendata?gid=2280999&cids=house_management&page=1&pageSize=10">Открытые данные</a></li>
+                                    <li><a href="https://rst.gov.ru:8443/file-service/file/load/1647953706451">Условия пользования</a></li>      
+                                </ul>
+                                </ul>
+                            </div>
                             <h6>Создатель идеи и проекта - Назаренко Глеб Максимович</h6>
                             <h6>Студент Московского Политеха, 2 курс, группа 211-362</h6>
                         </div><!-- end row -->
