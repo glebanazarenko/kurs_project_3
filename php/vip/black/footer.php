@@ -18,7 +18,8 @@ echo'
                 <div class="row">
                     <div class="col-lg-5 border-e-dashed">
                         <a href="">
-                            <img src="/курсач/images/NormDomTextFooter.png" alt="" height="70" />
+                        <object type="image/svg+xml" data="/курсач/images/NormDomLogoNOTEXT.svg" height="100">
+                        </object>
                             <img src="/курсач/images/logo-light.png" alt="" height="16" />
                         </a>
                         <p class="my-4">Дом - это не место, а состояние души. <br>Дом - это там, где твое сердце.
@@ -60,7 +61,7 @@ echo'
                     <div class="col-sm-6 white">
                         <p> &copy; <script>
                             document.write(new Date().getFullYear())
-                        </script> НормДом. Следано с Любовью</p>
+                        </script> НормДом. Сделано с Любовью</p>
                     </div>
                     <div class="col-sm-6 text-sm-end">
                         <ul class="list-inline mb-0 white">

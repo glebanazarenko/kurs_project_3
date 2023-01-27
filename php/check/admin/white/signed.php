@@ -48,8 +48,14 @@ echo'<body class="Site">
                 <li class="nav-item">
                     <a class="nav-link-a" href="checkIn.php?type=search&id='.$Arr["id"].'">Поиск</a>
                 </li><!--end nav-item-->                        
+                <li class="nav-item">
+                    <a class="nav-link-a" href="checkIn.php?type=new_feedback_all&id='.$Arr["id"].'">Новые сообщения</a>
+                </li><!--end nav-item-->
+                <li class="nav-item">
+                    <a class="nav-link-a" href="checkIn.php?type=old_feedback_all&id='.$Arr["id"].'">Старые сообщения</a>
+                </li><!--end nav-item-->
             </ul><!--end navbar-nav-->
-            <button type="button" class="btn btn-primary btn-hover">'.$Arr['name'].'</button>
+            <button type="button" class="btn btn-primary btn-hover">Админ: '.$Arr['name'].'</button>
             <button type="button" class="btn btn-green"><a class="btn-a" href="../../visitor/white/index.php">Выйти из аккаунта</a></button>
             <!--<a href="singUp.php" class="btn btn-sm nav-btn text-primary mb-4 mb-lg-0">Регистрация<i class="icon-xxs ms-1" data-feather="chevrons-right"></i></a>-->
         </div><!-- end #navbarNav -->
@@ -61,7 +67,6 @@ echo'<body class="Site">
 ';
 
 ?>
-
 
 <br>
         <br>
@@ -104,7 +109,9 @@ echo'<body class="Site">
             <br>
         </div>
 
+        
         </main>
+
 
 <?php
 include "footer.php";

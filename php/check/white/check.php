@@ -41,7 +41,7 @@ if(!empty($_POST)){
                     <br>
                     <br>
                     <br>
-                        <h3>Необходимо заполнить все поля</h3>
+                        <h3>Необходимо заполнить все поля.</h3>
                         <br>
                         <a class="btn btn-dark" href="../../visitor/white/signUp.php" role="button">Назад</a>
                     </main>
@@ -72,7 +72,7 @@ if(!empty($_POST)){
                     <br>
                     <br>
                     <br>
-                        <h3>Поля с площадью парковки и количествами лифтов должны содержать цифры, а не други символы</h3>
+                        <h3>Поля с площадью парковки и количествами лифтов должны содержать цифры, а не другие символы.</h3>
                         <br>
                         <a class="btn btn-dark" href="../../visitor/white/signUp.php" role="button">Назад</a>
                     </main>

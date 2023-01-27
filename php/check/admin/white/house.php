@@ -43,13 +43,19 @@ echo'<body class="Site">
                     <a class="nav-link-a" href="checkIn.php?id='.$Arr["id"].'">Главная</a>
                 </li><!--end nav-item-->
                 <li class="nav-item">
-                    <a class="nav-link-a" href="../black/checkIn_black.php?house_id='.$house_id.'&type=house&id='.$Arr["id"].'&role_id=1">Темная тема</a>
+                    <a class="nav-link-a" href="../black/checkIn_black.php?house_id='.$house_id.'&type=house&id='.$Arr["id"].'&role_id=3">Темная тема</a>
                 </li><!--end nav-item-->
                 <li class="nav-item">
                     <a class="nav-link-a active" href="checkIn.php?type=search&id='.$Arr["id"].'">Поиск</a>
                 </li><!--end nav-item-->                        
+                <li class="nav-item">
+                    <a class="nav-link-a" href="checkIn.php?type=new_feedback_all&id='.$Arr["id"].'">Новые сообщения</a>
+                </li><!--end nav-item-->
+                <li class="nav-item">
+                    <a class="nav-link-a" href="checkIn.php?type=old_feedback_all&id='.$Arr["id"].'">Старые сообщения</a>
+                </li><!--end nav-item-->
             </ul><!--end navbar-nav-->
-            <button type="button" class="btn btn-primary btn-hover">'.$Arr['name'].'</button>
+            <button type="button" class="btn btn-primary btn-hover">Админ: '.$Arr['name'].'</button>
             <button type="button" class="btn btn-green"><a class="btn-a" href="../../visitor/white/index.php">Выйти из аккаунта</a></button>
             <!--<a href="singUp.php" class="btn btn-sm nav-btn text-primary mb-4 mb-lg-0">Регистрация<i class="icon-xxs ms-1" data-feather="chevrons-right"></i></a>-->
         </div><!-- end #navbarNav -->
@@ -70,7 +76,6 @@ echo'<body class="Site">
 
         <!-- start hero -->
             <h6 class="bg-white text-dark fs-2 container text-center">Информация о доме</h6>
-            <br>
         <!-- end hero --> 
         
         <?php
@@ -370,7 +375,6 @@ echo'<body class="Site">
         }
         
         echo $context;
-        
 
 
         $result2 = mysqli_query($mysql, "SELECT u.name, f.text, f.rating from feedback as f join user as u on f.user_id =u.id WHERE f.house_id = ".$house_id." and f.is_published = 1");
@@ -544,52 +548,6 @@ echo'<body class="Site">
             ?>
 
 <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-
-            <!-- start hero -->
-            <h6 class="bg-white text-dark fs-2 container text-center">Оставьте отзыв об этом доме</h6>
-            <!-- end hero -->  
-
-            <section class="container text-left">
-                <form action="../../check/white/check_form.php"   method="POST">
-                    <!-- Hidden Required Fields -->
-                    <?php
-                        $result = mysqli_query($mysql, "SELECT * FROM user WHERE
-                        login='".$session_user_login."'
-                        ");
-                        $Arr = mysqli_fetch_assoc($result);
-                        echo'
-                        <input type="hidden" name="user_id" value="'.$Arr["id"].'">
-                        <input type="hidden" name="house_id" value="'.$house_id.'">
-                        ';
-                    ?>
-                    
-
-                    <div class="mb-4">
-                    <label for="exampleFormControlTextarea1" class="form-label">Тема сообщения</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="text"></textarea>
-                    </div> 
-                    <div class="rating-area" name="rating">
-                        <input type="radio" id="star-5" name="rating" value="5">
-                        <label for="star-5" title="Оценка «5»"></label>	
-                        <input type="radio" id="star-4" name="rating" value="4">
-                        <label for="star-4" title="Оценка «4»"></label>    
-                        <input type="radio" id="star-3" name="rating" value="3">
-                        <label for="star-3" title="Оценка «3»"></label>  
-                        <input type="radio" id="star-2" name="rating" value="2">
-                        <label for="star-2" title="Оценка «2»"></label>    
-                        <input type="radio" id="star-1" name="rating" value="1">
-                        <label for="star-1" title="Оценка «1»"></label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Подтвердить</button>
-                </form>
-            </section>
-
-            <br>
         <br>
         <br>
         <br>

@@ -11,11 +11,13 @@
 
         <!-- css -->
         <link href="/курсач/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="/курсач/css/styles-dark.css" rel="stylesheet" type="text/css" />
+        <link href="../../../css/styles.css" rel="stylesheet" type="text/css" />
     </head>
 
-<?php
+
+<?php 
 include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
+$id = $_GET["id"];
 
 if(!isset($session_user_login)){
     $session_user_login = "Ошибка";
@@ -27,9 +29,7 @@ login='".$session_user_login."'
 ");
 $Arr = mysqli_fetch_assoc($result);
 
-
-
-echo'<body class="Site bg-dark">
+echo'<body class="Site">
 <!-- start navbar -->
 <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
     <div class="container">
@@ -40,23 +40,23 @@ echo'<body class="Site bg-dark">
         <div class="navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto navbar-center mt-lg-0 mt-2">
                 <li class="nav-item">
-                    <a class="nav-link-a" href="checkIn_black.php?id='.$Arr["id"].'">Главная</a>
+                    <a class="nav-link-a" href="checkIn.php?id='.$Arr["id"].'">Главная</a>
                 </li><!--end nav-item-->
                 <li class="nav-item">
-                    <a class="nav-link-a" href="../white/checkIn.php?type=feedback_before_all&id='.$Arr["id"].'">Светлая тема</a>
+                    <a class="nav-link-a" href="../black/checkIn_black.php?house_id='.$house_id.'&type=old_feedback_all&id='.$Arr["id"].'&role_id=3">Темная тема</a>
                 </li><!--end nav-item-->
                 <li class="nav-item">
-                    <a class="nav-link-a" href="checkIn_black.php?type=search&id='.$Arr["id"].'">Поиск</a>
-                </li><!--end nav-item-->      
+                    <a class="nav-link-a" href="checkIn.php?type=search&id='.$Arr["id"].'">Поиск</a>
+                </li><!--end nav-item-->                        
                 <li class="nav-item">
-                    <a class="nav-link-a active" href="checkIn_black.php?type=feedback_before_all&id='.$Arr["id"].'">Отзывы до проверки</a>
-                </li><!--end nav-item-->      
+                    <a class="nav-link-a" href="checkIn.php?type=new_feedback_all&id='.$Arr["id"].'">Новые сообщения</a>
+                </li><!--end nav-item-->
                 <li class="nav-item">
-                    <a class="nav-link-a" href="checkIn_black.php?type=feedback_after_all&id='.$Arr["id"].'">Отзывы после проверки</a>
-                </li><!--end nav-item-->                
+                    <a class="nav-link-a active" href="checkIn.php?type=old_feedback_all&id='.$Arr["id"].'">Старые сообщения</a>
+                </li><!--end nav-item-->
             </ul><!--end navbar-nav-->
-            <button type="button" class="btn btn-primary btn-hover">VIP: '.$Arr['name'].'</button>
-            <button type="button" class="btn btn-green"><a class="btn-a" href="../../visitor/black/main_black.php">Выйти из аккаунта</a></button>
+            <button type="button" class="btn btn-primary btn-hover">Админ: '.$Arr['name'].'</button>
+            <button type="button" class="btn btn-green"><a class="btn-a" href="../../visitor/white/index.php">Выйти из аккаунта</a></button>
             <!--<a href="singUp.php" class="btn btn-sm nav-btn text-primary mb-4 mb-lg-0">Регистрация<i class="icon-xxs ms-1" data-feather="chevrons-right"></i></a>-->
         </div><!-- end #navbarNav -->
     </div><!-- end container -->
@@ -65,7 +65,6 @@ echo'<body class="Site bg-dark">
 
 <main class="Site-content">
 
-
 <br>
         <br>
         <br>
@@ -73,20 +72,26 @@ echo'<body class="Site bg-dark">
         <br>
         <br>
 
-
             <!-- start hero -->
-            <h6 class="bg-dark text-white fs-2 container text-center">Ваши отзывы до проверки админинстрации</h6>
+            <h6 class="bg-white text-dark fs-2 container text-center">Старые комментарии людей</h6>
             <br>
             <br>
         <!-- end hero --> 
 ';
 
 
-$result = mysqli_query($mysql, "SELECT f.id, u.login, u.name, h.address, f.rating from feedback as f JOIN user as u on f.user_id = u.id join house as h on f.house_id = h.id WHERE f.user_id = ".$Arr['id']." AND f.is_checked = 0");
+$result = mysqli_query($mysql, "SELECT f.id, u.login, u.name, h.address, f.rating, f.is_published FROM feedback as f JOIN user as u ON f.user_id=u.id JOIN house as h on f.house_id = h.id WHERE f.is_checked = 1");
 
 if($result != NULL){
     while( $product = mysqli_fetch_assoc($result)){
+        if($product["is_published"] == 0){
+            $status = "Отклонено";
+        }else{
+            $status = "Подтверждено";
+        }
         if($context == NULL){
+            
+
             $context = '
             <div style="container-lg text-align: center;">
                 <div class="person_list_div">
@@ -94,23 +99,26 @@ if($result != NULL){
                         <div class="person_list_name">Ник человека</div>
                         <div class="person_list_name">Адрес дома</div>
                         <div class="person_list_name">Рейтинг</div>
+                        <div class="person_list_name">Статус</div>
                 </div>
                 <div class="person_list_div">
-                    <a href="checkIn_black.php?type=feedback_before&feedback_id='.$product["id"].'&id='.$Arr["id"].'" class="person_list_row">
+                    <a href="checkIn.php?type=old_feedback&feedback_id='.$product["id"].'&id='.$Arr["id"].'" class="person_list_row">
                         <div class="person_list_name"> '.$product["login"].'</div>
                         <div class="person_list_name"> '.$product["name"].'</div>
                         <div class="person_list_name"> '.$product["address"].'</div>
                         <div class="person_list_name"> '.$product["rating"].'</div>
+                        <div class="person_list_name"> '.$status.'</div>
                     </a>
                 </div>';
         }else{
             $context .= '
             <div class="person_list_div">
-                <a href="checkIn_black.php?type=feedback_before&feedback_id='.$product["id"].'&id='.$Arr["id"].'" class="person_list_row">
+            <a href="checkIn.php?type=old_feedback&feedback_id='.$product["id"].'&id='.$Arr["id"].'" class="person_list_row">
                     <div class="person_list_name"> '.$product["login"].'</div>
                     <div class="person_list_name"> '.$product["name"].'</div>
                     <div class="person_list_name"> '.$product["address"].'</div>
                     <div class="person_list_name"> '.$product["rating"].'</div>
+                    <div class="person_list_name"> '.$status.'</div>
                 </a>
             </div>
             ';
@@ -121,9 +129,6 @@ if($result != NULL){
 }
             
             echo $context;
-
-
-
 ?>
 
 <br>

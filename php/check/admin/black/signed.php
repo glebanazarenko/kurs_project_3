@@ -11,7 +11,7 @@
 
         <!-- css -->
         <link href="/курсач/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="/курсач/css/styles.css" rel="stylesheet" type="text/css" />
+        <link href="/курсач/css/styles-dark.css" rel="stylesheet" type="text/css" />
     </head>
 
 <?php
@@ -29,28 +29,34 @@ $Arr = mysqli_fetch_assoc($result);
 
 
 
-echo'<body class="Site">
+echo'<body class="bg-dark Site">
 <!-- start navbar -->
 <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
     <div class="container">
-        <a href="checkIn.php?id='.$Arr["id"].'">
+        <a href="checkIn_black.php?id='.$Arr["id"].'">
             <img src="/курсач/images/NormDomTextFooter.png" alt="" height="50" />
         </a><!--end navbar-brand-->
 
         <div class="navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto navbar-center mt-lg-0 mt-2">
                 <li class="nav-item">
-                    <a class="nav-link-a active" href="checkIn.php?id='.$Arr["id"].'">Главная</a>
+                    <a class="nav-link-a active" href="checkIn_black.php?id='.$Arr["id"].'">Главная</a>
                 </li><!--end nav-item-->
                 <li class="nav-item">
-                    <a class="nav-link-a" href="../black/checkIn_black.php?id='.$Arr["id"].'">Темная тема</a>
+                    <a class="nav-link-a" href="../white/checkIn.php?id='.$Arr["id"].'">Светлая тема</a>
                 </li><!--end nav-item-->
                 <li class="nav-item">
-                    <a class="nav-link-a" href="checkIn.php?type=search&id='.$Arr["id"].'">Поиск</a>
+                    <a class="nav-link-a" href="checkIn_black.php?id='.$Arr["id"].'&type=search">Поиск</a>
                 </li><!--end nav-item-->                        
+                <li class="nav-item">
+                    <a class="nav-link-a" href="checkIn_black.php?type=new_feedback_all&id='.$Arr["id"].'">Новые сообщения</a>
+                </li><!--end nav-item-->
+                <li class="nav-item">
+                    <a class="nav-link-a" href="checkIn_black.php?type=old_feedback_all&id='.$Arr["id"].'">Старые сообщения</a>
+                </li><!--end nav-item-->
             </ul><!--end navbar-nav-->
-            <button type="button" class="btn btn-primary btn-hover">'.$Arr['name'].'</button>
-            <button type="button" class="btn btn-green"><a class="btn-a" href="../../visitor/white/index.php">Выйти из аккаунта</a></button>
+            <button type="button" class="btn btn-primary btn-hover">Админ: '.$Arr['name'].'</button>
+            <button type="button" class="btn btn-green"><a class="btn-a" href="../../visitor/black/main_black.php">Выйти из аккаунта</a></button>
             <!--<a href="singUp.php" class="btn btn-sm nav-btn text-primary mb-4 mb-lg-0">Регистрация<i class="icon-xxs ms-1" data-feather="chevrons-right"></i></a>-->
         </div><!-- end #navbarNav -->
     </div><!-- end container -->
@@ -62,7 +68,6 @@ echo'<body class="Site">
 
 ?>
 
-
 <br>
         <br>
         <br>
@@ -70,7 +75,7 @@ echo'<body class="Site">
         <br>
         <br>
 
-        <h6 class="bg-white text-dark fs-2 container text-center">Карта домов</h6>
+        <h6 class="bg-dark text-white fs-2 container text-center">Карта домов</h6>
         
 
         <div class="container text-center">
@@ -79,8 +84,8 @@ echo'<body class="Site">
         </div>
 
 
-        <div class="container">
-            <h2 class="bg-white text-dark fs-2 container text-center">Информация о сайте</h2>
+        <div class="container bg-dark text-white">
+            <h2 class="text-center">Информация о сайте</h2>
             <br>
             <h3>Доброго времени суток, вы попали на сайт, который вам поможет с точностью и филигранной тонкостью найти для себя или оставить отзыв о любом доме, который вы посчитаете нужным.</h3>
             <br>

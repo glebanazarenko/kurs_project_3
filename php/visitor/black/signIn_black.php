@@ -48,17 +48,12 @@ include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
 
         <main class="Site-content">
 
-        <!-- start hero -->
-        <section class="hero-one position-relative bg-dark" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
-            <div class="container">
-                <div class="row align-items-center justify-content-center py-100">
-                    <div class="col-lg-7 text-center py-5 text-center">
-                        <h5 class="head-title py-4" aria-label="Регистрация"></h5>                        
-                    </div><!--end col-->                  
-                </div><!--end row-->             
-            </div><!-- end container -->
-        </section>
-        <!-- end hero -->
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
 
         <!-- start hero -->
             <h6 class="bg-dark text-white fs-2 container text-center">Вход</h6>
@@ -80,17 +75,12 @@ include $_SERVER["DOCUMENT_ROOT"]."/курсач/php/db.php";
             </form>
         </section>
 
-        <!-- start hero -->
-        <section class="hero-one position-relative bg-dark" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
-            <div class="container">
-                <div class="row align-items-center justify-content-center py-100">
-                    <div class="col-lg-7 text-center py-5 text-center">
-                        <h5 class="head-title py-4" aria-label="Регистрация"></h5>                        
-                    </div><!--end col-->                  
-                </div><!--end row-->             
-            </div><!-- end container -->
-        </section>
-        <!-- end hero -->
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
 
         </main>
 

@@ -48,10 +48,10 @@ echo'<body class="bg-dark Site">
                     <a class="nav-link-a active" href="checkIn_black.php?type=search&id='.$Arr["id"].'">Поиск</a>
                 </li><!--end nav-item-->      
                 <li class="nav-item">
-                    <a class="nav-link-a" href="checkIn_black.php?type=feedback_before_all&id='.$Arr["id"].'">Отзыв до проверки</a>
+                    <a class="nav-link-a" href="checkIn_black.php?type=feedback_before_all&id='.$Arr["id"].'">Отзывы до проверки</a>
                 </li><!--end nav-item-->      
                 <li class="nav-item">
-                    <a class="nav-link-a" href="checkIn_black.php?type=feedback_after_all&id='.$Arr["id"].'">Отзыв после проверки</a>
+                    <a class="nav-link-a" href="checkIn_black.php?type=feedback_after_all&id='.$Arr["id"].'">Отзывы после проверки</a>
                 </li><!--end nav-item-->                
             </ul><!--end navbar-nav-->
             <button type="button" class="btn btn-primary btn-hover">VIP: '.$Arr['name'].'</button>
@@ -65,17 +65,12 @@ echo'<body class="bg-dark Site">
 <main class="Site-content">
 
 
-<!-- start hero -->
-        <section class="hero-one position-relative bg-dark" style="background-image: url(images/personal/main-bg.png); background-size: cover; background-position: center center;">
-            <div class="container">
-                <div class="row align-items-center justify-content-center py-100">
-                    <div class="col-lg-7 text-center py-5 text-center">
-                        <h5 class="head-title py-4" aria-label="Регистрация"></h5>                        
-                    </div><!--end col-->                  
-                </div><!--end row-->             
-            </div><!-- end container -->
-        </section>
-        <!-- end hero -->
+<br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
 
 
         <div class="">';

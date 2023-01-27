@@ -67,6 +67,8 @@ echo'<body class="bg-dark Site">
         <br>
         <br>
         <br>
+        <br>
+        <br>
 
         <h6 class="bg-dark text-white fs-2 container text-center">Карта домов</h6>
         

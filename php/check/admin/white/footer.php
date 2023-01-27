@@ -28,12 +28,12 @@ echo'
                     <div class="col-lg-6 offset-lg-1">
                         <div class="row">
                             <div class="col-md-4">
-                                <h6 class="text-footer mb-4 mt-sm-0 mt-5">Меньше информации</h6>
+                                <h6 class="text-footer mb-4 mt-sm-0 mt-5">Информация</h6>
                                 <ul class="list-unstyled footer-list">
                                     <?php
 
                                     ?>
-                                    <li><a href="checkIn_black.php?id='.$Arr["id"].'">Домашняя</a></li>';
+                                    <li><a href="checkIn.php?id='.$Arr["id"].'">Домашняя</a></li>';
 
                                     ?>
                                     
